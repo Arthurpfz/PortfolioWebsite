@@ -1,4 +1,4 @@
-baseURL = "zen-wing-3f8d7b.netlify.com"
+baseURL = ""
 title = "Posts"
 theme = "hugo-notepadium"
 copyright = "©2019 Notepadium."

@@ -1,4 +1,4 @@
-baseURL = "https://example.arthurpfz.com/"
+baseURL = ""
 title = "Posts"
 theme = "hugo-notepadium"
 copyright = "©2019 Notepadium."

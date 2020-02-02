@@ -1,5 +1,5 @@
 ---
-title: "User stories Mapping, Jeff Patton"
+title: "User Stories Mapping, Jeff Patton"
 date: 2020-02-02T10:58:42+01:00
 draft: false
 description: "Book summary"

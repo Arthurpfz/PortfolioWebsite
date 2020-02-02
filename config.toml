@@ -47,8 +47,8 @@ showTags = true             # /tags/
 # custom navigation items
 
 [[params.nav.custom]]
-title = "About"
-url = "/about"
+title = "About Arthur"
+url = "/about/"
 
 [[params.nav.custom]]
 title = "LinkedIn"

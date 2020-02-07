@@ -1,5 +1,5 @@
-baseURL = ""
-title = "Posts"
+baseURL = "arthurpfz.com"
+title = "arthurpfz.com"
 theme = "hugo-notepadium"
 copyright = "©2019 Notepadium."
 

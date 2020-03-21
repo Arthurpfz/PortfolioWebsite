@@ -35,4 +35,4 @@ categories: [
 3. Outcomes for organization
     * Organizational change requires to take colleagues as customers, what are their goals ?
 4. Impact mapping for identifying features
-![Example imagee](/posts/outcomes_over_outputs/OutcomesOverOutputs1.jpg)
+    * ![Example imagee](/posts/outcomes_over_outputs/OutcomesOverOutputs1.jpg)

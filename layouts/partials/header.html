@@ -11,5 +11,5 @@
     {{- with site.Params.slogan -}}
         <div class="site slogan"><span class="title">{{- . | safeHTML -}}</span></div>
     {{- end -}}
-    {{ template "_internal/google_analytics.html" . }}
+    {{ template "_internal/google_analytics_async.html" . }}
 </section>

@@ -13,6 +13,7 @@ categories: [
 ---
 <!--more--> 
 
+> I own this book and took these notes to further my own learning. Taking notes, publishing them and re-reading them allow me to flatten my [forgetting curve](https://en.wikipedia.org/wiki/Forgetting_curve). If you enjoy these notes, I highly encourage you to do the same, buy this book [here](https://www.amazon.com/Lean-Product-Playbook-Innovate-Products/dp/1118960874/ref=sr_1_1?crid=2UWCK4U4DHHEJ&dchild=1&keywords=lean+product+playbook&qid=1584892896&sprefix=lean+product%2Caps%2C294&sr=8-1) and take your own notes.
 
 
 ## INTRODUCTION

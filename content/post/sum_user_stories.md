@@ -17,6 +17,9 @@ categories: [
 
 <!--more--> 
 
+> I own this book and took these notes to further my own learning. Taking notes, publishing them and re-reading them allow me to flatten my [forgetting curve](https://en.wikipedia.org/wiki/Forgetting_curve). If you enjoy these notes, I highly encourage you to do the same, buy this book [here](https://www.amazon.com/User-Story-Mapping-Discover-Product/dp/1491904909/ref=sr_1_1?dchild=1&keywords=user+stories&qid=1584892914&sr=8-1) and take your own notes.
+
+
 ### Introduction
     
 * Shared documents are not shared understanding, the goal of user stories is to overcome this "telephone game" issue 

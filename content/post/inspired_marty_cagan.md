@@ -14,6 +14,7 @@ categories: [
 
 <!--more--> 
 
+> I own this book and took these notes to further my own learning. Taking notes, publishing them and re-reading them allow me to flatten my [forgetting curve](https://en.wikipedia.org/wiki/Forgetting_curve). If you enjoy these notes, I highly encourage you to do the same, buy this book [here](https://www.amazon.com/INSPIRED-Create-Tech-Products-Customers/dp/1119387507/ref=tmm_hrd_swatch_0?_encoding=UTF8&qid=1584891631&sr=8-1) and take your own notes.
 
 1. Good product teams
 	* Focus on, measure and celebrate outcomes (not output)

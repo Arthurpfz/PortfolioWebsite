@@ -12,5 +12,8 @@
     {{- with site.Params.slogan -}}
         <div class="site slogan"><span class="title">{{- . | safeHTML -}}</span></div>
     {{- end -}}
-    
+    ...
+    {{ partial "seo_schema" . }}
+    <title>
+    ...
 </section>

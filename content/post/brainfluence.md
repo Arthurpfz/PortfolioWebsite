@@ -15,7 +15,7 @@ categories: [
 
 <!--more--> 
 
-> I own this book and took these notes to further my own learning. Taking notes, publishing them and re-reading them allow me to flatten my [forgetting curve](https://en.wikipedia.org/wiki/Forgetting_curve). If you enjoy these notes, I highly encourage you to do the same, buy this book [here](https://www.amazon.com/Outcomes-Over-Output-customer-behavior/dp/1091173265/ref=sr_1_1?crid=3V0UBG282YVFN&dchild=1&keywords=outcomes+over+output&qid=1584892863&sprefix=outcomes%2Caps%2C230&sr=8-1) and take your own notes.
+> I own this book and took these notes to further my own learning. Taking notes, publishing them and re-reading them allow me to flatten my [forgetting curve](https://en.wikipedia.org/wiki/Forgetting_curve). If you enjoy these notes, I highly encourage you to do the same, buy this book [here](https://www.amazon.com/Brainfluence-Persuade-Convince-Consumers-Neuromarketing-ebook/dp/B005XXTQEK/ref=tmm_kin_swatch_0?_encoding=UTF8&qid=1586539310&sr=8-1) and take your own notes.
 
 ### INTRODUCTION
 Today, modern tools (fMRI, heart rate and eye-tracking, ) allow us to make a shift from madmen to the development of neuroscience/neuromarketing/behavioral research. Neuromarketing is all about understanding how our brains work to improve our products and marketing

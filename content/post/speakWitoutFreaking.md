@@ -15,7 +15,7 @@ categories: [
 
 <!--more--> 
 
-> I own this book and took these notes to further my own learning. Taking notes, publishing them and re-reading them allow me to flatten my [forgetting curve](https://en.wikipedia.org/wiki/Forgetting_curve). If you enjoy these notes, I highly encourage you to do the same, buy this book [here](https://www.amazon.com/Outcomes-Over-Output-customer-behavior/dp/1091173265/ref=sr_1_1?crid=3V0UBG282YVFN&dchild=1&keywords=outcomes+over+output&qid=1584892863&sprefix=outcomes%2Caps%2C230&sr=8-1) and take your own notes.
+> I own this book and took these notes to further my own learning. Taking notes, publishing them and re-reading them allow me to flatten my [forgetting curve](https://en.wikipedia.org/wiki/Forgetting_curve). If you enjoy these notes, I highly encourage you to do the same, buy this book [here](https://www.amazon.com/Speaking-without-Freaking-Out-Techniques/dp/1465290478/ref=sr_1_1?crid=28M8PVVOZKGHF&dchild=1&keywords=speaking+up+without+freaking+out&qid=1586539282&sprefix=speaking+up+wi%2Caps%2C-1&sr=8-1) and take your own notes.
 
 1. Confidence: explanation and manifestations
     * A confident speaker is passionate and warmth

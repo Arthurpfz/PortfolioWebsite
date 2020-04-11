@@ -2,7 +2,7 @@
 title: "Brainfluence, R. Dooley"
 date: 2020-04-10T16:51:19+02:00
 draft: false
-description: "Book summary"
+description: "Book Summary"
 
 tags: [ 
     "Behavioral Science & Design"

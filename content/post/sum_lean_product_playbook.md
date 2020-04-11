@@ -5,7 +5,7 @@ draft: false
 description: "Book summary"
 
 tags: [ 
-    "ProductDiscovery"
+    "Product Discovery"
 ]
 categories: [
     "Book Summary"

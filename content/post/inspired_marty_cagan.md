@@ -2,10 +2,10 @@
 title: "Inspired, Marty Cagan"
 date: 2020-03-22T16:09:05+01:00
 draft: false
-description: "Book summary"
+description: "Book Summary"
 
 tags: [ 
-    "ProductDiscovery","ProductTeam"
+    "Product Discovery","Product Team"
 ]
 categories: [
     "Book Summary"

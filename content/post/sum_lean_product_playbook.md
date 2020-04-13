@@ -1,5 +1,5 @@
 ---
-title: "The Lean Product Playbook, Dan Olsen"
+title: "The Lean Product Playbook, D.Olsen"
 date: 2020-02-02T16:04:56+01:00
 draft: false
 description: "Book summary"

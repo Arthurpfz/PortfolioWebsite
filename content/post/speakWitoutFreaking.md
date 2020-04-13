@@ -1,5 +1,5 @@
 ---
-title: "Speaking Up Witout Freaking Out, M. Abrahams"
+title: "Speaking Up Witout Freaking Out, M.Abrahams"
 date: 2020-04-10T16:51:04+02:00
 draft: false
 description: "Book summary"

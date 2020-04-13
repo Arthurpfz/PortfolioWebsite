@@ -1,5 +1,5 @@
 ---
-title: "Predictably Irrational D. Ariely"
+title: "Predictably Irrational D.Ariely"
 date: 2020-04-11T15:25:19+02:00
 draft: false
 description: "Book summary"

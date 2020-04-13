@@ -1,5 +1,5 @@
 ---
-title: "Hooked"
+title: "Hooked, N.Eyal"
 date: 2020-04-13T11:15:59+02:00
 draft: false
 description: "Book summary"

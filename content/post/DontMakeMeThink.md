@@ -1,5 +1,5 @@
 ---
-title: "Dont Make Me Think, S. Krug"
+title: "Dont Make Me Think, S.Krug"
 date: 2020-04-11T11:14:37+02:00
 draft: false
 description: "Book summary"

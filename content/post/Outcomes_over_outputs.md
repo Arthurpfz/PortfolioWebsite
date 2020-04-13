@@ -1,5 +1,5 @@
 ---
-title: "Outcomes Over Outputs, Josh Seiden"
+title: "Outcomes Over Outputs, J.Seiden"
 date: 2020-03-21T10:39:33+01:00
 draft: false
 description: "Book Summary"

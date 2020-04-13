@@ -4,7 +4,7 @@ date: 2020-04-13T11:15:59+02:00
 draft: false
 description: "Book summary"
 tags: [ 
-    "Behavioral Science & Design", "Prodcut Discovery"
+    "Behavioral Science & Design", "Product Discovery"
 ]
 categories: [
     "Book Summary"

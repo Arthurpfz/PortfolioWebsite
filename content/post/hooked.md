@@ -21,7 +21,7 @@ categories: [
 ### INTRODUCTION
 * 79% of smartphone owners check their phone within 15 min of waking up every morning
 * People check their phones 34 times a day in 2011…
-* ![Example imagee](/posts/sum_lean_product/hooked1.png)
+* ![Example imagee](/posts/hooked/hooked1.png)
 
  
 ### CORE
@@ -34,7 +34,7 @@ categories: [
 * The enemy of habit creation is past behaviors, and researches found out that old habits die hard. Even when we change our routine, neural pathways remain etched in our brains, ready to be reactivated when we lose focus
 * Amazon ads sell cheaper items from other Ecommerce, and it does not hurt the business… on the contrary, Amazon creates the neural habit for users to continue to search for items on the platform to get the best price. Today Amazon becomes a reflex for searching the price of an item
 * The habit zone is determined by the Frequency and perceived utility
-* ![Example imagee](/posts/sum_lean_product/hooked2.png)
+* ![Example imagee](/posts/hooked/hooked2.png)
 * "Are you building a vitamin or a painkiller?" is the cliched question many investors ask founders eager to cash their first venture capital check…. But in reality, for most of the habits formed by the tech company, we did not need them at the beginning…
 * A habit is when not doing an action causes a bit of pain. By pain, we mean an "itch", a feeling that manifests within the mind and causes discomfort until it is satisfied.
 * TODO: What habits does your business model require? What problem are users turning to your product to solve? How do users currently solve that problem and why does it need a solution? How frequently do you expect users to engage with your product? What user behavior do you want to make into a habit?
@@ -57,7 +57,7 @@ categories: [
 * To summarize: increased desired behavior with = clear trigger + action as easy as possible + find and align with the right motivator
 * TODO: How many steps does it take to your user to get the reward he is looking for? How does it compare with other products, competitors, alternatives… ? Which resources are limiting your users' ability to accomplish the tasks that will become habits? (Time, Money, effort….). Brainstorm ways to make the task easier. Consider heuristics to make habit-forming actions more likely.
 4. VARIABLE REWARD
-* ![Example imagee](/posts/sum_lean_product/hooked3.png)
+* ![Example imagee](/posts/hooked/hooked3.png)
 * The reward of the tribe: to feel important, accepted, attractive: like from Facebook, up-vote in StackOverflow
 * The reward of the hunt: research for material resources and information: machine gambling, the feed-in Twitter and Pinterest
 * The reward of the self: search of intrinsic rewards of mastery, competence, and completion: master the skill in a video game, the mailbox is empty,

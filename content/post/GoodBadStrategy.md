@@ -22,20 +22,22 @@ categories: [
 * A lot of persons forget that Apple's strategy in 97 was finally very business 101, Job cut 80% of inventory, reduced the number of the product offered to 1, cut out distributors and dealers and sold directly to consumers on their web store. "I am going to wait for the next big things," said S jobs in 98 which is a wise approach considering the situation at that moment
 * Walmart's strategy in 1984 managed to beat the old leader Kmart which benefited with all the necessary weapons to compete… but Walmart came up with a shift in perspective, the build a network of stores connected by logistics
 * Bad strategy:
-		* Fluff: unnecessary and inflated wording to create an illusion of high-level thinking
-		* Failed to define the challenge
-		* Mistakes Goals for strategy, desire vs plan for overcoming obstacles
-		* Bad strategic objectives are impracticable or fail to address a critical issue
-		* Budget planning is not strategy because it won't deliver a pathway to higher performance. To increase performance leaders must identify the critical obstacles to forward progress and then develop a coherent approach to overcome them
-		* Dog's dinner objectives: a long list of things to do…. A good strategy works by focusing resources and energy on one or very few pivotal objectives that will lead to a cascade of favorable outcomes
-		* Blue sky objectives: restate just the problem and does not give clear guidelines on how to get there… a good strategy builds the bridge bwn the challenge and the actions… "the challenge is bad performance" is always a very bad strategy beginning… the real challenge is the real reasons for underperformance
-		* Bad strategy is long on goal and short on policies and action. The strategy is not about the outcome but output
-		* The template style "fits all" strategy: (vision, mission, values, strategy) are essentially consulting verbiage
-		* The strategy is the leader… A charismatic leader is not enough (M Weber 1864, sociology, segmented leaders in 2: formal leaders vs charismatic leaders (superhuman)). Eisenhower, Marshall, Truman were effective leaders but none possessed amazing charisma
+    * Fluff: unnecessary and inflated wording to create an illusion of high-level thinking
+    * Failed to define the challenge
+    * Mistakes Goals for strategy, desire vs plan for overcoming obstacles
+    * Bad strategic objectives are impracticable or fail to address a critical issue
+    * Budget planning is not strategy because it won't deliver a pathway to higher performance. To increase performance leaders must identify the critical obstacles to forward progress and then develop a coherent approach to overcome them
+    * Dog's dinner objectives: a long list of things to do…. A good strategy works by focusing resources and energy on one or very few pivotal objectives that will lead to a cascade of favorable outcomes
+    * Blue sky objectives: restate just the problem and does not give clear guidelines on how to get there… a good strategy builds the bridge bwn the challenge and the actions… "the challenge is bad performance" is always a very bad strategy beginning… the real challenge is the real reasons for underperformance
+    * Bad strategy is long on goal and short on policies and action. The strategy is not about the outcome but output
+    * The template style "fits all" strategy: (vision, mission, values, strategy) are essentially consulting verbiage
+    * The strategy is the leader… A charismatic leader is not enough (M Weber 1864, sociology, segmented leaders in 2: formal leaders vs charismatic leaders (superhuman)). Eisenhower, Marshall, Truman were effective leaders but none possessed amazing charisma
 * Strategic planning is a waste of time, the first step of making a real strategy is to get the AHA moment where we find a sustainable competitive advantage, that's to say a meaningful insight on "how to win"
 * The Kernel of good strategy: 
-		* 1) A diagnosis (explain/define the nature of the challenge), 2) A guiding policy for dealing with the challenge (overall approach to overcome obstacles), 3) A set of coherent actions that are designed to carry out the guiding policy
-		* In business: the challenge is often dealing with change or competition. First = define this challenge, second = find a guiding policy for dealing with the situation that creates some type of leverages or advantages. Third = design a configuration of actions and resource allocation that implement the chosen guiding policy
+    * 1) A diagnosis (explain/define the nature of the challenge), 
+    * 2) A guiding policy for dealing with the challenge (overall approach to overcome obstacles),
+    * 3) A set of coherent actions that are designed to carry out the guiding policy
+* In business: the challenge is often dealing with change or competition. First = define this challenge, second = find a guiding policy for dealing with the situation that creates some type of leverages or advantages. Third = design a configuration of actions and resource allocation that implement the chosen guiding policy
  
 ### Part II: Source of Power
  Sources of power used in good strategy:

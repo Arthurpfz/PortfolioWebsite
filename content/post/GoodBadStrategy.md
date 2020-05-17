@@ -15,7 +15,7 @@ categories: [
 
 <!--more--> 
 
-> I own this book and took these notes to further my own learning. Taking notes, publishing them and re-reading them allow me to flatten my [forgetting curve](https://en.wikipedia.org/wiki/Forgetting_curve). If you enjoy these notes, I highly encourage you to do the same, buy this book [here](LINK) and take your own notes.
+> I own this book and took these notes to further my own learning. Taking notes, publishing them and re-reading them allow me to flatten my [forgetting curve](https://en.wikipedia.org/wiki/Forgetting_curve). If you enjoy these notes, I highly encourage you to do the same, buy this book [here](https://www.amazon.com/Good-Strategy-Bad-Difference-Matters-ebook/dp/B004J4WKEC/ref=sr_1_1?crid=YYUZX9BXUWKF&dchild=1&keywords=good+strategy+bad+strategy&qid=1589702448&sprefix=good+str%2Caps%2C232&sr=8-1) and take your own notes.
  
 ### Part I: Good and Bad strategy
 * Good strategy requires leaders who are willing to say "no" to a variety of activities in order to focus on the ones that matter

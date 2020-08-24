@@ -12,6 +12,6 @@ draft: false
 
 *Arthur Pfalzgraf*
 
-*  Berlin | 2020 - Pres | Product Manager RETENTION - For all HelloFresh’s ventures) 
+*  Berlin | 2020 - Pres | Product Manager RETENTION - For all HelloFresh’s ventures
 *  Berlin | 2019 - 2020 | Associate Product Manager GROWTH - At EveryPlate, 1st HelloFresh venture 
 * Berlin | 2018 - 2019 | Product Data Analyst - Conversion Rate Optimization and Referral Squad 

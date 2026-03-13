@@ -9,11 +9,11 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### Design System
 
-- [ ] **DSGN-01**: Extract visual design system from nousresearch.com (colors, typography, layout, spacing)
+- [x] **DSGN-01**: Extract visual design system from nousresearch.com (colors, typography, layout, spacing)
 - [ ] **DSGN-02**: Apply extracted design system to portfolio site
 - [ ] **DSGN-03**: Implement mobile responsive design
 - [ ] **DSGN-04**: Achieve fast page load (<3s)
-- [ ] **DSGN-05**: Implement clear typography hierarchy from Nous Research design
+- [x] **DSGN-05**: Implement clear typography hierarchy from Nous Research design
 - [ ] **DSGN-06**: Apply minimalist aesthetic consistently across all pages
 - [ ] **DSGN-07**: Implement accessible design (semantic HTML, ARIA labels, keyboard navigation)
 - [ ] **DSGN-08**: Implement dark/light mode toggle
@@ -73,11 +73,11 @@ Which phases cover which requirements. Updated during roadmap creation.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| DSGN-01 | Phase 1 | Pending |
+| DSGN-01 | Phase 1 | Complete |
 | DSGN-02 | Phase 2 | Pending |
 | DSGN-03 | Phase 3 | Pending |
 | DSGN-04 | Phase 5 | Pending |
-| DSGN-05 | Phase 1 | Pending |
+| DSGN-05 | Phase 1 | Complete |
 | DSGN-06 | Phase 2 | Pending |
 | DSGN-07 | Phase 3 | Pending |
 | DSGN-08 | Phase 5 | Pending |

@@ -1,0 +1,41 @@
+@layer components {
+  :root {
+    /* Navigation component tokens */
+    --nav-height: var(--spacing-16);
+    --nav-padding-x: var(--spacing-6);
+    --nav-padding-y: var(--spacing-4);
+    --nav-background: var(--color-background-primary);
+    --nav-border-color: var(--color-border-subtle);
+
+    /* Card/container component tokens */
+    --card-padding: var(--space-content-lg);
+    --card-radius: var(--radius-lg);
+    --card-shadow: var(--shadow-sm);
+    --card-background: var(--color-background-primary);
+    --card-border-color: var(--color-border-default);
+
+    /* Button component tokens */
+    --button-radius: var(--radius-md);
+    --button-padding-x: var(--spacing-4);
+    --button-padding-y: var(--spacing-2);
+    --button-font-size: var(--text-body-size);
+    --button-font-weight: var(--font-weight-medium);
+
+    --button-primary-bg: var(--color-action-primary);
+    --button-primary-bg-hover: var(--color-action-primary-hover);
+    --button-primary-text: var(--color-white);
+
+    /* Input component tokens */
+    --input-radius: var(--radius-md);
+    --input-padding-x: var(--spacing-3);
+    --input-padding-y: var(--spacing-2);
+    --input-border-color: var(--color-border-default);
+    --input-border-color-focus: var(--color-action-primary);
+    --input-background: var(--color-background-primary);
+
+    /* Layout component tokens */
+    --layout-max-width: 1280px;
+    --layout-gutter: var(--spacing-6);
+    --layout-section-gap: var(--space-section-md);
+  }
+}

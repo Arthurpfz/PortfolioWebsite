@@ -1,0 +1,90 @@
+---
+const currentPath = Astro.url.pathname;
+
+const navLinks = [
+  { href: '/archive', label: 'Archive' },
+  { href: '/experience', label: 'Experience' },
+  { href: '/now', label: 'Now' },
+];
+
+function isActive(path: string) {
+  return currentPath === path || currentPath.startsWith(path + '/');
+}
+---
+
+<nav class="site-nav">
+  <ul class="nav-list">
+    {navLinks.map(link => (
+      <li class="nav-item">
+        <a
+          href={link.href}
+          class:list={['nav-link', { active: isActive(link.href) }]}
+          aria-current={isActive(link.href) ? 'page' : undefined}
+        >
+          {link.label}
+        </a>
+      </li>
+    ))}
+    <li class="nav-item">
+      <a href="mailto:arthur@arthurpfz.com" class="nav-link email-link">
+        arthur@arthurpfz.com
+      </a>
+    </li>
+  </ul>
+</nav>
+
+<style>
+  .site-nav {
+    padding: var(--nav-padding-y) var(--nav-padding-x);
+    background: var(--nav-background);
+    border-bottom: 1px solid var(--nav-border-color);
+  }
+
+  .nav-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-content-lg);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    align-items: center;
+  }
+
+  .nav-item {
+    margin: 0;
+  }
+
+  .nav-link {
+    color: var(--color-foreground-primary);
+    text-decoration: none;
+    font-size: var(--text-body-size);
+    font-weight: var(--font-weight-medium);
+    transition: color 150ms ease;
+  }
+
+  .nav-link:hover {
+    color: var(--color-action-primary);
+  }
+
+  .nav-link.active {
+    color: var(--color-action-primary);
+    text-decoration: underline;
+    text-underline-offset: 0.25em;
+  }
+
+  .email-link {
+    margin-left: auto;
+  }
+
+  @media (max-width: 640px) {
+    .nav-list {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: var(--space-content-md);
+    }
+
+    .email-link {
+      margin-left: 0;
+    }
+  }
+</style>

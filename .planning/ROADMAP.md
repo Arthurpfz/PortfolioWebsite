@@ -53,7 +53,12 @@ Plans:
 6. Contact email link is visible on all pages
 7. Minimalist aesthetic from Nous Research is consistently applied across all pages
 
-**Plans**: TBD
+**Plans**: 3 plans in 2 waves
+
+Plans:
+- [ ] 02-01-PLAN.md — Navigation Component & Base Layout (Wave 1, autonomous)
+- [ ] 02-02-PLAN.md — Archive & Experience Pages (Wave 2, autonomous)
+- [ ] 02-03-PLAN.md — Now Page & Homepage Redirect (Wave 2, autonomous)
 
 ---
 
@@ -115,8 +120,8 @@ Plans:
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Foundation & Design System | 1/3 | In Progress|  |
-| 2. Core Pages & Navigation | 0/TBD | Not started | - |
+| 1. Foundation & Design System | 2/3 | In Progress|  |
+| 2. Core Pages & Navigation | 0/3 | Not started | - |
 | 3. Responsive & Accessible Design | 0/TBD | Not started | - |
 | 4. Content Migration | 0/TBD | Not started | - |
 | 5. Performance & Launch | 0/TBD | Not started | - |
@@ -129,7 +134,8 @@ Plans:
 |------|-------|-------|-------|
 | 2026-03-13 | - | Roadmap created | 5 phases, 18 requirements mapped |
 | 2026-03-13 | 1 | Phase 1 planning complete | 3 plans in 2 waves created |
+| 2026-03-14 | 2 | Phase 2 planning complete | 3 plans in 2 waves created |
 
 ---
 
-*Last updated: 2026-03-13*
+*Last updated: 2026-03-14*

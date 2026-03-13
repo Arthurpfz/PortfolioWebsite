@@ -115,7 +115,7 @@ Plans:
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Foundation & Design System | 0/3 | Planning complete | - |
+| 1. Foundation & Design System | 1/3 | In Progress|  |
 | 2. Core Pages & Navigation | 0/TBD | Not started | - |
 | 3. Responsive & Accessible Design | 0/TBD | Not started | - |
 | 4. Content Migration | 0/TBD | Not started | - |

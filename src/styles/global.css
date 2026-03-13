@@ -1,5 +1,120 @@
 @import "tailwindcss";
 
+/* Import three-layer token hierarchy */
+@import "./tokens/primitives.css";
+@import "./tokens/semantic.css";
+@import "./tokens/components.css";
+
 @theme {
-  /* Design tokens will be added in Plan 02 */
+  /* Expose primitive tokens as Tailwind utilities */
+  /* Colors - creates bg-*, text-*, border-* utilities */
+  --color-blue-400: #38bdf8;
+  --color-blue-500: #0ea5e9;
+  --color-blue-600: #0071A9;
+  --color-blue-700: #0369a1;
+  --color-blue-800: #075985;
+
+  --color-gray-50: #f9fafb;
+  --color-gray-100: #f3f4f6;
+  --color-gray-200: #e5e7eb;
+  --color-gray-300: #d1d5db;
+  --color-gray-400: #9ca3af;
+  --color-gray-500: #6b7280;
+  --color-gray-600: #4b5563;
+  --color-gray-700: #374151;
+  --color-gray-800: #1f2937;
+  --color-gray-900: #111827;
+
+  --color-white: #ffffff;
+  --color-black: #000000;
+
+  --color-red-500: #d9534f;
+  --color-yellow-500: #f0ad4e;
+  --color-green-500: #5cb85c;
+  --color-cyan-500: #5bc0de;
+
+  /* Spacing - creates p-*, m-*, gap-* utilities */
+  --spacing-0: 0;
+  --spacing-px: 1px;
+  --spacing-0\.5: 0.125rem;
+  --spacing-1: 0.25rem;
+  --spacing-1\.5: 0.375rem;
+  --spacing-2: 0.5rem;
+  --spacing-2\.5: 0.625rem;
+  --spacing-3: 0.75rem;
+  --spacing-3\.5: 0.875rem;
+  --spacing-4: 1rem;
+  --spacing-5: 1.25rem;
+  --spacing-6: 1.5rem;
+  --spacing-7: 1.75rem;
+  --spacing-8: 2rem;
+  --spacing-10: 2.5rem;
+  --spacing-12: 3rem;
+  --spacing-16: 4rem;
+  --spacing-20: 5rem;
+  --spacing-24: 6rem;
+
+  /* Typography - creates text-* utilities */
+  --font-size-xs: 0.75rem;
+  --font-size-sm: 0.875rem;
+  --font-size-base: 1rem;
+  --font-size-lg: 1.125rem;
+  --font-size-xl: 1.25rem;
+  --font-size-2xl: 1.5rem;
+  --font-size-3xl: 1.875rem;
+  --font-size-4xl: 2.25rem;
+  --font-size-5xl: 3rem;
+  --font-size-6xl: 3.75rem;
+}
+
+/* Base typography styles using semantic tokens */
+h1 {
+  font-size: var(--text-h1-size);
+  line-height: var(--text-h1-line-height);
+  font-weight: var(--text-h1-weight);
+  letter-spacing: var(--text-h1-spacing);
+}
+
+h2 {
+  font-size: var(--text-h2-size);
+  line-height: var(--text-h2-line-height);
+  font-weight: var(--text-h2-weight);
+  letter-spacing: var(--text-h2-spacing);
+}
+
+h3 {
+  font-size: var(--text-h3-size);
+  line-height: var(--text-h3-line-height);
+  font-weight: var(--text-h3-weight);
+  letter-spacing: var(--text-h3-spacing);
+}
+
+h4 {
+  font-size: var(--text-h4-size);
+  line-height: var(--text-h4-line-height);
+  font-weight: var(--text-h4-weight);
+  letter-spacing: var(--text-h4-spacing);
+}
+
+h5 {
+  font-size: var(--text-h5-size);
+  line-height: var(--text-h5-line-height);
+  font-weight: var(--text-h5-weight);
+  letter-spacing: var(--text-h5-spacing);
+}
+
+h6 {
+  font-size: var(--text-h6-size);
+  line-height: var(--text-h6-line-height);
+  font-weight: var(--text-h6-weight);
+  letter-spacing: var(--text-h6-spacing);
+}
+
+body {
+  font-size: var(--text-body-size);
+  line-height: var(--text-body-line-height);
+  font-weight: var(--text-body-weight);
+  font-family: var(--font-family-base);
+  color: var(--color-foreground-primary);
+  background-color: var(--color-background-primary);
 }

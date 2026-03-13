@@ -1,3 +1,6 @@
 import '@testing-library/jest-dom';
 
-// Additional test utilities can be added here as needed
+// Import token CSS files to make them available in tests
+import '../styles/tokens/primitives.css';
+import '../styles/tokens/semantic.css';
+import '../styles/tokens/components.css';

@@ -1,6 +1,19 @@
+# Hugo themes (legacy)
+themes/hugo-notepadium
 
-themes/hugo-notepadium
-themes/hugo-notepadium
-themes/hugo-notepadium
-themes/hugo-notepadium
-themes/hugo-notepadium
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+
+# Environment variables
+.env
+.env.*
+!.env.example
+
+# OS files
+.DS_Store
+
+# Astro
+.astro/

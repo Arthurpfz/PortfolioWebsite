@@ -28,7 +28,12 @@
 3. Typography hierarchy from Nous Research is visible in base styles (headings, body text, sizing relationships)
 4. CSS variables are defined for all design tokens (raw → semantic → component layers)
 
-**Plans**: TBD
+**Plans**: 3 plans in 2 waves
+
+Plans:
+- [ ] 01-01-PLAN.md — Astro + Tailwind Setup (Wave 1, autonomous)
+- [ ] 01-02-PLAN.md — Design Token Extraction (Wave 1, autonomous)
+- [ ] 01-03-PLAN.md — Cloudflare Pages Deployment (Wave 2, has checkpoint)
 
 ---
 
@@ -110,7 +115,7 @@
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Foundation & Design System | 0/TBD | Not started | - |
+| 1. Foundation & Design System | 0/3 | Planning complete | - |
 | 2. Core Pages & Navigation | 0/TBD | Not started | - |
 | 3. Responsive & Accessible Design | 0/TBD | Not started | - |
 | 4. Content Migration | 0/TBD | Not started | - |
@@ -123,6 +128,7 @@
 | Date | Phase | Event | Notes |
 |------|-------|-------|-------|
 | 2026-03-13 | - | Roadmap created | 5 phases, 18 requirements mapped |
+| 2026-03-13 | 1 | Phase 1 planning complete | 3 plans in 2 waves created |
 
 ---
 

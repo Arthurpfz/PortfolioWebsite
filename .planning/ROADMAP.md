@@ -58,7 +58,7 @@ Plans:
 Plans:
 - [x] 02-01-PLAN.md — Navigation Component & Base Layout (Wave 1, autonomous)
 - [x] 02-02-PLAN.md — Archive & Experience Pages (Wave 2, autonomous)
-- [ ] 02-03-PLAN.md — Now Page & Homepage Redirect (Wave 2, autonomous)
+- [x] 02-03-PLAN.md — Now Page & Homepage Redirect (Wave 2, autonomous)
 
 ---
 
@@ -71,12 +71,16 @@ Plans:
 
 **Success Criteria** (what must be TRUE):
 1. User can navigate and read content comfortably on mobile devices (phone and tablet)
-2. Touch targets are appropriately sized (minimum 40px) on mobile
+2. Touch targets are appropriately sized (minimum 44px) on mobile
 3. User can navigate entire site using keyboard only (no mouse required)
 4. Screen reader announces page structure correctly (headings, navigation, content regions)
 5. All interactive elements have appropriate ARIA labels
 
-**Plans**: TBD
+**Plans**: 2 plans in 2 waves
+
+Plans:
+- [ ] 03-01-PLAN.md — Mobile Responsive Design (Wave 1, has checkpoint)
+- [ ] 03-02-PLAN.md — Accessibility Compliance (Wave 2, autonomous)
 
 ---
 
@@ -122,7 +126,7 @@ Plans:
 |-------|----------------|--------|-----------|
 | 1. Foundation & Design System | 2/3 | In Progress|  |
 | 2. Core Pages & Navigation | 3/3 | Complete    | 2026-03-14 |
-| 3. Responsive & Accessible Design | 0/TBD | Not started | - |
+| 3. Responsive & Accessible Design | 0/2 | Not started | - |
 | 4. Content Migration | 0/TBD | Not started | - |
 | 5. Performance & Launch | 0/TBD | Not started | - |
 
@@ -135,6 +139,7 @@ Plans:
 | 2026-03-13 | - | Roadmap created | 5 phases, 18 requirements mapped |
 | 2026-03-13 | 1 | Phase 1 planning complete | 3 plans in 2 waves created |
 | 2026-03-14 | 2 | Phase 2 planning complete | 3 plans in 2 waves created |
+| 2026-03-14 | 3 | Phase 3 planning complete | 2 plans in 2 waves created |
 
 ---
 

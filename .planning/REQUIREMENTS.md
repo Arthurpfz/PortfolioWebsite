@@ -24,7 +24,7 @@ Requirements for initial release. Each maps to roadmap phases.
 - [x] **PAGE-02**: Migrate all existing Hugo articles to Archive page
 - [x] **PAGE-03**: Create Experience page with LinkedIn work history (company, title, dates only)
 - [x] **PAGE-04**: Create Now/Thoughts/Projects page (reverse-chronological list, empty placeholder initially)
-- [ ] **PAGE-05**: Include performance metrics in Archive articles where relevant
+- [x] **PAGE-05**: Include performance metrics in Archive articles where relevant
 
 ### Navigation & Structure
 
@@ -85,7 +85,7 @@ Which phases cover which requirements. Updated during roadmap creation.
 | PAGE-02 | Phase 4 | Complete |
 | PAGE-03 | Phase 2 | Complete |
 | PAGE-04 | Phase 2 | Complete |
-| PAGE-05 | Phase 4 | Pending |
+| PAGE-05 | Phase 4 | Complete |
 | NAV-01 | Phase 2 | Complete |
 | NAV-02 | Phase 2 | Complete |
 | NAV-03 | Phase 2 | Complete |

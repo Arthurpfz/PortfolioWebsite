@@ -2,14 +2,14 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-status: executing
-last_updated: "2026-03-14T07:52:25.328Z"
+status: completed
+last_updated: "2026-03-14T08:23:15.442Z"
 progress:
   total_phases: 5
-  completed_phases: 4
-  total_plans: 11
-  completed_plans: 10
-  percent: 91
+  completed_phases: 3
+  total_plans: 12
+  completed_plans: 11
+  percent: 92
 ---
 
 # Project State
@@ -27,9 +27,9 @@ progress:
 ## Current Position
 
 **Phase:** 4 - Content Migration
-**Plan:** 2 of 2 complete
+**Plan:** 3 of 3 complete
 **Status:** Complete
-**Progress:** [█████████░] 91%
+**Progress:** [█████████░] 92%
 
 **Next Action:** Execute Phase 5 plans
 
@@ -52,6 +52,7 @@ progress:
 | 03 | 03 | 1 min | 1 | 1 | 2026-03-14 |
 | 04 | 01 | 2 min | 3 | 15 | 2026-03-14 |
 | 04 | 02 | 1 min | 2 | 12 | 2026-03-14 |
+| Phase 04 P03 | 2 | 3 tasks | 3 files |
 
 ### Quality
 - **Tests passing:** 1/1 (smoke tests)
@@ -87,6 +88,10 @@ progress:
 21. **Heading hierarchy fix:** Changed Experience page company headings from H3 to H2 for WCAG compliance (H1 → H2 progression)
 22. **Content collections:** Use Astro 6 content collections with glob() loader for markdown articles
 23. **Article display:** Display articles as simple list without individual article pages (deferred to Plan 04-03)
+24. **Content rendering:** Use render() from astro:content for glob loader compatibility
+25. **Slug extraction:** Extract slug from article.id by removing .md extension
+26. **URL redirects:** Apply Cloudflare Pages _redirects for Hugo URL migration
+27. **Article layout:** Constrain article content to 70ch max-width for readability
 
 ### Active TODOs
 - [x] Set up Astro 6 project
@@ -129,15 +134,18 @@ progress:
 - Archive page now displays all articles dynamically sorted by date (Plan 04-01)
 - 9 article images migrated to public/images/ organized by article (Plan 04-02)
 - Article image references updated from /posts/ to /images/ paths (Plan 04-02)
-- Phase 4 complete: Content migration finished
+- Dynamic article pages created at /archive/{slug} with markdown rendering (Plan 04-03)
+- Archive page article titles now clickable with navigation to individual articles (Plan 04-03)
+- URL redirects configured for Hugo migration (/post/* → /archive/*) (Plan 04-03)
+- Phase 4 complete: Content migration finished with 13 articles fully migrated
 
 ## Session Continuity
 
 ### What Just Happened
-Completed Plan 04-02: Article Image Migration. Migrated 9 images from Hugo static directory to Astro public/images/ directory organized by article (hooked, outcomes-over-outputs, lean-product-playbook). Updated image references in 3 articles from /posts/ paths to /images/ paths. Build succeeded with no missing image warnings. Two task commits: 4b0afba (image migration), c7538b5 (path updates). Phase 4 complete (2 of 2 plans).
+Completed Plan 04-03: Individual Article Pages & URL Redirects. Created dynamic article pages at /archive/{slug} with full markdown rendering (180-line component). Made archive page article titles clickable with proper link styling. Added Cloudflare Pages _redirects file for Hugo URL migration (/post/* → /archive/* with 301 redirects). Three task commits: 6cd890c (dynamic pages), 992f793 (clickable titles), aa0b0d5 (redirects). Build generates 17 static pages (13 articles + 4 core pages). Phase 4 complete (3 of 3 plans).
 
 ### Context for Next Session
-Phase 4 complete. All 13 Hugo articles migrated to Astro content collections with images properly referenced. Archive page displays articles with metadata. All article images now served from public/images/ directory. Next: Phase 5 plans for launch preparation.
+Phase 4 complete. All 13 Hugo articles fully migrated with content collections, images, individual pages, and URL redirects configured. Archive page displays clickable article list. Individual articles render with proper typography and markdown styling. Ready for Phase 5: Launch preparation (Cloudflare deployment, performance optimization, final polish).
 
 ### Open Questions
 - Which shadcn/ui components actually needed (site may be 95% static)

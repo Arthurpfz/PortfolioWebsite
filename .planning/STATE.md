@@ -3,13 +3,13 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: executing
-last_updated: "2026-03-14T08:57:16.533Z"
+last_updated: "2026-03-14T09:00:55.906Z"
 progress:
   total_phases: 5
   completed_phases: 3
   total_plans: 16
-  completed_plans: 13
-  percent: 81
+  completed_plans: 14
+  percent: 88
 ---
 
 # Project State
@@ -27,11 +27,11 @@ progress:
 ## Current Position
 
 **Phase:** 5 - Performance & Launch
-**Plan:** 2 of 4 complete
+**Plan:** 3 of 4 complete
 **Status:** In progress
-**Progress:** [████████░░] 81%
+**Progress:** [█████████░] 88%
 
-**Next Action:** Execute Plan 05-02
+**Next Action:** Execute Plan 05-03
 
 ## Performance Metrics
 
@@ -56,10 +56,11 @@ progress:
 | 05 | 01 | 1 min | 3 | 3 | 2026-03-14 |
 | Phase 05 P01 | 1 | 3 tasks | 3 files |
 | Phase 05 P01b | 2 | 2 tasks | 2 files |
+| Phase 05 P02 | 3 | 3 tasks | 3 files |
 
 ### Quality
-- **Tests passing:** 1/1 (smoke tests)
-- **Requirements validated:** 15/18 (DSGN-01, DSGN-05, NAV-01, NAV-03, DSGN-02, PAGE-01, PAGE-03, DSGN-06, PAGE-04, NAV-02, DSGN-03, DSGN-07, PAGE-02, PAGE-05, DSGN-08)
+- **Tests passing:** 6/6 (smoke + theme tests)
+- **Requirements validated:** 16/18 (DSGN-01, DSGN-05, NAV-01, NAV-03, DSGN-02, PAGE-01, PAGE-03, DSGN-06, PAGE-04, NAV-02, DSGN-03, DSGN-07, PAGE-02, PAGE-05, DSGN-08, DSGN-04)
 
 ### Efficiency
 - **Requirements per phase (avg):** 3.6
@@ -98,6 +99,9 @@ progress:
 28. **Theme icon approach:** Use Unicode characters (☀/☾) for theme icons instead of SVG
 29. **FOUC prevention:** Place theme initialization script as first child of head element
 30. **Theme override pattern:** Use data-theme attribute selector for manual override of system preference
+31. **Astro build optimizations:** Enable compressHTML, inlineStylesheets auto, CSS code splitting, and esbuild minification for production
+32. **Image lazy loading:** Use rehype-plugin-image-native-lazy-loading for automatic loading="lazy" attributes in markdown
+33. **Lighthouse automation:** Use Lighthouse CLI instead of manual DevTools for faster, repeatable performance audits
 31. **Theme toggle placement:** Add ThemeToggle after email link in navigation list for consistent layout
 32. **Theme testing approach:** Test theme logic directly rather than component rendering for simplicity
 
@@ -152,14 +156,18 @@ progress:
 - ThemeToggle integrated into Navigation, visible on all pages (Plan 05-01b)
 - Theme functionality test suite created with 5 comprehensive tests (Plan 05-01b)
 - DSGN-08 requirement fully complete: dark/light mode toggle operational
+- Astro build optimizations enabled: HTML compression, CSS inlining, code splitting (Plan 05-02)
+- Image lazy loading added via rehype plugin for all article images (Plan 05-02)
+- Perfect 100/100 Lighthouse performance scores achieved on all pages (Plan 05-02)
+- DSGN-04 requirement fully complete: sub-1s page loads, far exceeding 3s target
 
 ## Session Continuity
 
 ### What Just Happened
-Completed Plan 05-01b: Theme Toggle Integration & Testing. Integrated ThemeToggle component into Navigation, making theme toggle accessible on all pages. Created comprehensive test suite (125 lines) with 5 tests covering localStorage persistence, system preference fallback, and theme attribute updates. Two task commits: 211e51b (ThemeToggle integration), 5713516 (theme tests). All tests passing (6/6). Build successful (17 pages, 966ms). DSGN-08 requirement fully complete. Phase 5 in progress (2 of 4 plans).
+Completed Plan 05-02: Performance Optimizations. Achieved perfect 100/100 Lighthouse performance scores across all pages through three optimizations: (1) Enabled Astro build optimizations (compressHTML, inlineStylesheets auto, CSS code splitting), (2) Added rehype plugin for automatic image lazy loading, (3) Ran Lighthouse CLI audits documenting sub-1s page loads. Three task commits: 1ec7f36 (build optimizations), 34d5268 (lazy loading), 0e52267 (audit documentation). Page loads complete in 0.8-1.0s, far exceeding 3s target. DSGN-04 requirement fully satisfied. Phase 5 in progress (3 of 4 plans).
 
 ### Context for Next Session
-Theme toggle fully integrated and tested. ThemeToggle now appears in navigation on all pages (Archive, Experience, Now). Tests verify localStorage interaction, data-theme attribute updates, system preference handling, and persistence across page loads. Ready for Plan 05-02 (performance optimizations: image lazy loading, build optimization).
+Performance optimization complete with exceptional results. All pages achieve perfect 100/100 Lighthouse scores with FCP 0.8s, LCP 0.9s, TBT 0ms, CLS 0. Build pipeline optimized with HTML compression, critical CSS inlining, and lazy-loaded images. LIGHTHOUSE.md created with comprehensive audit documentation. Site is production-ready from performance perspective. Ready for Plan 05-03 (Cloudflare Pages deployment).
 
 ### Open Questions
 - Which shadcn/ui components actually needed (site may be 95% static)

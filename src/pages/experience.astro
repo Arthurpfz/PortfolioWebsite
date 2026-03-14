@@ -2,7 +2,125 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
-<BaseLayout title="Experience — Arthur Pfalzgraf">
+<BaseLayout
+  title="Experience - Arthur Pfalzgraf"
+  description="Work history and product roles"
+>
   <h1>Experience</h1>
-  <p>Experience page placeholder</p>
+
+  <p class="intro">
+    Work history from LinkedIn — companies, titles, and dates only. No lengthy case studies.
+  </p>
+
+  <section class="work-history">
+    <p class="note">Work history to be added — LinkedIn data needed</p>
+
+    <!-- Example structure for demonstration -->
+    <article class="role">
+      <h3>Company Name</h3>
+      <p class="title">Product Manager</p>
+      <p class="dates">01/2023 - Present</p>
+    </article>
+
+    <article class="role">
+      <h3>Previous Company</h3>
+      <p class="title">Associate Product Manager</p>
+      <p class="dates">06/2021 - 12/2022</p>
+    </article>
+
+    <article class="role">
+      <h3>Earlier Company</h3>
+      <p class="title">Product Analyst</p>
+      <p class="dates">08/2019 - 05/2021</p>
+    </article>
+  </section>
+
+  <footer class="linkedin-link">
+    <p>
+      For full details, see <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+    </p>
+  </footer>
 </BaseLayout>
+
+<style>
+  h1 {
+    font-size: var(--text-h1-size);
+    line-height: var(--text-h1-line-height);
+    font-weight: var(--text-h1-weight);
+    letter-spacing: var(--text-h1-spacing);
+    margin-bottom: var(--space-content-lg);
+  }
+
+  .intro {
+    font-size: var(--text-body-size);
+    line-height: var(--text-body-line-height);
+    color: var(--color-foreground-secondary);
+    margin-bottom: var(--space-section-md);
+  }
+
+  .work-history {
+    margin-top: var(--space-section-lg);
+  }
+
+  .note {
+    font-size: var(--text-body-size);
+    color: var(--color-foreground-tertiary);
+    font-style: italic;
+    margin-bottom: var(--space-content-xl);
+    padding: var(--space-content-md);
+    background-color: var(--color-background-secondary);
+    border-left: 3px solid var(--color-border-emphasis);
+  }
+
+  .role {
+    margin-bottom: var(--space-content-md);
+    padding-bottom: var(--space-content-md);
+    border-bottom: 1px solid var(--color-border-subtle);
+  }
+
+  .role:last-of-type {
+    border-bottom: none;
+  }
+
+  h3 {
+    font-size: var(--text-h3-size);
+    line-height: var(--text-h3-line-height);
+    font-weight: var(--text-h3-weight);
+    letter-spacing: var(--text-h3-spacing);
+    margin-bottom: var(--space-content-sm);
+    color: var(--color-foreground-primary);
+  }
+
+  .title {
+    font-size: var(--text-body-size);
+    line-height: var(--text-body-line-height);
+    color: var(--color-foreground-secondary);
+    margin-bottom: var(--space-content-xs);
+  }
+
+  .dates {
+    font-size: var(--text-small-size);
+    line-height: var(--text-small-line-height);
+    color: var(--color-foreground-tertiary);
+  }
+
+  .linkedin-link {
+    margin-top: var(--space-section-lg);
+    padding-top: var(--space-content-lg);
+    border-top: 1px solid var(--color-border-default);
+  }
+
+  .linkedin-link p {
+    font-size: var(--text-small-size);
+    color: var(--color-foreground-secondary);
+  }
+
+  .linkedin-link a {
+    color: var(--color-action-primary);
+    text-decoration: underline;
+  }
+
+  .linkedin-link a:hover {
+    color: var(--color-action-primary-hover);
+  }
+</style>

@@ -2,7 +2,52 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
-<BaseLayout title="Now — Arthur Pfalzgraf">
-  <h1>Now</h1>
-  <p>Now page placeholder</p>
+<BaseLayout
+  title="Now - Arthur Pfalzgraf"
+  description="Current thoughts, projects, and focus areas"
+>
+  <article>
+    <h1>Now</h1>
+    <p class="intro">
+      What I'm thinking about and working on, in reverse-chronological order. Recent first.
+    </p>
+
+    <section class="thoughts-list">
+      <p class="placeholder">First entry coming soon.</p>
+      <!-- Future: <article> elements for thoughts/projects -->
+    </section>
+  </article>
 </BaseLayout>
+
+<style>
+  article {
+    max-width: 65ch;
+  }
+
+  h1 {
+    font-size: var(--text-h1-size);
+    line-height: var(--text-h1-line-height);
+    font-weight: var(--text-h1-weight);
+    letter-spacing: var(--text-h1-spacing);
+    margin-bottom: var(--space-content-lg);
+    color: var(--color-foreground-primary);
+  }
+
+  .intro {
+    font-size: var(--text-body-size);
+    line-height: var(--text-body-line-height);
+    color: var(--color-foreground-secondary);
+    margin-bottom: var(--space-section-md);
+  }
+
+  .thoughts-list {
+    margin-top: var(--space-section-md);
+  }
+
+  .placeholder {
+    font-size: var(--text-body-size);
+    line-height: var(--text-body-line-height);
+    color: var(--color-foreground-tertiary);
+    font-style: italic;
+  }
+</style>

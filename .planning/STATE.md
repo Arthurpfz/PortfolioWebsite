@@ -2,41 +2,41 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-status: executing
-last_updated: "2026-03-14T00:19:00.000Z"
+status: Ready
+last_updated: "2026-03-14T06:50:57.865Z"
 progress:
   total_phases: 5
   completed_phases: 0
-  total_plans: 3
-  completed_plans: 2
-  percent: 67
+  total_plans: 6
+  completed_plans: 3
+  percent: 50
 ---
 
 # Project State
 
-**Last Updated:** 2026-03-13
+**Last Updated:** 2026-03-14
 
 ## Project Reference
 
 **Core Value:** A portfolio that showcases work and thinking without over-engineering — clean structure, minimal friction, self-aware tone
 
-**Current Focus:** Phase 1 - Foundation & Design System
+**Current Focus:** Phase 2 - Core Pages & Navigation
 
 **Project Start:** 2026-03-13
 
 ## Current Position
 
-**Phase:** 1 - Foundation & Design System
-**Plan:** 01-03 (3 of 3)
+**Phase:** 2 - Core Pages & Navigation
+**Plan:** 02-02 (2 of 3)
 **Status:** Ready
-**Progress:** [██████░░░░] 67% (2/3 plans)
+**Progress:** [█████░░░░░] 50%
 
-**Next Action:** Execute plan 01-03 to implement core layout components
+**Next Action:** Execute plan 02-02 to build Archive and Experience pages
 
 ## Performance Metrics
 
 ### Velocity
-- **Plans completed:** 2
+- **Plans completed:** 3
 - **Plans in progress:** 0
 - **Blocked plans:** 0
 
@@ -44,10 +44,11 @@ progress:
 |-------|------|----------|-------|-------|-----------|
 | 01 | 01 | 26 min | 3 | 5 | 2026-03-13 |
 | 01 | 02 | 17 min | 5 | 8 | 2026-03-13 |
+| 02 | 01 | 1 min | 2 | 5 | 2026-03-14 |
 
 ### Quality
 - **Tests passing:** 1/1 (smoke tests)
-- **Requirements validated:** 2/18 (DSGN-01, DSGN-05)
+- **Requirements validated:** 5/18 (DSGN-01, DSGN-05, NAV-01, NAV-03, DSGN-02)
 
 ### Efficiency
 - **Requirements per phase (avg):** 3.6
@@ -65,11 +66,17 @@ progress:
 7. **Design tokens:** Three-layer CSS architecture (primitives → semantic → components) using W3C format
 8. **Font strategy:** System fonts (system-ui) instead of custom fonts for performance
 9. **Spacing system:** 4px base scale instead of nousresearch.com's ad-hoc spacing
+10. **Navigation layout:** Use flexbox for navigation with margin-left: auto for email positioning
+11. **Active page detection:** Via Astro.url.pathname comparison
+12. **Mobile breakpoint:** 640px with column stack layout
+13. **Accessibility:** aria-current attribute for active page
 
 ### Active TODOs
 - [x] Set up Astro 6 project
 - [x] Extract design tokens from nousresearch.com
-- [ ] Implement core layout components
+- [x] Implement core layout components (Navigation + BaseLayout)
+- [ ] Build Archive and Experience pages
+- [ ] Build Now page and homepage redirect
 - [ ] Configure SSL/HTTPS for arthurpfz.com
 
 ### Known Blockers
@@ -78,6 +85,8 @@ progress:
 ### Recent Wins
 - Astro 6 + Tailwind v4 foundation complete with TypeScript strict mode (Plan 01-01)
 - Design token system extracted and implemented in three-layer architecture (Plan 01-02)
+- Navigation component with Archive/Experience/Now links + email contact (Plan 02-01)
+- BaseLayout providing shared page structure with design tokens (Plan 02-01)
 - Vitest smoke testing infrastructure operational
 - Typography hierarchy (H1-H6) validated via tests
 - Dev server running at localhost:4321 with zero configuration errors
@@ -86,13 +95,13 @@ progress:
 ## Session Continuity
 
 ### What Just Happened
-Completed Plan 01-02: Design Token Extraction. Extracted nousresearch.com design system via CSS analysis. Implemented three-layer token architecture (primitives → semantic → components) with 212 lines of CSS. Integrated with Tailwind v4 @theme directive. Created Vitest test infrastructure with smoke test validating typography tokens. Five atomic commits: e189b4d (test infrastructure), 38f86c8 (token extraction), 6fab68b (three-layer hierarchy), 6635ff3 (Tailwind integration), c65ae42 (smoke test).
+Completed Plan 02-01: Navigation & Base Layout. Created Navigation.astro component with Archive/Experience/Now links plus email contact (arthur@arthurpfz.com). Implemented BaseLayout.astro providing shared HTML structure with Navigation integration. Active page detection via Astro.url.pathname. Responsive flexbox layout (horizontal desktop, vertical mobile at 640px breakpoint). All design tokens successfully applied. Three atomic commits: 1ca997c (Navigation component), 43451e3 (BaseLayout wrapper), 8fd062a (placeholder pages for verification).
 
 ### Context for Next Session
-Ready to execute Plan 01-03: Core layout components. Design token system complete and validated. Typography hierarchy (H1-H6) defined in global.css. Component tokens (nav, card, button, input) prepared for implementation. Test infrastructure operational with 1 passing smoke test.
+Ready to execute Plan 02-02: Archive & Experience Pages. Navigation and BaseLayout infrastructure complete and validated. Placeholder pages exist but need real content. Design token system fully operational with component tokens for cards, buttons, inputs ready to use. Test infrastructure operational with 1 passing smoke test.
 
 ### Open Questions
-- Exact content frontmatter schema (to be determined during Phase 2 planning)
+- Exact content frontmatter schema (to be determined during Archive page implementation)
 - Which shadcn/ui components actually needed (site may be 95% static)
 - Color system may need adjustment after seeing components in context
 

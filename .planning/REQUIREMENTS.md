@@ -10,7 +10,7 @@ Requirements for initial release. Each maps to roadmap phases.
 ### Design System
 
 - [x] **DSGN-01**: Extract visual design system from nousresearch.com (colors, typography, layout, spacing)
-- [ ] **DSGN-02**: Apply extracted design system to portfolio site
+- [x] **DSGN-02**: Apply extracted design system to portfolio site
 - [ ] **DSGN-03**: Implement mobile responsive design
 - [ ] **DSGN-04**: Achieve fast page load (<3s)
 - [x] **DSGN-05**: Implement clear typography hierarchy from Nous Research design
@@ -28,9 +28,9 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### Navigation & Structure
 
-- [ ] **NAV-01**: Implement clean navigation across all three pages
+- [x] **NAV-01**: Implement clean navigation across all three pages
 - [ ] **NAV-02**: Configure homepage to redirect to Now/Thoughts page
-- [ ] **NAV-03**: Add contact information (email link) visible on all pages
+- [x] **NAV-03**: Add contact information (email link) visible on all pages
 
 ### Foundation
 
@@ -74,7 +74,7 @@ Which phases cover which requirements. Updated during roadmap creation.
 | Requirement | Phase | Status |
 |-------------|-------|--------|
 | DSGN-01 | Phase 1 | Complete |
-| DSGN-02 | Phase 2 | Pending |
+| DSGN-02 | Phase 2 | Complete |
 | DSGN-03 | Phase 3 | Pending |
 | DSGN-04 | Phase 5 | Pending |
 | DSGN-05 | Phase 1 | Complete |
@@ -86,9 +86,9 @@ Which phases cover which requirements. Updated during roadmap creation.
 | PAGE-03 | Phase 2 | Pending |
 | PAGE-04 | Phase 2 | Pending |
 | PAGE-05 | Phase 4 | Pending |
-| NAV-01 | Phase 2 | Pending |
+| NAV-01 | Phase 2 | Complete |
 | NAV-02 | Phase 2 | Pending |
-| NAV-03 | Phase 2 | Pending |
+| NAV-03 | Phase 2 | Complete |
 | FOUN-01 | Phase 1 | Pending |
 | FOUN-02 | Phase 1 | Pending |
 

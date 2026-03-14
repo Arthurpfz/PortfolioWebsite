@@ -1,0 +1,4 @@
+# Hugo to Astro migration redirects
+# Redirect old Hugo article URLs to new Archive URLs
+/post/*/ /archive/:splat 301
+/post/* /archive/:splat 301

@@ -5,31 +5,37 @@
     --text-h1-line-height: var(--line-height-tight);
     --text-h1-weight: var(--font-weight-bold);
     --text-h1-spacing: var(--letter-spacing-tighter);
+    --text-h1-family: var(--font-family-mono);
 
     --text-h2-size: var(--font-size-5xl);
     --text-h2-line-height: var(--line-height-tight);
     --text-h2-weight: var(--font-weight-bold);
     --text-h2-spacing: var(--letter-spacing-tighter);
+    --text-h2-family: var(--font-family-mono);
 
     --text-h3-size: var(--font-size-4xl);
-    --text-h3-line-height: var(--line-height-snug);
-    --text-h3-weight: var(--font-weight-semibold);
-    --text-h3-spacing: var(--letter-spacing-tight);
+    --text-h3-line-height: var(--line-height-tight);
+    --text-h3-weight: var(--font-weight-bold);
+    --text-h3-spacing: var(--letter-spacing-tighter);
+    --text-h3-family: var(--font-family-mono);
 
     --text-h4-size: var(--font-size-3xl);
-    --text-h4-line-height: var(--line-height-snug);
+    --text-h4-line-height: var(--line-height-tight);
     --text-h4-weight: var(--font-weight-semibold);
     --text-h4-spacing: var(--letter-spacing-tight);
+    --text-h4-family: var(--font-family-mono);
 
     --text-h5-size: var(--font-size-2xl);
     --text-h5-line-height: var(--line-height-normal);
-    --text-h5-weight: var(--font-weight-medium);
-    --text-h5-spacing: var(--letter-spacing-normal);
+    --text-h5-weight: var(--font-weight-semibold);
+    --text-h5-spacing: var(--letter-spacing-tight);
+    --text-h5-family: var(--font-family-mono);
 
     --text-h6-size: var(--font-size-xl);
     --text-h6-line-height: var(--line-height-normal);
     --text-h6-weight: var(--font-weight-medium);
     --text-h6-spacing: var(--letter-spacing-normal);
+    --text-h6-family: var(--font-family-mono);
 
     --text-body-size: var(--font-size-base);
     --text-body-line-height: var(--line-height-normal);
@@ -47,8 +53,8 @@
     --color-foreground-secondary: var(--color-gray-600);
     --color-foreground-tertiary: var(--color-gray-400);
 
-    --color-action-primary: var(--color-blue-600);
-    --color-action-primary-hover: var(--color-blue-700);
+    --color-action-primary: var(--color-cyan-600);
+    --color-action-primary-hover: var(--color-cyan-700);
     --color-action-secondary: var(--color-gray-700);
 
     --color-border-default: var(--color-gray-200);
@@ -72,8 +78,8 @@
       --color-foreground-secondary: var(--color-gray-400);
       --color-foreground-tertiary: var(--color-gray-600);
 
-      --color-action-primary: var(--color-blue-400);
-      --color-action-primary-hover: var(--color-blue-500);
+      --color-action-primary: var(--color-cyan-400);
+      --color-action-primary-hover: var(--color-cyan-500);
       --color-action-secondary: var(--color-gray-300);
 
       --color-border-default: var(--color-gray-700);
@@ -92,8 +98,8 @@
     --color-foreground-secondary: var(--color-gray-400);
     --color-foreground-tertiary: var(--color-gray-600);
 
-    --color-action-primary: var(--color-blue-400);
-    --color-action-primary-hover: var(--color-blue-500);
+    --color-action-primary: var(--color-cyan-400);
+    --color-action-primary-hover: var(--color-cyan-500);
     --color-action-secondary: var(--color-gray-300);
 
     --color-border-default: var(--color-gray-700);
@@ -111,8 +117,8 @@
     --color-foreground-secondary: var(--color-gray-600);
     --color-foreground-tertiary: var(--color-gray-400);
 
-    --color-action-primary: var(--color-blue-600);
-    --color-action-primary-hover: var(--color-blue-700);
+    --color-action-primary: var(--color-cyan-600);
+    --color-action-primary-hover: var(--color-cyan-700);
     --color-action-secondary: var(--color-gray-700);
 
     --color-border-default: var(--color-gray-200);

@@ -8,11 +8,11 @@
 @theme {
   /* Expose primitive tokens as Tailwind utilities */
   /* Colors - creates bg-*, text-*, border-* utilities */
-  --color-blue-400: #38bdf8;
-  --color-blue-500: #0ea5e9;
-  --color-blue-600: #0071A9;
-  --color-blue-700: #0369a1;
-  --color-blue-800: #075985;
+  --color-cyan-400: #22d3ee;
+  --color-cyan-500: #06b6d4;
+  --color-cyan-600: #0171A9;
+  --color-cyan-700: #0e7490;
+  --color-cyan-800: #155e75;
 
   --color-gray-50: #f9fafb;
   --color-gray-100: #f3f4f6;
@@ -73,6 +73,8 @@ h1 {
   line-height: var(--text-h1-line-height);
   font-weight: var(--text-h1-weight);
   letter-spacing: var(--text-h1-spacing);
+  font-family: var(--text-h1-family);
+  color: var(--color-action-primary);
 }
 
 h2 {
@@ -80,6 +82,8 @@ h2 {
   line-height: var(--text-h2-line-height);
   font-weight: var(--text-h2-weight);
   letter-spacing: var(--text-h2-spacing);
+  font-family: var(--text-h2-family);
+  color: var(--color-action-primary);
 }
 
 h3 {
@@ -87,6 +91,8 @@ h3 {
   line-height: var(--text-h3-line-height);
   font-weight: var(--text-h3-weight);
   letter-spacing: var(--text-h3-spacing);
+  font-family: var(--text-h3-family);
+  color: var(--color-action-primary);
 }
 
 h4 {
@@ -94,6 +100,7 @@ h4 {
   line-height: var(--text-h4-line-height);
   font-weight: var(--text-h4-weight);
   letter-spacing: var(--text-h4-spacing);
+  font-family: var(--text-h4-family);
 }
 
 h5 {
@@ -101,6 +108,7 @@ h5 {
   line-height: var(--text-h5-line-height);
   font-weight: var(--text-h5-weight);
   letter-spacing: var(--text-h5-spacing);
+  font-family: var(--text-h5-family);
 }
 
 h6 {
@@ -108,6 +116,7 @@ h6 {
   line-height: var(--text-h6-line-height);
   font-weight: var(--text-h6-weight);
   letter-spacing: var(--text-h6-spacing);
+  font-family: var(--text-h6-family);
 }
 
 body {

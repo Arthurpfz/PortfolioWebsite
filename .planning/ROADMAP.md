@@ -56,8 +56,8 @@ Plans:
 **Plans**: 3 plans in 2 waves
 
 Plans:
-- [ ] 02-01-PLAN.md — Navigation Component & Base Layout (Wave 1, autonomous)
-- [ ] 02-02-PLAN.md — Archive & Experience Pages (Wave 2, autonomous)
+- [x] 02-01-PLAN.md — Navigation Component & Base Layout (Wave 1, autonomous)
+- [x] 02-02-PLAN.md — Archive & Experience Pages (Wave 2, autonomous)
 - [ ] 02-03-PLAN.md — Now Page & Homepage Redirect (Wave 2, autonomous)
 
 ---
@@ -121,7 +121,7 @@ Plans:
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Foundation & Design System | 2/3 | In Progress|  |
-| 2. Core Pages & Navigation | 0/3 | Not started | - |
+| 2. Core Pages & Navigation | 2/3 | In Progress | - |
 | 3. Responsive & Accessible Design | 0/TBD | Not started | - |
 | 4. Content Migration | 0/TBD | Not started | - |
 | 5. Performance & Launch | 0/TBD | Not started | - |

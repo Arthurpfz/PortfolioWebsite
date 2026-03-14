@@ -21,9 +21,13 @@ const publishedArticles = articles
   <section class="articles-section" aria-label="Article archive">
     <h2>Articles</h2>
     <ul class="article-list">
-      {publishedArticles.map(article => (
+      {publishedArticles.map(article => {
+        const slug = article.id.replace(/\.md$/, '');
+        return (
         <li class="article-item">
-          <h3 class="article-title">{article.data.title}</h3>
+          <h3 class="article-title">
+            <a href={`/archive/${slug}`}>{article.data.title}</a>
+          </h3>
           <div class="article-meta">
             <time datetime={article.data.date.toISOString()}>
               {article.data.date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
@@ -36,7 +40,8 @@ const publishedArticles = articles
           </div>
           <p class="article-description">{article.data.description}</p>
         </li>
-      ))}
+      )}
+      )}
     </ul>
   </section>
 </BaseLayout>
@@ -92,6 +97,15 @@ const publishedArticles = articles
     letter-spacing: var(--text-h3-spacing);
     margin-bottom: var(--space-content-sm);
     color: var(--color-foreground-primary);
+  }
+
+  .article-title a {
+    color: var(--color-foreground-primary);
+    text-decoration: none;
+  }
+
+  .article-title a:hover {
+    text-decoration: underline;
   }
 
   .article-meta {

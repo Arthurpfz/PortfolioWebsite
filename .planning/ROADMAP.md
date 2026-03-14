@@ -122,10 +122,11 @@ Plans:
 4. Dark/light mode preference persists across browser sessions
 5. Site is live at arthurpfz.com with all pages accessible
 
-**Plans**: 3 plans in 3 waves
+**Plans**: 4 plans in 3 waves
 
 Plans:
 - [ ] 05-01-PLAN.md — Dark/Light Mode Toggle (Wave 1, autonomous)
+- [ ] 05-01b-PLAN.md — Theme Integration & Testing (Wave 2, autonomous)
 - [ ] 05-02-PLAN.md — Performance Optimization (Wave 2, autonomous)
 - [ ] 05-03-PLAN.md — Cloudflare Pages Deployment (Wave 3, has checkpoints)
 
@@ -139,7 +140,7 @@ Plans:
 | 2. Core Pages & Navigation | 3/3 | Complete    | 2026-03-14 |
 | 3. Responsive & Accessible Design | 3/3 | Complete    | 2026-03-14 |
 | 4. Content Migration | 3/3 | Complete    | 2026-03-14 |
-| 5. Performance & Launch | 0/3 | Not started | - |
+| 5. Performance & Launch | 0/4 | Not started | - |
 
 ---
 
@@ -155,6 +156,7 @@ Plans:
 | 2026-03-14 | 4 | Phase 4 planning complete | 2 plans in 2 waves created |
 | 2026-03-14 | 4 | Phase 4 gap closure plan added | 1 plan for individual article pages and URL redirects |
 | 2026-03-14 | 5 | Phase 5 planning complete | 3 plans in 3 waves created |
+| 2026-03-14 | 5 | Phase 5 revised | Split 05-01 into two plans for scope management (now 4 plans) |
 
 ---
 

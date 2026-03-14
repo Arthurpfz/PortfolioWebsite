@@ -2,14 +2,14 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-status: planning
-last_updated: "2026-03-14T08:52:24.521Z"
+status: executing
+last_updated: "2026-03-14T08:57:16.533Z"
 progress:
   total_phases: 5
   completed_phases: 3
   total_plans: 16
-  completed_plans: 12
-  percent: 75
+  completed_plans: 13
+  percent: 81
 ---
 
 # Project State
@@ -27,11 +27,11 @@ progress:
 ## Current Position
 
 **Phase:** 5 - Performance & Launch
-**Plan:** 1 of 4 complete
+**Plan:** 2 of 4 complete
 **Status:** In progress
-**Progress:** [████████░░] 75%
+**Progress:** [████████░░] 81%
 
-**Next Action:** Execute Plan 05-01b
+**Next Action:** Execute Plan 05-02
 
 ## Performance Metrics
 
@@ -55,6 +55,7 @@ progress:
 | 04 | 03 | 2 min | 3 | 3 | 2026-03-14 |
 | 05 | 01 | 1 min | 3 | 3 | 2026-03-14 |
 | Phase 05 P01 | 1 | 3 tasks | 3 files |
+| Phase 05 P01b | 2 | 2 tasks | 2 files |
 
 ### Quality
 - **Tests passing:** 1/1 (smoke tests)
@@ -97,6 +98,8 @@ progress:
 28. **Theme icon approach:** Use Unicode characters (☀/☾) for theme icons instead of SVG
 29. **FOUC prevention:** Place theme initialization script as first child of head element
 30. **Theme override pattern:** Use data-theme attribute selector for manual override of system preference
+31. **Theme toggle placement:** Add ThemeToggle after email link in navigation list for consistent layout
+32. **Theme testing approach:** Test theme logic directly rather than component rendering for simplicity
 
 ### Active TODOs
 - [x] Set up Astro 6 project
@@ -143,14 +146,20 @@ progress:
 - Archive page article titles now clickable with navigation to individual articles (Plan 04-03)
 - URL redirects configured for Hugo migration (/post/* → /archive/*) (Plan 04-03)
 - Phase 4 complete: Content migration finished with 13 articles fully migrated
+- Dark mode color tokens added to semantic.css with system preference support (Plan 05-01)
+- Theme initialization script prevents FOUC via inline blocking script (Plan 05-01)
+- ThemeToggle component created with localStorage persistence and WCAG compliance (Plan 05-01)
+- ThemeToggle integrated into Navigation, visible on all pages (Plan 05-01b)
+- Theme functionality test suite created with 5 comprehensive tests (Plan 05-01b)
+- DSGN-08 requirement fully complete: dark/light mode toggle operational
 
 ## Session Continuity
 
 ### What Just Happened
-Completed Plan 05-01: Dark/Light Mode Toggle. Implemented dark mode functionality meeting DSGN-08 requirement. Added dark mode color tokens to semantic.css using prefers-color-scheme media query and data-theme attribute selectors (59 lines). Created inline theme initialization script in BaseLayout to prevent FOUC. Built ThemeToggle component (79 lines) with sun/moon icons, localStorage persistence, and WCAG-compliant touch targets. Three task commits: 33de095 (dark mode tokens), 7bddee7 (initialization script), a13c00e (toggle component). Build successful (17 pages, 971ms). Phase 5 in progress (1 of 4 plans).
+Completed Plan 05-01b: Theme Toggle Integration & Testing. Integrated ThemeToggle component into Navigation, making theme toggle accessible on all pages. Created comprehensive test suite (125 lines) with 5 tests covering localStorage persistence, system preference fallback, and theme attribute updates. Two task commits: 211e51b (ThemeToggle integration), 5713516 (theme tests). All tests passing (6/6). Build successful (17 pages, 966ms). DSGN-08 requirement fully complete. Phase 5 in progress (2 of 4 plans).
 
 ### Context for Next Session
-Dark mode infrastructure complete. All semantic color tokens have dark mode equivalents. System preference respected by default, with manual toggle override persisted to localStorage. ThemeToggle component created but not yet integrated into Navigation (deferred to Plan 05-01b). No FOUC - theme applies before first paint. Ready to integrate toggle into navigation and perform end-to-end manual testing.
+Theme toggle fully integrated and tested. ThemeToggle now appears in navigation on all pages (Archive, Experience, Now). Tests verify localStorage interaction, data-theme attribute updates, system preference handling, and persistence across page loads. Ready for Plan 05-02 (performance optimizations: image lazy loading, build optimization).
 
 ### Open Questions
 - Which shadcn/ui components actually needed (site may be 95% static)

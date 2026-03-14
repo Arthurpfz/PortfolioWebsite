@@ -104,12 +104,12 @@ Plans:
 Plans:
 - [x] 04-01-PLAN.md — Astro Content Collections & Article Migration (Wave 1, autonomous)
 - [x] 04-02-PLAN.md — Image Asset Migration (Wave 2, autonomous)
-- [ ] 04-03-PLAN.md — Individual Article Pages & URL Redirects (Wave 1, autonomous, gap closure)
+- [x] 04-03-PLAN.md — Individual Article Pages & URL Redirects (Wave 1, autonomous, gap closure)
 
 ---
 
 ### Phase 5: Performance & Launch
-**Goal**: Site achieves excellent performance scores and is deployed to production
+**Goal**: Site achieves excellent performance scores, has dark/light mode toggle, and is deployed to production
 
 **Depends on**: Phase 4 (content must be migrated before final optimization)
 
@@ -122,7 +122,12 @@ Plans:
 4. Dark/light mode preference persists across browser sessions
 5. Site is live at arthurpfz.com with all pages accessible
 
-**Plans**: TBD
+**Plans**: 3 plans in 3 waves
+
+Plans:
+- [ ] 05-01-PLAN.md — Dark/Light Mode Toggle (Wave 1, autonomous)
+- [ ] 05-02-PLAN.md — Performance Optimization (Wave 2, autonomous)
+- [ ] 05-03-PLAN.md — Cloudflare Pages Deployment (Wave 3, has checkpoints)
 
 ---
 
@@ -133,8 +138,8 @@ Plans:
 | 1. Foundation & Design System | 2/3 | In Progress|  |
 | 2. Core Pages & Navigation | 3/3 | Complete    | 2026-03-14 |
 | 3. Responsive & Accessible Design | 3/3 | Complete    | 2026-03-14 |
-| 4. Content Migration | 2/3 | Complete    | 2026-03-14 |
-| 5. Performance & Launch | 0/TBD | Not started | - |
+| 4. Content Migration | 3/3 | Complete    | 2026-03-14 |
+| 5. Performance & Launch | 0/3 | Not started | - |
 
 ---
 
@@ -149,6 +154,7 @@ Plans:
 | 2026-03-14 | 3 | Phase 3 gap closure plan added | 1 plan for heading hierarchy fix |
 | 2026-03-14 | 4 | Phase 4 planning complete | 2 plans in 2 waves created |
 | 2026-03-14 | 4 | Phase 4 gap closure plan added | 1 plan for individual article pages and URL redirects |
+| 2026-03-14 | 5 | Phase 5 planning complete | 3 plans in 3 waves created |
 
 ---
 

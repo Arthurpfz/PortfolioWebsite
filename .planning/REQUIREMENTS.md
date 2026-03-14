@@ -14,22 +14,22 @@ Requirements for initial release. Each maps to roadmap phases.
 - [ ] **DSGN-03**: Implement mobile responsive design
 - [ ] **DSGN-04**: Achieve fast page load (<3s)
 - [x] **DSGN-05**: Implement clear typography hierarchy from Nous Research design
-- [ ] **DSGN-06**: Apply minimalist aesthetic consistently across all pages
+- [x] **DSGN-06**: Apply minimalist aesthetic consistently across all pages
 - [ ] **DSGN-07**: Implement accessible design (semantic HTML, ARIA labels, keyboard navigation)
 - [ ] **DSGN-08**: Implement dark/light mode toggle
 
 ### Pages & Content
 
-- [ ] **PAGE-01**: Create Archive page with "Arthur's PM Homework" header and self-deprecating intro
+- [x] **PAGE-01**: Create Archive page with "Arthur's PM Homework" header and self-deprecating intro
 - [ ] **PAGE-02**: Migrate all existing Hugo articles to Archive page
-- [ ] **PAGE-03**: Create Experience page with LinkedIn work history (company, title, dates only)
-- [ ] **PAGE-04**: Create Now/Thoughts/Projects page (reverse-chronological list, empty placeholder initially)
+- [x] **PAGE-03**: Create Experience page with LinkedIn work history (company, title, dates only)
+- [x] **PAGE-04**: Create Now/Thoughts/Projects page (reverse-chronological list, empty placeholder initially)
 - [ ] **PAGE-05**: Include performance metrics in Archive articles where relevant
 
 ### Navigation & Structure
 
 - [x] **NAV-01**: Implement clean navigation across all three pages
-- [ ] **NAV-02**: Configure homepage to redirect to Now/Thoughts page
+- [x] **NAV-02**: Configure homepage to redirect to Now/Thoughts page
 - [x] **NAV-03**: Add contact information (email link) visible on all pages
 
 ### Foundation
@@ -78,16 +78,16 @@ Which phases cover which requirements. Updated during roadmap creation.
 | DSGN-03 | Phase 3 | Pending |
 | DSGN-04 | Phase 5 | Pending |
 | DSGN-05 | Phase 1 | Complete |
-| DSGN-06 | Phase 2 | Pending |
+| DSGN-06 | Phase 2 | Complete |
 | DSGN-07 | Phase 3 | Pending |
 | DSGN-08 | Phase 5 | Pending |
-| PAGE-01 | Phase 2 | Pending |
+| PAGE-01 | Phase 2 | Complete |
 | PAGE-02 | Phase 4 | Pending |
-| PAGE-03 | Phase 2 | Pending |
-| PAGE-04 | Phase 2 | Pending |
+| PAGE-03 | Phase 2 | Complete |
+| PAGE-04 | Phase 2 | Complete |
 | PAGE-05 | Phase 4 | Pending |
 | NAV-01 | Phase 2 | Complete |
-| NAV-02 | Phase 2 | Pending |
+| NAV-02 | Phase 2 | Complete |
 | NAV-03 | Phase 2 | Complete |
 | FOUN-01 | Phase 1 | Pending |
 | FOUN-02 | Phase 1 | Pending |

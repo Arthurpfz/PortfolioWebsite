@@ -81,12 +81,12 @@ Plans:
 Plans:
 - [x] 03-01-PLAN.md — Mobile Responsive Design (Wave 1, has checkpoint)
 - [x] 03-02-PLAN.md — Accessibility Compliance (Wave 1, autonomous)
-- [ ] 03-03-PLAN.md — Fix Heading Hierarchy Gap (Wave 1, autonomous, gap closure)
+- [x] 03-03-PLAN.md — Fix Heading Hierarchy Gap (Wave 1, autonomous, gap closure)
 
 ---
 
 ### Phase 4: Content Migration
-**Goal**: All existing Hugo articles are migrated to Archive page with URLs preserved
+**Goal**: All existing Hugo articles are migrated to Archive page with metadata and images preserved
 
 **Depends on**: Phase 2 (Archive page must exist), Phase 3 (responsive structure ready for content)
 
@@ -99,7 +99,11 @@ Plans:
 4. Performance metrics are included in relevant articles where applicable
 5. Images and assets from Hugo site are migrated and optimized
 
-**Plans**: TBD
+**Plans**: 2 plans in 2 waves
+
+Plans:
+- [ ] 04-01-PLAN.md — Astro Content Collections & Article Migration (Wave 1, autonomous)
+- [ ] 04-02-PLAN.md — Image Asset Migration (Wave 2, autonomous)
 
 ---
 
@@ -127,8 +131,8 @@ Plans:
 |-------|----------------|--------|-----------|
 | 1. Foundation & Design System | 2/3 | In Progress|  |
 | 2. Core Pages & Navigation | 3/3 | Complete    | 2026-03-14 |
-| 3. Responsive & Accessible Design | 2/3 | Complete    | 2026-03-14 |
-| 4. Content Migration | 0/TBD | Not started | - |
+| 3. Responsive & Accessible Design | 3/3 | Complete    | 2026-03-14 |
+| 4. Content Migration | 0/2 | Not started | - |
 | 5. Performance & Launch | 0/TBD | Not started | - |
 
 ---
@@ -142,6 +146,7 @@ Plans:
 | 2026-03-14 | 2 | Phase 2 planning complete | 3 plans in 2 waves created |
 | 2026-03-14 | 3 | Phase 3 planning complete | 2 plans in 2 waves created |
 | 2026-03-14 | 3 | Phase 3 gap closure plan added | 1 plan for heading hierarchy fix |
+| 2026-03-14 | 4 | Phase 4 planning complete | 2 plans in 2 waves created |
 
 ---
 

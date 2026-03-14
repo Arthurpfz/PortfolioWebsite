@@ -2,14 +2,14 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-status: Phase complete
-last_updated: "2026-03-14T07:22:20.479Z"
+status: completed
+last_updated: "2026-03-14T07:34:01.404Z"
 progress:
   total_phases: 5
-  completed_phases: 3
-  total_plans: 8
-  completed_plans: 7
-  percent: 88
+  completed_phases: 2
+  total_plans: 9
+  completed_plans: 8
+  percent: 89
 ---
 
 # Project State
@@ -27,16 +27,16 @@ progress:
 ## Current Position
 
 **Phase:** 3 - Responsive & Accessible Design
-**Plan:** 2 of 2 complete (Phase complete)
+**Plan:** 3 of 3 complete (Phase complete)
 **Status:** Phase complete, ready for Phase 4
-**Progress:** [█████████░] 88%
+**Progress:** [█████████░] 89%
 
 **Next Action:** Begin Phase 4: Content Migration
 
 ## Performance Metrics
 
 ### Velocity
-- **Plans completed:** 7
+- **Plans completed:** 8
 - **Plans in progress:** 0
 - **Blocked plans:** 0
 
@@ -49,6 +49,7 @@ progress:
 | 02 | 03 | 3 min | 2 | 2 | 2026-03-14 |
 | 03 | 01 | 15 min | 3 | 2 | 2026-03-14 |
 | 03 | 02 | 2 min | 3 | 5 | 2026-03-14 |
+| 03 | 03 | 1 min | 1 | 1 | 2026-03-14 |
 
 ### Quality
 - **Tests passing:** 1/1 (smoke tests)
@@ -81,6 +82,7 @@ progress:
 18. **Touch target compliance:** WCAG 2.1 AA minimum 44px touch targets on navigation
 19. **Focus indicators:** Use :focus-visible instead of :focus to avoid showing focus on mouse clicks
 20. **ARIA redundancy:** Semantic HTML5 + ARIA roles for older assistive tech compatibility
+21. **Heading hierarchy fix:** Changed Experience page company headings from H3 to H2 for WCAG compliance (H1 → H2 progression)
 
 ### Active TODOs
 - [x] Set up Astro 6 project
@@ -116,14 +118,16 @@ progress:
 - ARIA landmarks and semantic structure for screen readers (Plan 03-02)
 - Skip-to-content link for keyboard users (Plan 03-02)
 - Proper heading hierarchy across all pages (Plan 03-02)
+- Fixed Experience page heading hierarchy H1→H3 skip (Plan 03-03)
+- WCAG 2.1 SC 1.3.1 compliance achieved on all pages (Plan 03-03)
 
 ## Session Continuity
 
 ### What Just Happened
-Completed Plan 03-02: Accessibility Compliance. Implemented WCAG 2.1 Level AA accessibility features: keyboard navigation with :focus-visible indicators, skip-to-content link, ARIA landmarks (role="navigation", role="main"), semantic structure with aria-labels on sections, proper heading hierarchy (single H1 per page, no skipped levels), and visually-hidden text for external links. All pages now fully keyboard accessible with screen reader support. Three task commits: 2e02424 (keyboard navigation), f9256cc (ARIA landmarks), f9c5c53 (heading hierarchy). Plan 2 of 2 complete. Phase 3 complete.
+Completed Plan 03-03: Heading Hierarchy Fix. Fixed WCAG 2.1 SC 1.3.1 violation on Experience page by changing company name headings from H3 to H2, eliminating the H1 → H3 skip. Updated CSS selector while maintaining H3 visual sizing for design consistency. Screen readers can now navigate heading structure correctly (H1: Experience → H2: Company names). One task commit: e08218c (heading hierarchy fix). Plan 3 of 3 complete. Phase 3 complete.
 
 ### Context for Next Session
-Phase 3 complete (2 of 2 plans). Site is now fully responsive (mobile/tablet/desktop) and accessible (WCAG 2.1 Level AA compliant with keyboard navigation and screen reader support). Ready to begin Phase 4: Content Migration (migrate Hugo articles to Archive, add real LinkedIn work history to Experience page).
+Phase 3 complete (3 of 3 plans). Site is now fully responsive (mobile/tablet/desktop) and accessible (WCAG 2.1 Level AA compliant with keyboard navigation, screen reader support, and proper heading hierarchy on all pages). Ready to begin Phase 4: Content Migration (migrate Hugo articles to Archive, add real LinkedIn work history to Experience page).
 
 ### Open Questions
 - Which shadcn/ui components actually needed (site may be 95% static)

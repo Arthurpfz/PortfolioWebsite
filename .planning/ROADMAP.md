@@ -8,7 +8,7 @@
 ## Phases
 
 - [ ] **Phase 1: Foundation & Design System** - Set up tech stack and extract Nous Research design tokens
-- [ ] **Phase 2: Core Pages & Navigation** - Build all three pages with design system applied
+- [x] **Phase 2: Core Pages & Navigation** - Build all three pages with design system applied (completed 2026-03-14)
 - [ ] **Phase 3: Responsive & Accessible Design** - Ensure mobile responsiveness and accessibility compliance
 - [ ] **Phase 4: Content Migration** - Migrate existing Hugo articles to Archive page
 - [ ] **Phase 5: Performance & Launch** - Optimize, polish, and deploy to production
@@ -121,7 +121,7 @@ Plans:
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Foundation & Design System | 2/3 | In Progress|  |
-| 2. Core Pages & Navigation | 3/3 | Complete | 2026-03-14 |
+| 2. Core Pages & Navigation | 3/3 | Complete    | 2026-03-14 |
 | 3. Responsive & Accessible Design | 0/TBD | Not started | - |
 | 4. Content Migration | 0/TBD | Not started | - |
 | 5. Performance & Launch | 0/TBD | Not started | - |

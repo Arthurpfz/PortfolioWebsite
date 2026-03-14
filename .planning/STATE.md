@@ -3,13 +3,13 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: planning
-last_updated: "2026-03-14T08:28:52.507Z"
+last_updated: "2026-03-14T08:52:24.521Z"
 progress:
   total_phases: 5
   completed_phases: 3
-  total_plans: 12
-  completed_plans: 11
-  percent: 92
+  total_plans: 16
+  completed_plans: 12
+  percent: 75
 ---
 
 # Project State
@@ -26,17 +26,17 @@ progress:
 
 ## Current Position
 
-**Phase:** 4 - Content Migration
-**Plan:** 3 of 3 complete
-**Status:** Ready to plan
-**Progress:** [█████████░] 92%
+**Phase:** 5 - Performance & Launch
+**Plan:** 1 of 4 complete
+**Status:** In progress
+**Progress:** [████████░░] 75%
 
-**Next Action:** Execute Phase 5 plans
+**Next Action:** Execute Plan 05-01b
 
 ## Performance Metrics
 
 ### Velocity
-- **Plans completed:** 10
+- **Plans completed:** 12
 - **Plans in progress:** 0
 - **Blocked plans:** 0
 
@@ -52,11 +52,13 @@ progress:
 | 03 | 03 | 1 min | 1 | 1 | 2026-03-14 |
 | 04 | 01 | 2 min | 3 | 15 | 2026-03-14 |
 | 04 | 02 | 1 min | 2 | 12 | 2026-03-14 |
-| Phase 04 P03 | 2 | 3 tasks | 3 files |
+| 04 | 03 | 2 min | 3 | 3 | 2026-03-14 |
+| 05 | 01 | 1 min | 3 | 3 | 2026-03-14 |
+| Phase 05 P01 | 1 | 3 tasks | 3 files |
 
 ### Quality
 - **Tests passing:** 1/1 (smoke tests)
-- **Requirements validated:** 14/18 (DSGN-01, DSGN-05, NAV-01, NAV-03, DSGN-02, PAGE-01, PAGE-03, DSGN-06, PAGE-04, NAV-02, DSGN-03, DSGN-07, PAGE-02, PAGE-05)
+- **Requirements validated:** 15/18 (DSGN-01, DSGN-05, NAV-01, NAV-03, DSGN-02, PAGE-01, PAGE-03, DSGN-06, PAGE-04, NAV-02, DSGN-03, DSGN-07, PAGE-02, PAGE-05, DSGN-08)
 
 ### Efficiency
 - **Requirements per phase (avg):** 3.6
@@ -92,6 +94,9 @@ progress:
 25. **Slug extraction:** Extract slug from article.id by removing .md extension
 26. **URL redirects:** Apply Cloudflare Pages _redirects for Hugo URL migration
 27. **Article layout:** Constrain article content to 70ch max-width for readability
+28. **Theme icon approach:** Use Unicode characters (☀/☾) for theme icons instead of SVG
+29. **FOUC prevention:** Place theme initialization script as first child of head element
+30. **Theme override pattern:** Use data-theme attribute selector for manual override of system preference
 
 ### Active TODOs
 - [x] Set up Astro 6 project
@@ -142,10 +147,10 @@ progress:
 ## Session Continuity
 
 ### What Just Happened
-Completed Plan 04-03: Individual Article Pages & URL Redirects. Created dynamic article pages at /archive/{slug} with full markdown rendering (180-line component). Made archive page article titles clickable with proper link styling. Added Cloudflare Pages _redirects file for Hugo URL migration (/post/* → /archive/* with 301 redirects). Three task commits: 6cd890c (dynamic pages), 992f793 (clickable titles), aa0b0d5 (redirects). Build generates 17 static pages (13 articles + 4 core pages). Phase 4 complete (3 of 3 plans).
+Completed Plan 05-01: Dark/Light Mode Toggle. Implemented dark mode functionality meeting DSGN-08 requirement. Added dark mode color tokens to semantic.css using prefers-color-scheme media query and data-theme attribute selectors (59 lines). Created inline theme initialization script in BaseLayout to prevent FOUC. Built ThemeToggle component (79 lines) with sun/moon icons, localStorage persistence, and WCAG-compliant touch targets. Three task commits: 33de095 (dark mode tokens), 7bddee7 (initialization script), a13c00e (toggle component). Build successful (17 pages, 971ms). Phase 5 in progress (1 of 4 plans).
 
 ### Context for Next Session
-Phase 4 complete. All 13 Hugo articles fully migrated with content collections, images, individual pages, and URL redirects configured. Archive page displays clickable article list. Individual articles render with proper typography and markdown styling. Ready for Phase 5: Launch preparation (Cloudflare deployment, performance optimization, final polish).
+Dark mode infrastructure complete. All semantic color tokens have dark mode equivalents. System preference respected by default, with manual toggle override persisted to localStorage. ThemeToggle component created but not yet integrated into Navigation (deferred to Plan 05-01b). No FOUC - theme applies before first paint. Ready to integrate toggle into navigation and perform end-to-end manual testing.
 
 ### Open Questions
 - Which shadcn/ui components actually needed (site may be 95% static)

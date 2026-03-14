@@ -12,7 +12,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     Work history from LinkedIn — companies, titles, and dates only. No lengthy case studies.
   </p>
 
-  <section class="work-history">
+  <section class="work-history" aria-label="Work history">
     <p class="note">Work history to be added — LinkedIn data needed</p>
 
     <!-- Example structure for demonstration -->
@@ -37,7 +37,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
   <footer class="linkedin-link">
     <p>
-      For full details, see <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      For full details, see <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">LinkedIn<span class="visually-hidden"> (opens in new tab)</span></a>
     </p>
   </footer>
 </BaseLayout>
@@ -122,5 +122,13 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
   .linkedin-link a:hover {
     color: var(--color-action-primary-hover);
+  }
+
+  .visually-hidden {
+    position: absolute;
+    left: -9999px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
   }
 </style>

@@ -21,7 +21,7 @@ Requirements for initial release. Each maps to roadmap phases.
 ### Pages & Content
 
 - [x] **PAGE-01**: Create Archive page with "Arthur's PM Homework" header and self-deprecating intro
-- [ ] **PAGE-02**: Migrate all existing Hugo articles to Archive page
+- [x] **PAGE-02**: Migrate all existing Hugo articles to Archive page
 - [x] **PAGE-03**: Create Experience page with LinkedIn work history (company, title, dates only)
 - [x] **PAGE-04**: Create Now/Thoughts/Projects page (reverse-chronological list, empty placeholder initially)
 - [ ] **PAGE-05**: Include performance metrics in Archive articles where relevant
@@ -82,7 +82,7 @@ Which phases cover which requirements. Updated during roadmap creation.
 | DSGN-07 | Phase 3 | Complete |
 | DSGN-08 | Phase 5 | Pending |
 | PAGE-01 | Phase 2 | Complete |
-| PAGE-02 | Phase 4 | Pending |
+| PAGE-02 | Phase 4 | Complete |
 | PAGE-03 | Phase 2 | Complete |
 | PAGE-04 | Phase 2 | Complete |
 | PAGE-05 | Phase 4 | Pending |

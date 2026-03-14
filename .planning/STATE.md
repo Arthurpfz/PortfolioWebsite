@@ -3,13 +3,13 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: planning
-last_updated: "2026-03-14T07:38:43.996Z"
+last_updated: "2026-03-14T07:48:39.949Z"
 progress:
   total_phases: 5
   completed_phases: 2
-  total_plans: 9
-  completed_plans: 8
-  percent: 89
+  total_plans: 11
+  completed_plans: 9
+  percent: 82
 ---
 
 # Project State
@@ -20,23 +20,23 @@ progress:
 
 **Core Value:** A portfolio that showcases work and thinking without over-engineering — clean structure, minimal friction, self-aware tone
 
-**Current Focus:** Phase 3 - Responsive & Accessible Design
+**Current Focus:** Phase 4 - Content Migration
 
 **Project Start:** 2026-03-13
 
 ## Current Position
 
-**Phase:** 3 - Responsive & Accessible Design
-**Plan:** 3 of 3 complete (Phase complete)
-**Status:** Ready to plan
-**Progress:** [█████████░] 89%
+**Phase:** 4 - Content Migration
+**Plan:** 1 of 2 complete
+**Status:** In progress
+**Progress:** [████████░░] 82%
 
-**Next Action:** Begin Phase 4: Content Migration
+**Next Action:** Execute Plan 04-02: Article Detail Pages
 
 ## Performance Metrics
 
 ### Velocity
-- **Plans completed:** 8
+- **Plans completed:** 9
 - **Plans in progress:** 0
 - **Blocked plans:** 0
 
@@ -50,10 +50,11 @@ progress:
 | 03 | 01 | 15 min | 3 | 2 | 2026-03-14 |
 | 03 | 02 | 2 min | 3 | 5 | 2026-03-14 |
 | 03 | 03 | 1 min | 1 | 1 | 2026-03-14 |
+| 04 | 01 | 2 min | 3 | 15 | 2026-03-14 |
 
 ### Quality
 - **Tests passing:** 1/1 (smoke tests)
-- **Requirements validated:** 12/18 (DSGN-01, DSGN-05, NAV-01, NAV-03, DSGN-02, PAGE-01, PAGE-03, DSGN-06, PAGE-04, NAV-02, DSGN-03, DSGN-07)
+- **Requirements validated:** 13/18 (DSGN-01, DSGN-05, NAV-01, NAV-03, DSGN-02, PAGE-01, PAGE-03, DSGN-06, PAGE-04, NAV-02, DSGN-03, DSGN-07, PAGE-02)
 
 ### Efficiency
 - **Requirements per phase (avg):** 3.6
@@ -83,6 +84,8 @@ progress:
 19. **Focus indicators:** Use :focus-visible instead of :focus to avoid showing focus on mouse clicks
 20. **ARIA redundancy:** Semantic HTML5 + ARIA roles for older assistive tech compatibility
 21. **Heading hierarchy fix:** Changed Experience page company headings from H3 to H2 for WCAG compliance (H1 → H2 progression)
+22. **Content collections:** Use Astro 6 content collections with glob() loader for markdown articles
+23. **Article display:** Display articles as simple list without individual article pages (deferred to Plan 04-03)
 
 ### Active TODOs
 - [x] Set up Astro 6 project
@@ -120,14 +123,17 @@ progress:
 - Proper heading hierarchy across all pages (Plan 03-02)
 - Fixed Experience page heading hierarchy H1→H3 skip (Plan 03-03)
 - WCAG 2.1 SC 1.3.1 compliance achieved on all pages (Plan 03-03)
+- Astro content collection schema created for articles (Plan 04-01)
+- 13 Hugo articles migrated to Astro with preserved frontmatter (Plan 04-01)
+- Archive page now displays all articles dynamically sorted by date (Plan 04-01)
 
 ## Session Continuity
 
 ### What Just Happened
-Completed Plan 03-03: Heading Hierarchy Fix. Fixed WCAG 2.1 SC 1.3.1 violation on Experience page by changing company name headings from H3 to H2, eliminating the H1 → H3 skip. Updated CSS selector while maintaining H3 visual sizing for design consistency. Screen readers can now navigate heading structure correctly (H1: Experience → H2: Company names). One task commit: e08218c (heading hierarchy fix). Plan 3 of 3 complete. Phase 3 complete.
+Completed Plan 04-01: Content Migration Foundation. Created Astro content collection schema, migrated all 13 Hugo articles to src/content/articles/ with preserved frontmatter and content, and updated Archive page to dynamically display articles sorted by publication date. Fixed Astro 6 config location (src/content.config.ts). Three task commits: be56cc5 (content collection), 35ab72c (article migration), ec0940a (archive page). Plan 1 of 2 complete in Phase 4.
 
 ### Context for Next Session
-Phase 3 complete (3 of 3 plans). Site is now fully responsive (mobile/tablet/desktop) and accessible (WCAG 2.1 Level AA compliant with keyboard navigation, screen reader support, and proper heading hierarchy on all pages). Ready to begin Phase 4: Content Migration (migrate Hugo articles to Archive, add real LinkedIn work history to Experience page).
+Phase 4 in progress (1 of 2 plans complete). Content collection foundation established with 13 Hugo articles successfully migrated to Astro content collections. Archive page now displays all articles with metadata (title, date, tags, description) in reverse chronological order. Next: Plan 04-02 will create individual article detail pages and migrate image paths.
 
 ### Open Questions
 - Which shadcn/ui components actually needed (site may be 95% static)

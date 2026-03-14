@@ -121,7 +121,7 @@ Plans:
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Foundation & Design System | 2/3 | In Progress|  |
-| 2. Core Pages & Navigation | 2/3 | In Progress | - |
+| 2. Core Pages & Navigation | 3/3 | Complete | 2026-03-14 |
 | 3. Responsive & Accessible Design | 0/TBD | Not started | - |
 | 4. Content Migration | 0/TBD | Not started | - |
 | 5. Performance & Launch | 0/TBD | Not started | - |

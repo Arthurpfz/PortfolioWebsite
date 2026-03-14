@@ -74,13 +74,14 @@ progress:
 13. **Accessibility:** aria-current attribute for active page
 14. **Experience page structure:** Placeholder with example roles until LinkedIn data added
 15. **Content placeholders:** Archive ready for Phase 4 migration, Experience ready for real work history
+16. **Homepage redirect:** Meta refresh with 0-second delay chosen over JavaScript for static site compatibility
 
 ### Active TODOs
 - [x] Set up Astro 6 project
 - [x] Extract design tokens from nousresearch.com
 - [x] Implement core layout components (Navigation + BaseLayout)
 - [x] Build Archive and Experience pages
-- [ ] Build Now page and homepage redirect
+- [x] Build Now page and homepage redirect
 - [ ] Configure SSL/HTTPS for arthurpfz.com
 
 ### Known Blockers
@@ -93,6 +94,9 @@ progress:
 - BaseLayout providing shared page structure with design tokens (Plan 02-01)
 - Archive page with "PM Homework" header and article placeholder (Plan 02-02)
 - Experience page with work history structure ready for LinkedIn data (Plan 02-02)
+- Now page with reverse-chronological structure for thoughts/projects (Plan 02-03)
+- Homepage redirect to /now using meta refresh (Plan 02-03)
+- Phase 2 complete: All three core pages created with navigation
 - Vitest smoke testing infrastructure operational
 - Typography hierarchy (H1-H6) validated via tests
 - Dev server running at localhost:4321 with zero configuration errors
@@ -101,10 +105,10 @@ progress:
 ## Session Continuity
 
 ### What Just Happened
-Completed Plan 02-02: Archive & Experience Pages. Created Archive page with "Arthur's PM Homework" header and self-deprecating intro about PM documentation culture. Added placeholder section for future article migration from Hugo site (Phase 4). Created Experience page with work history structure showing company/title/dates format. Added LinkedIn reference link for full details. Both pages use consistent design token application. Two atomic commits: a16e628 (Archive page), 02d91c5 (Experience page).
+Completed Plan 02-03: Now Page & Homepage Redirect. Created Now page with reverse-chronological structure placeholder, intro explaining the concept, and design token application. Configured homepage (/) to redirect instantly to /now using meta refresh with 0-second delay. Added fallback link for browsers with meta refresh disabled. Phase 2 now complete: all three core pages (Archive, Experience, Now) exist with navigation and consistent design system. Two atomic commits: 76b5574 (Now page), 824bc27 (homepage redirect).
 
 ### Context for Next Session
-Ready to execute Plan 02-03: Now Page & Homepage Redirect. Archive and Experience pages complete with proper structure and placeholders. Final Phase 2 plan will create Now/Thoughts page and configure homepage redirect. All navigation infrastructure operational. Design token system fully applied across all existing pages.
+Phase 2 complete. Ready to begin Phase 3 planning: Responsive & Accessible Design. All core pages operational with navigation, design tokens applied consistently. Archive page ready for Phase 4 content migration from Hugo. Experience page ready for LinkedIn work history. Now page ready for thought/project entries. Homepage redirects to Now as primary landing page.
 
 ### Open Questions
 - Which shadcn/ui components actually needed (site may be 95% static)

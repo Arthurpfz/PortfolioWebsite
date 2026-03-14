@@ -12,6 +12,8 @@ function isActive(path: string) {
 }
 ---
 
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
 <nav class="site-nav">
   <ul class="nav-list">
     {navLinks.map(link => (
@@ -34,6 +36,29 @@ function isActive(path: string) {
 </nav>
 
 <style>
+  .skip-link {
+    position: absolute;
+    left: -9999px;
+    top: auto;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    z-index: 9999;
+    padding: var(--space-content-sm) var(--space-content-md);
+    background: var(--color-background-primary);
+    color: var(--color-action-primary);
+    text-decoration: none;
+    border: 2px solid var(--color-action-primary);
+    border-radius: var(--radius-sm);
+  }
+
+  .skip-link:focus {
+    position: static;
+    width: auto;
+    height: auto;
+    overflow: visible;
+  }
+
   .site-nav {
     padding: var(--nav-padding-y) var(--nav-padding-x);
     background: var(--nav-background);
@@ -66,6 +91,12 @@ function isActive(path: string) {
 
   .nav-link:hover {
     color: var(--color-action-primary);
+  }
+
+  .nav-link:focus-visible {
+    outline: 2px solid var(--color-action-primary);
+    outline-offset: 4px;
+    border-radius: var(--radius-sm);
   }
 
   .nav-link.active {

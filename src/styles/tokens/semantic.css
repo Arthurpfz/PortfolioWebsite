@@ -59,6 +59,65 @@
     --color-feedback-warning: var(--color-yellow-500);
     --color-feedback-success: var(--color-green-500);
     --color-feedback-info: var(--color-cyan-500);
+  }
+
+  /* Dark mode via system preference */
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --color-background-primary: var(--color-gray-900);
+      --color-background-secondary: var(--color-gray-800);
+      --color-background-tertiary: var(--color-gray-700);
+
+      --color-foreground-primary: var(--color-gray-50);
+      --color-foreground-secondary: var(--color-gray-400);
+      --color-foreground-tertiary: var(--color-gray-600);
+
+      --color-action-primary: var(--color-blue-400);
+      --color-action-primary-hover: var(--color-blue-500);
+      --color-action-secondary: var(--color-gray-300);
+
+      --color-border-default: var(--color-gray-700);
+      --color-border-subtle: var(--color-gray-800);
+      --color-border-emphasis: var(--color-gray-600);
+    }
+  }
+
+  /* Dark mode via manual toggle */
+  [data-theme="dark"] {
+    --color-background-primary: var(--color-gray-900);
+    --color-background-secondary: var(--color-gray-800);
+    --color-background-tertiary: var(--color-gray-700);
+
+    --color-foreground-primary: var(--color-gray-50);
+    --color-foreground-secondary: var(--color-gray-400);
+    --color-foreground-tertiary: var(--color-gray-600);
+
+    --color-action-primary: var(--color-blue-400);
+    --color-action-primary-hover: var(--color-blue-500);
+    --color-action-secondary: var(--color-gray-300);
+
+    --color-border-default: var(--color-gray-700);
+    --color-border-subtle: var(--color-gray-800);
+    --color-border-emphasis: var(--color-gray-600);
+  }
+
+  /* Light mode via manual toggle */
+  [data-theme="light"] {
+    --color-background-primary: var(--color-white);
+    --color-background-secondary: var(--color-gray-50);
+    --color-background-tertiary: var(--color-gray-100);
+
+    --color-foreground-primary: var(--color-gray-900);
+    --color-foreground-secondary: var(--color-gray-600);
+    --color-foreground-tertiary: var(--color-gray-400);
+
+    --color-action-primary: var(--color-blue-600);
+    --color-action-primary-hover: var(--color-blue-700);
+    --color-action-secondary: var(--color-gray-700);
+
+    --color-border-default: var(--color-gray-200);
+    --color-border-subtle: var(--color-gray-100);
+    --color-border-emphasis: var(--color-gray-300);
 
     /* Semantic spacing */
     --space-content-xs: var(--spacing-1);

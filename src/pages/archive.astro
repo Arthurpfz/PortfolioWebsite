@@ -2,7 +2,56 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
-<BaseLayout title="Archive — Arthur Pfalzgraf">
-  <h1>Archive</h1>
-  <p>Archive page placeholder</p>
+<BaseLayout
+  title="Archive - Arthur Pfalzgraf"
+  description="Arthur's PM homework - documenting product work"
+>
+  <h1>Arthur's PM Homework</h1>
+
+  <p class="intro">
+    PMs document everything. Here's my homework — PRDs, retrospectives, and analysis that seemed important at the time.
+  </p>
+
+  <section class="articles-section">
+    <h2>Articles</h2>
+    <p>Articles will appear here after migration from Hugo site</p>
+    <ul class="article-list">
+      <!-- Future: article items from Phase 4 -->
+    </ul>
+  </section>
 </BaseLayout>
+
+<style>
+  h1 {
+    font-size: var(--text-h1-size);
+    line-height: var(--text-h1-line-height);
+    font-weight: var(--text-h1-weight);
+    letter-spacing: var(--text-h1-spacing);
+    margin-bottom: var(--space-content-lg);
+  }
+
+  .intro {
+    font-size: var(--text-body-size);
+    line-height: var(--text-body-line-height);
+    color: var(--color-foreground-secondary);
+    margin-bottom: var(--space-section-md);
+  }
+
+  .articles-section {
+    margin-top: var(--space-section-lg);
+  }
+
+  h2 {
+    font-size: var(--text-h2-size);
+    line-height: var(--text-h2-line-height);
+    font-weight: var(--text-h2-weight);
+    letter-spacing: var(--text-h2-spacing);
+    margin-bottom: var(--space-content-md);
+  }
+
+  .article-list {
+    list-style: none;
+    padding: 0;
+    margin: var(--space-content-md) 0;
+  }
+</style>

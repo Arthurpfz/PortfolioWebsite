@@ -1,0 +1,79 @@
+---
+// ThemeToggle component - toggles between light and dark mode
+---
+
+<button
+  type="button"
+  class="theme-toggle"
+  aria-label="Toggle dark mode"
+>
+  <span class="theme-icon theme-icon-light" aria-hidden="true">☀</span>
+  <span class="theme-icon theme-icon-dark" aria-hidden="true">☾</span>
+</button>
+
+<script>
+  const button = document.querySelector('.theme-toggle');
+
+  if (button) {
+    // Update icon visibility based on current theme
+    function updateIcon() {
+      const currentTheme = document.documentElement.getAttribute('data-theme');
+      const lightIcon = document.querySelector('.theme-icon-light');
+      const darkIcon = document.querySelector('.theme-icon-dark');
+
+      if (lightIcon && darkIcon) {
+        if (currentTheme === 'dark') {
+          lightIcon.style.display = 'inline';
+          darkIcon.style.display = 'none';
+        } else {
+          lightIcon.style.display = 'none';
+          darkIcon.style.display = 'inline';
+        }
+      }
+    }
+
+    // Set initial icon state
+    updateIcon();
+
+    // Toggle theme on click
+    button.addEventListener('click', () => {
+      const current = document.documentElement.getAttribute('data-theme');
+      const next = current === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', next);
+      localStorage.setItem('theme', next);
+      updateIcon();
+    });
+  }
+</script>
+
+<style>
+  .theme-toggle {
+    background: none;
+    border: none;
+    padding: var(--spacing-2);
+    cursor: pointer;
+    color: var(--color-foreground-primary);
+    font-size: var(--font-size-xl);
+    line-height: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.2s ease;
+    min-width: 44px;
+    min-height: 44px;
+  }
+
+  .theme-toggle:hover {
+    color: var(--color-action-primary);
+  }
+
+  .theme-toggle:focus-visible {
+    outline: 2px solid var(--color-action-primary);
+    outline-offset: 2px;
+    border-radius: var(--radius-base);
+  }
+
+  .theme-icon {
+    display: inline;
+  }
+</style>

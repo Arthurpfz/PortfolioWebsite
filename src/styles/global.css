@@ -69,42 +69,42 @@
 
 /* Base typography styles using semantic tokens */
 h1 {
-  font-size: var(--text-h1-size);
+  font-size: clamp(2rem, 5vw + 1rem, 3.75rem);
   line-height: var(--text-h1-line-height);
   font-weight: var(--text-h1-weight);
   letter-spacing: var(--text-h1-spacing);
 }
 
 h2 {
-  font-size: var(--text-h2-size);
+  font-size: clamp(1.75rem, 4vw + 0.75rem, 3rem);
   line-height: var(--text-h2-line-height);
   font-weight: var(--text-h2-weight);
   letter-spacing: var(--text-h2-spacing);
 }
 
 h3 {
-  font-size: var(--text-h3-size);
+  font-size: clamp(1.5rem, 3vw + 0.5rem, 2.25rem);
   line-height: var(--text-h3-line-height);
   font-weight: var(--text-h3-weight);
   letter-spacing: var(--text-h3-spacing);
 }
 
 h4 {
-  font-size: var(--text-h4-size);
+  font-size: clamp(1.375rem, 2.5vw + 0.375rem, 1.875rem);
   line-height: var(--text-h4-line-height);
   font-weight: var(--text-h4-weight);
   letter-spacing: var(--text-h4-spacing);
 }
 
 h5 {
-  font-size: var(--text-h5-size);
+  font-size: clamp(1.25rem, 2vw + 0.25rem, 1.5rem);
   line-height: var(--text-h5-line-height);
   font-weight: var(--text-h5-weight);
   letter-spacing: var(--text-h5-spacing);
 }
 
 h6 {
-  font-size: var(--text-h6-size);
+  font-size: clamp(1.125rem, 1.5vw + 0.125rem, 1.25rem);
   line-height: var(--text-h6-line-height);
   font-weight: var(--text-h6-weight);
   letter-spacing: var(--text-h6-spacing);
@@ -117,4 +117,18 @@ body {
   font-family: var(--font-family-base);
   color: var(--color-foreground-primary);
   background-color: var(--color-background-primary);
+}
+
+/* Optimal reading line length */
+p, li {
+  max-width: 65ch;
+}
+
+/* Responsive spacing adjustments for mobile */
+@media (max-width: 640px) {
+  :root {
+    --space-section-md: 2.25rem;
+    --space-section-lg: 3rem;
+    --space-section-xl: 4.5rem;
+  }
 }

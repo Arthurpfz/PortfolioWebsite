@@ -1,0 +1,97 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const articles = await getCollection('articles');
+const publishedArticles = articles
+  .filter(article => !article.data.draft)
+  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+
+function formatDate(date: Date) {
+  return date.toISOString().split('T')[0];
+}
+---
+
+<BaseLayout
+  title="Book Summaries - Arthur Pfalzgraf"
+  description="13 book summaries on product, behavioral science, and strategy."
+>
+  <h1>Book Summaries</h1>
+
+  <div class="list">
+    {publishedArticles.map(article => {
+      const slug = article.id.replace(/\.md$/, '');
+      const category = article.data.categories?.[0] || 'Essay';
+      return (
+        <a href={`/archive/${slug}`} class="list-row">
+          <span class="list-category">{category}</span>
+          <span class="list-title">{article.data.title}</span>
+          <span class="list-date">{formatDate(article.data.date)}</span>
+        </a>
+      );
+    })}
+  </div>
+</BaseLayout>
+
+<style>
+  h1 {
+    margin-bottom: var(--space-xl);
+  }
+
+  .list {
+    border-top: 1px dashed #0171A9;
+  }
+
+  .list-row {
+    display: grid !important;
+    grid-template-columns: 110px 1fr auto;
+    gap: 24px;
+    align-items: baseline;
+    padding: 20px 0;
+    border-bottom: 1px dashed #0171A9;
+    text-decoration: none;
+    color: #0171A9;
+    transition: opacity 150ms ease;
+  }
+
+  .list-row:hover {
+    opacity: 0.6;
+    text-decoration: none;
+  }
+
+  .list-category {
+    font-family: 'Courier New', monospace;
+    font-style: normal;
+    font-size: 9px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    opacity: 0.5;
+  }
+
+  .list-title {
+    font-family: 'IM Fell English', serif;
+    font-style: italic;
+    font-size: 14px;
+  }
+
+  .list-date {
+    font-family: 'Courier New', monospace;
+    font-style: normal;
+    font-size: 10px;
+    white-space: nowrap;
+    opacity: 0.5;
+    text-align: right;
+  }
+
+  @media (max-width: 768px) {
+    .list-row {
+      grid-template-columns: 1fr auto;
+      gap: 8px;
+      padding: 16px 0;
+    }
+
+    .list-category {
+      grid-column: 1 / -1;
+    }
+  }
+</style>

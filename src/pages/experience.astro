@@ -18,25 +18,25 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
   <section class="work-history" aria-label="Work history">
     <article class="role">
-      <h2>Iron by MoonPay</h2>
+      <h2><a href="https://iron.xyz" target="_blank" rel="noopener noreferrer">Iron by MoonPay</a></h2>
       <div class="role-meta">HEAD OF PRODUCT · PRESENT</div>
       <p>Zero to one. Leading Product at Iron. Acquired by MoonPay in 6 months. Now building the stablecoin payments and institutional layer within MoonPay, rapidly aiming to become the market leader. Heads down building!</p>
     </article>
 
     <article class="role">
-      <h2>Ultimate</h2>
+      <h2><a href="https://www.linkedin.com/posts/ultimateapp_big-news-jupiter-acquires-ultimate-wallet-activity-7188541907856240641-5liu?utm_source=share&utm_medium=member_desktop&rcm=ACoAAA_68j4B11gaLII1H8TTT7EGEWD8iHKRHH8" target="_blank" rel="noopener noreferrer">Ultimate</a></h2>
       <div class="role-meta">PRODUCT · ACQUIRED BY JUPITER EXCHANGE</div>
       <p>Built the crypto trading wallet that set the standard for trading on-chain. Speed, dApp browser with smart search, MS-accurate candles. Acquired by Jupiter Exchange, the world's biggest decentralised exchange. Became a crypto degen.</p>
     </article>
 
     <article class="role">
-      <h2>Trade Republic</h2>
-      <div class="role-meta">CRYPTO CUSTODIAN BUILDER</div>
+      <h2><a href="https://traderepublic.com/en-de" target="_blank" rel="noopener noreferrer">Trade Republic</a></h2>
+      <div class="role-meta">PRODUCT MANAGER CRYPTO EXPANSION</div>
       <p>Led crypto expansion across Europe at one of its largest neobrokers. Built custody from scratch. Secured VASP licenses in 6 tier-1 markets — FR, DE, AT, NL, ES, IT — in under a year. Became an international crypto regulatory and compliance nerd.</p>
     </article>
 
     <article class="role">
-      <h2>HelloFresh</h2>
+      <h2><a href="https://www.hellofreshgroup.com/en/" target="_blank" rel="noopener noreferrer">HelloFresh</a></h2>
       <div class="role-meta">PRODUCT DATA SCIENTIST → PRODUCT MANAGER</div>
       <p>First product analyst on HelloFresh's famous referral program (RAF). Grew into PM, launching 3+ new ventures from scratch, all EBITDA positive within 3 years. Became a data and behavioral design nerd.</p>
     </article>
@@ -55,7 +55,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
 <style>
   .page-header {
-    padding: var(--space-xl) 0 var(--space-lg);
+    padding: var(--space-lg) 0 var(--space-sm);
   }
 
   .tagline {
@@ -64,7 +64,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   }
 
   .intro {
-    padding-bottom: var(--space-lg);
+    padding-bottom: var(--space-sm);
   }
 
   .intro p {
@@ -73,7 +73,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   }
 
   .work-history {
-    margin: var(--space-lg) 0;
+    margin: var(--space-sm) 0;
   }
 
   .role {
@@ -113,6 +113,10 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
   .role p {
     max-width: 680px;
+  }
+
+  hr {
+    margin: var(--space-md) 0;
   }
 
   .page-footer {

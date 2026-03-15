@@ -91,3 +91,9 @@ Note: `preview_start` MCP tool fails with EPERM in macOS sandbox. Use `npm run d
 git push origin master
 # Netlify auto-deploys from GitHub
 ```
+
+### Netlify Notes
+- **Node 22 required** — set via `NODE_VERSION = "22"` in `netlify.toml` and `.node-version`
+- Netlify defaults to Node 18 which breaks Astro 6
+- Branch: `master` (not main)
+- Old `/post/*` URLs redirect to `/archive/*` via netlify.toml

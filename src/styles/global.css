@@ -2,8 +2,8 @@
 @import "./design-tokens.css";
 
 @theme {
-  --color-nous:      #0171A9;
-  --color-nous-deep: #014d7a;
+  --color-nous:      #1B3A5C;
+  --color-nous-deep: #0F2640;
   --font-serif:      'IM Fell English', serif;
   --font-mono:       'Courier New', monospace;
 }

@@ -12,7 +12,3 @@
   to = "/archive/:splat/"
   status = 301
 
-[[redirects]]
-  from = "/"
-  to = "/now"
-  status = 302

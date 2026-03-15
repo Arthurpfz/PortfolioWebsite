@@ -1,13 +1,103 @@
 ---
-// No frontmatter logic needed
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const feedItems = await getCollection('feed');
+const sortedFeed = feedItems.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+
+function formatDate(date: Date) {
+  return date.toISOString().split('T')[0];
+}
 ---
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="refresh" content="0; url=/now">
-  <title>Arthur Pfalzgraf - Portfolio</title>
-</head>
-<body>
-  <p>Redirecting to <a href="/now">Now page</a>...</p>
-</body>
-</html>
+
+<BaseLayout
+  title="Arthur Pfalzgraf"
+  description="Product, payments, and things worth reading."
+>
+  <div class="hero">
+    Product, payments, and things worth reading.
+  </div>
+
+  <section class="feed" aria-label="Feed">
+    {sortedFeed.map(item => {
+      const inner = (
+        <div class="feed-card">
+          <div class="feed-date">{formatDate(item.data.date)}</div>
+          <div class="feed-body">
+            {item.data.icon && <span class="feed-icon">{item.data.icon}</span>}
+            <h2 class="feed-title">{item.data.title}</h2>
+            <p class="feed-description">{item.data.description}</p>
+          </div>
+        </div>
+      );
+
+      return item.data.link ? (
+        <a href={item.data.link} class="feed-link">{inner}</a>
+      ) : (
+        <div>{inner}</div>
+      );
+    })}
+  </section>
+</BaseLayout>
+
+<style>
+  .feed {
+    border-top: var(--border);
+  }
+
+  .feed-card {
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    gap: var(--space-lg);
+    padding: var(--space-lg) 0;
+    border-bottom: var(--border);
+  }
+
+  .feed-link {
+    text-decoration: none;
+    color: var(--color-primary);
+    transition: opacity 150ms ease;
+  }
+
+  .feed-link:hover {
+    opacity: 0.6;
+    text-decoration: none;
+  }
+
+  .feed-date {
+    font-family: var(--font-mono);
+    font-style: normal;
+    font-size: var(--text-meta);
+    letter-spacing: var(--tracking-meta);
+    opacity: 0.5;
+    padding-top: 4px;
+  }
+
+  .feed-icon {
+    display: inline-block;
+    margin-right: var(--space-sm);
+    font-size: 14px;
+    opacity: 0.6;
+  }
+
+  .feed-title {
+    font-size: 17px;
+    margin: 0 0 6px 0;
+    display: inline;
+  }
+
+  .feed-description {
+    font-size: 13px;
+    margin: var(--space-sm) 0 0 0;
+    opacity: 0.7;
+    line-height: 1.6;
+  }
+
+  @media (max-width: 768px) {
+    .feed-card {
+      grid-template-columns: 1fr;
+      gap: var(--space-sm);
+      padding: var(--space-md) 0;
+    }
+  }
+</style>

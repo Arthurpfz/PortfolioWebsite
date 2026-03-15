@@ -1,12 +1,12 @@
 ---
-import ThemeToggle from './ThemeToggle.astro';
-
 const currentPath = Astro.url.pathname;
 
 const navLinks = [
-  { href: '/archive', label: 'Archive' },
-  { href: '/experience', label: 'Experience' },
-  { href: '/now', label: 'Now' },
+  { href: '/', label: 'Feed' },
+  { href: '/experience', label: 'About' },
+  { href: 'https://www.linkedin.com/in/apfalzgraf/', label: 'LinkedIn', external: true },
+  { href: 'https://github.com/Arthurpfz', label: 'GitHub', external: true },
+  { href: 'https://x.com/arthurpfz', label: 'X', external: true },
 ];
 
 function isActive(path: string) {
@@ -17,27 +17,20 @@ function isActive(path: string) {
 <a href="#main-content" class="skip-link">Skip to main content</a>
 
 <nav class="site-nav" role="navigation" aria-label="Site navigation">
-  <ul class="nav-list">
+  <a href="/" class="nav-link site-name">arthurpfz.com</a>
+  <div class="nav-links">
     {navLinks.map(link => (
-      <li class="nav-item">
-        <a
-          href={link.href}
-          class:list={['nav-link', { active: isActive(link.href) }]}
-          aria-current={isActive(link.href) ? 'page' : undefined}
-        >
-          {link.label}
-        </a>
-      </li>
-    ))}
-    <li class="nav-item">
-      <a href="mailto:arthur@arthurpfz.com" class="nav-link email-link">
-        arthur@arthurpfz.com
+      <a
+        href={link.href}
+        class:list={['nav-link', { active: !link.external && isActive(link.href) }]}
+        aria-current={!link.external && isActive(link.href) ? 'page' : undefined}
+        target={link.external ? '_blank' : undefined}
+        rel={link.external ? 'noopener noreferrer' : undefined}
+      >
+        {link.label}{link.external && ' ↗'}
       </a>
-    </li>
-    <li class="nav-item">
-      <ThemeToggle />
-    </li>
-  </ul>
+    ))}
+  </div>
 </nav>
 
 <style>
@@ -49,12 +42,10 @@ function isActive(path: string) {
     height: 1px;
     overflow: hidden;
     z-index: 9999;
-    padding: var(--space-content-sm) var(--space-content-md);
-    background: var(--color-background-primary);
-    color: var(--color-action-primary);
+    padding: 4px 8px;
+    background: var(--color-bg);
+    color: var(--color-primary);
     text-decoration: none;
-    border: 2px solid var(--color-action-primary);
-    border-radius: var(--radius-sm);
   }
 
   .skip-link:focus {
@@ -64,65 +55,8 @@ function isActive(path: string) {
     overflow: visible;
   }
 
-  .site-nav {
-    padding: var(--nav-padding-y) var(--nav-padding-x);
-    background: var(--nav-background);
-    border-bottom: 1px solid var(--nav-border-color);
-  }
-
-  .nav-list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--space-content-lg);
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    align-items: center;
-  }
-
-  .nav-item {
-    margin: 0;
-  }
-
-  .nav-link {
-    color: var(--color-foreground-primary);
-    text-decoration: none;
-    font-size: var(--text-body-size);
-    font-weight: var(--font-weight-medium);
-    transition: color 150ms ease;
-    padding: 0.75rem 1rem;
-    display: inline-block;
-  }
-
-  .nav-link:hover {
-    color: var(--color-action-primary);
-  }
-
-  .nav-link:focus-visible {
-    outline: 2px solid var(--color-action-primary);
-    outline-offset: 4px;
-    border-radius: var(--radius-sm);
-  }
-
-  .nav-link.active {
-    color: var(--color-action-primary);
-    text-decoration: underline;
-    text-underline-offset: 0.25em;
-  }
-
-  .email-link {
-    margin-left: auto;
-  }
-
-  @media (max-width: 640px) {
-    .nav-list {
-      flex-direction: column;
-      align-items: flex-start;
-      gap: var(--space-content-md);
-    }
-
-    .email-link {
-      margin-left: 0;
-    }
+  @media (max-width: 768px) {
+    .nav-links { gap: var(--space-md); }
+    .nav-link { font-size: 10px; }
   }
 </style>

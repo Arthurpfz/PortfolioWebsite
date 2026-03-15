@@ -1,8 +1,9 @@
 @layer primitives {
   :root {
     /* Typography primitives */
-    --font-family-base: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-    --font-family-mono: 'Geist Mono', 'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
+    --font-family-base: 'IM Fell English', serif;
+    --font-family-mono: 'Courier New', monospace;
+    --font-family-nav: 'Helvetica Neue', Arial, sans-serif;
 
     --font-size-xs: 0.75rem;
     --font-size-sm: 0.875rem;

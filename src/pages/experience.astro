@@ -3,132 +3,126 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
 <BaseLayout
-  title="Experience - Arthur Pfalzgraf"
-  description="Work history and product roles"
+  title="Arthur Pfalzgraf - Ironing things out at MoonPay."
+  description="Head of Product at Iron, acquired by MoonPay. High agency, fast iteration. Crypto, AI, and behavioral design nerd."
 >
-  <h1>Experience</h1>
+  <header class="page-header">
+    <h1>Arthur Pfalzgraf</h1>
+  </header>
 
-  <p class="intro">
-    Work history from LinkedIn — companies, titles, and dates only. No lengthy case studies.
-  </p>
+  <section class="intro">
+    <p>Ironing things out at MoonPay. Head of Product at Iron, acquired by MoonPay. High agency, fast iteration. I zoom out, then execute fast. Crypto, AI, and behavioral design nerd. Low tolerance for PowerPoint.</p>
+  </section>
+
+  <hr />
 
   <section class="work-history" aria-label="Work history">
-    <p class="note">Work history to be added — LinkedIn data needed</p>
-
-    <!-- Example structure for demonstration -->
     <article class="role">
-      <h2>Company Name</h2>
-      <p class="title">Product Manager</p>
-      <p class="dates">01/2023 - Present</p>
+      <h2>Iron by MoonPay</h2>
+      <div class="role-meta">HEAD OF PRODUCT · PRESENT</div>
+      <p>Zero to one. Leading Product at Iron. Acquired by MoonPay in 6 months. Now building the stablecoin payments and institutional layer within MoonPay, rapidly aiming to become the market leader. Heads down building!</p>
     </article>
 
     <article class="role">
-      <h2>Previous Company</h2>
-      <p class="title">Associate Product Manager</p>
-      <p class="dates">06/2021 - 12/2022</p>
+      <h2>Ultimate</h2>
+      <div class="role-meta">PRODUCT · ACQUIRED BY JUPITER EXCHANGE</div>
+      <p>Built the crypto trading wallet that set the standard for trading on-chain. Speed, dApp browser with smart search, MS-accurate candles. Acquired by Jupiter Exchange, the world's biggest decentralised exchange. Became a crypto degen.</p>
     </article>
 
     <article class="role">
-      <h2>Earlier Company</h2>
-      <p class="title">Product Analyst</p>
-      <p class="dates">08/2019 - 05/2021</p>
+      <h2>Trade Republic</h2>
+      <div class="role-meta">CRYPTO CUSTODIAN BUILDER</div>
+      <p>Led crypto expansion across Europe at one of its largest neobrokers. Built custody from scratch. Secured VASP licenses in 6 tier-1 markets — FR, DE, AT, NL, ES, IT — in under a year. Became an international crypto regulatory and compliance nerd.</p>
+    </article>
+
+    <article class="role">
+      <h2>HelloFresh</h2>
+      <div class="role-meta">PRODUCT DATA SCIENTIST → PRODUCT MANAGER</div>
+      <p>First product analyst on HelloFresh's famous referral program (RAF). Grew into PM, launching 3+ new ventures from scratch, all EBITDA positive within 3 years. Became a data and behavioral design nerd.</p>
     </article>
   </section>
 
-  <footer class="linkedin-link">
+  <hr />
+
+  <footer class="page-footer">
     <p>
-      For full details, see <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">LinkedIn<span class="visually-hidden"> (opens in new tab)</span></a>
+      <a href="https://www.linkedin.com/in/apfalzgraf/" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
+      · <a href="https://github.com/Arthurpfz" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+      · <a href="https://x.com/arthurpfz" target="_blank" rel="noopener noreferrer">X ↗</a>
     </p>
   </footer>
 </BaseLayout>
 
 <style>
-  h1 {
-    font-size: var(--text-h1-size);
-    line-height: var(--text-h1-line-height);
-    font-weight: var(--text-h1-weight);
-    letter-spacing: var(--text-h1-spacing);
-    margin-bottom: var(--space-content-lg);
+  .page-header {
+    padding: var(--space-xl) 0 var(--space-lg);
+  }
+
+  .tagline {
+    font-size: var(--text-h2);
+    margin-top: var(--space-sm);
   }
 
   .intro {
-    font-size: var(--text-body-size);
-    line-height: var(--text-body-line-height);
-    color: var(--color-foreground-secondary);
-    margin-bottom: var(--space-section-md);
+    padding-bottom: var(--space-lg);
+  }
+
+  .intro p {
+    max-width: 680px;
+    line-height: 1.6;
   }
 
   .work-history {
-    margin-top: var(--space-section-lg);
-  }
-
-  .note {
-    font-size: var(--text-body-size);
-    color: var(--color-foreground-tertiary);
-    font-style: italic;
-    margin-bottom: var(--space-content-xl);
-    padding: var(--space-content-md);
-    background-color: var(--color-background-secondary);
-    border-left: 3px solid var(--color-border-emphasis);
+    margin: var(--space-lg) 0;
   }
 
   .role {
-    margin-bottom: var(--space-content-md);
-    padding-bottom: var(--space-content-md);
-    border-bottom: 1px solid var(--color-border-subtle);
+    padding: var(--space-lg) 0;
+    border-bottom: var(--border);
   }
 
   .role:last-of-type {
     border-bottom: none;
   }
 
-  h2 {
-    font-size: var(--text-h3-size);
-    line-height: var(--text-h3-line-height);
-    font-weight: var(--text-h3-weight);
-    letter-spacing: var(--text-h3-spacing);
-    margin-bottom: var(--space-content-sm);
-    color: var(--color-foreground-primary);
+  .role-header {
+    display: flex;
+    align-items: baseline;
+    gap: var(--space-md);
+    margin-bottom: var(--space-xs);
   }
 
-  .title {
-    font-size: var(--text-body-size);
-    line-height: var(--text-body-line-height);
-    color: var(--color-foreground-secondary);
-    margin-bottom: var(--space-content-xs);
+  .role-note {
+    font-family: var(--font-mono);
+    font-style: normal;
+    font-size: var(--text-meta);
+    letter-spacing: var(--tracking-meta);
+    text-transform: uppercase;
+    opacity: 0.5;
   }
 
-  .dates {
-    font-size: var(--text-small-size);
-    line-height: var(--text-small-line-height);
-    color: var(--color-foreground-tertiary);
+  .role-meta {
+    font-family: var(--font-mono);
+    font-style: normal;
+    font-size: var(--text-meta);
+    letter-spacing: var(--tracking-meta);
+    text-transform: uppercase;
+    opacity: 0.6;
+    margin-bottom: var(--space-md);
   }
 
-  .linkedin-link {
-    margin-top: var(--space-section-lg);
-    padding-top: var(--space-content-lg);
-    border-top: 1px solid var(--color-border-default);
+  .role p {
+    max-width: 680px;
   }
 
-  .linkedin-link p {
-    font-size: var(--text-small-size);
-    color: var(--color-foreground-secondary);
+  .page-footer {
+    padding: var(--space-lg) 0;
   }
 
-  .linkedin-link a {
-    color: var(--color-action-primary);
-    text-decoration: underline;
-  }
-
-  .linkedin-link a:hover {
-    color: var(--color-action-primary-hover);
-  }
-
-  .visually-hidden {
-    position: absolute;
-    left: -9999px;
-    width: 1px;
-    height: 1px;
-    overflow: hidden;
+  .page-footer p {
+    font-family: var(--font-mono);
+    font-style: normal;
+    font-size: var(--text-meta);
+    opacity: 0.45;
   }
 </style>

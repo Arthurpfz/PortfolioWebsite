@@ -16,38 +16,18 @@ const {
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <script is:inline>
-      const theme = localStorage.getItem('theme') ||
-        (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-      document.documentElement.setAttribute('data-theme', theme);
-    </script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&display=swap" rel="stylesheet" />
     <title>{title}</title>
   </head>
   <body>
     <Navigation />
-    <main id="main-content" class="main-content" role="main">
+    <main id="main-content" role="main">
       <slot />
     </main>
   </body>
 </html>
-
-<style>
-  body {
-    background-color: var(--color-background-primary);
-    color: var(--color-foreground-primary);
-    margin: 0;
-    padding: 0;
-  }
-
-  .main-content {
-    max-width: var(--layout-max-width);
-    margin: 0 auto;
-    padding: var(--space-section-md) var(--layout-gutter);
-  }
-</style>

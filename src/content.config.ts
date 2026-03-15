@@ -13,4 +13,15 @@ const articles = defineCollection({
   }),
 });
 
-export const collections = { articles };
+const feed = defineCollection({
+  loader: glob({ pattern: '**/*.md', base: './src/content/feed' }),
+  schema: z.object({
+    title: z.string(),
+    date: z.coerce.date(),
+    description: z.string(),
+    link: z.string().optional(),
+    icon: z.string().optional(),
+  }),
+});
+
+export const collections = { articles, feed };

@@ -1,0 +1,192 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+type Build = {
+  name: string;
+  tagline: string;
+  stack: string;
+  status: 'shipped' | 'in use' | 'paused';
+  links?: { label: string; href: string; external?: boolean }[];
+};
+
+const builds: Build[] = [
+  {
+    name: 'tri-coach',
+    tagline: "Personal AI triathlon coach. Pulls every workout from Intervals.icu, scores it against the week's plan with Claude, texts feedback on Telegram. Plans the next week every Sunday.",
+    stack: 'n8n · Claude · Intervals.icu API · Strava · Telegram · SQLite',
+    status: 'in use',
+    links: [{ label: 'GitHub', href: 'https://github.com/Arthurpfz/tri-coach', external: true }],
+  },
+  {
+    name: 'tricoach-db',
+    tagline: 'Tiny self-hosted SQLite REST API behind tri-coach. Replaced an Airtable base after the upstream account got blocked. ~250 lines of Express, single Docker container, zero recurring cost.',
+    stack: 'Node · Express · better-sqlite3 · Docker · Traefik',
+    status: 'shipped',
+    links: [{ label: 'GitHub', href: 'https://github.com/Arthurpfz/tricoach-db', external: true }],
+  },
+  {
+    name: 'text-polisher',
+    tagline: 'System-wide hotkey: select text in any app, hit a key, get a polished rewrite pasted in place. Tray-icon controls for language and tone. V3 added push-to-talk dictation via local Whisper.',
+    stack: 'Python · Anthropic API · Whisper · macOS / X11',
+    status: 'in use',
+    links: [{ label: 'GitHub', href: 'https://github.com/Arthurpfz/text-polisher', external: true }],
+  },
+  {
+    name: 'telegram-summary-bot',
+    tagline: 'Telegram bot that summarises YouTube links, articles or long text. Personal antidote to the never-watched "watch later" pile.',
+    stack: 'n8n · LLM · Airtable cache · Telegram',
+    status: 'in use',
+    links: [{ label: 'GitHub', href: 'https://github.com/Arthurpfz/telegram-summary-bot', external: true }],
+  },
+  {
+    name: 'Vault',
+    tagline: 'My personal LLM-friendly knowledge base. Obsidian for reading, Claude for writing, full-text search via QMD on both my Mac and the VPS. Sync via Syncthing — no cloud middleman.',
+    stack: 'Obsidian · QMD · Syncthing · Markdown',
+    status: 'in use',
+  },
+  {
+    name: 'Hermes',
+    tagline: "VPS-side agent with two personalities. 'Vault-aware' answers questions over my knowledge base in read-only mode; 'vault-writer' drafts new pages into a sandboxed inbox. Talks to me on Telegram. Routes most queries to Grok 4.1 Fast — Sonnet only when needed.",
+    stack: 'Python · OpenRouter · Telegram · Docker',
+    status: 'in use',
+  },
+  {
+    name: 'XBookmarks',
+    tagline: 'Telegram bot that turns saved tweets, articles and YouTube links into structured markdown notes in my vault. Same pattern as Voice Notes — collect everywhere, store in one place.',
+    stack: 'Python · Telegram · n8n · Markdown',
+    status: 'in use',
+  },
+  {
+    name: 'Voice Notes',
+    tagline: 'Telegram voice memo → Whisper transcription → Claude categorisation (idea / todo / other) → markdown file in my vault, with an undo button. One n8n workflow.',
+    stack: 'n8n · Groq Whisper · Claude · Telegram',
+    status: 'in use',
+  },
+  {
+    name: 'Relay',
+    tagline: 'Webhook command runner so phone-side Claude (or me, on a train) can restart a container, tail logs, redeploy or run an allow-listed script on my VPS.',
+    stack: 'n8n · webhook · SSH · Telegram',
+    status: 'in use',
+  },
+];
+
+const statusLabel: Record<Build['status'], string> = {
+  shipped: 'SHIPPED',
+  'in use': 'IN USE',
+  paused: 'PAUSED',
+};
+---
+
+<BaseLayout
+  title="Builds — Arthur Pfalzgraf"
+  description="A curated list of things I've built. Mostly personal infra — agents, automations, and the data layer underneath them."
+>
+  <header class="page-header">
+    <h1>Builds</h1>
+    <p class="intro">A curated list of things I've built — mostly personal infra. The feed has the chronological version; this page is the highlight reel.</p>
+  </header>
+
+  <section class="builds" aria-label="Builds">
+    {builds.map(b => (
+      <article class="build">
+        <header class="build-header">
+          <h2 class="build-name">{b.name}</h2>
+          <div class="build-status">{statusLabel[b.status]}</div>
+        </header>
+        <p class="build-tagline">{b.tagline}</p>
+        <div class="build-meta">{b.stack}</div>
+        {b.links && (
+          <div class="build-links">
+            {b.links.map(link => (
+              <a
+                href={link.href}
+                target={link.external ? '_blank' : undefined}
+                rel={link.external ? 'noopener noreferrer' : undefined}
+              >
+                {link.label}{link.external && ' ↗'}
+              </a>
+            ))}
+          </div>
+        )}
+      </article>
+    ))}
+  </section>
+</BaseLayout>
+
+<style>
+  .page-header {
+    padding: var(--space-lg) 0 var(--space-md);
+  }
+
+  .intro {
+    max-width: 680px;
+    margin-top: var(--space-sm);
+    line-height: 1.6;
+  }
+
+  .builds {
+    border-top: var(--border);
+  }
+
+  .build {
+    padding: var(--space-lg) 0;
+    border-bottom: var(--border);
+  }
+
+  .build-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: var(--space-md);
+    margin-bottom: var(--space-sm);
+  }
+
+  .build-name {
+    font-size: 17px;
+    margin: 0;
+  }
+
+  .build-status {
+    font-family: var(--font-mono);
+    font-style: normal;
+    font-size: var(--text-tag);
+    letter-spacing: var(--tracking-nav);
+    text-transform: uppercase;
+    opacity: 0.5;
+  }
+
+  .build-tagline {
+    max-width: 680px;
+    line-height: 1.6;
+    margin: 0 0 var(--space-sm) 0;
+  }
+
+  .build-meta {
+    font-family: var(--font-mono);
+    font-style: normal;
+    font-size: var(--text-meta);
+    letter-spacing: var(--tracking-meta);
+    text-transform: uppercase;
+    opacity: 0.55;
+    margin-bottom: var(--space-sm);
+  }
+
+  .build-links {
+    font-family: var(--font-mono);
+    font-style: normal;
+    font-size: var(--text-meta);
+    letter-spacing: var(--tracking-meta);
+    text-transform: uppercase;
+    display: flex;
+    gap: var(--space-md);
+  }
+
+  .build-links a {
+    text-decoration: underline;
+    opacity: 0.75;
+  }
+
+  .build-links a:hover {
+    opacity: 1;
+  }
+</style>

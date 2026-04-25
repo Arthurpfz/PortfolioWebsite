@@ -12,26 +12,14 @@ Personal portfolio for Arthur Pfalzgraf. Deployed on Netlify via GitHub (Arthurp
 ## Design System — Nous Research Aesthetic
 Single source of truth: `src/styles/design-tokens.css`
 
-- **Primary color:** `#0171A9` (monochromatic blue)
-- **Background:** `#f2f6f8`
+- **Primary color:** `#1B3A5C` (deep navy)
+- **Background:** `#F0F2F5`
 - **Body font:** IM Fell English (Google Fonts), serif italic
 - **Nav font:** Helvetica Neue, 11px, uppercase, bold, 0.18em tracking
 - **Mono font:** Courier New, 10px (metadata, dates)
-- **Borders:** Always `1px dashed #0171A9` — never solid
+- **Borders:** Always `1px dashed` — never solid
 - **No dark mode** — light-only aesthetic
 - **No shadows** — flat design
-
-CSS imports in `src/styles/global.css`:
-```css
-@import "tailwindcss";
-@import "./design-tokens.css";
-@theme {
-  --color-nous:      #0171A9;
-  --color-nous-deep: #014d7a;
-  --font-serif:      'IM Fell English', serif;
-  --font-mono:       'Courier New', monospace;
-}
-```
 
 Use CSS variables (`--border`, `--color-primary`, `--font-mono`, `--space-*`, `--text-meta`) everywhere — never hardcode values in page styles.
 
@@ -41,13 +29,14 @@ Use CSS variables (`--border`, `--color-primary`, `--font-mono`, `--space-*`, `-
 | Route | File | Description |
 |---|---|---|
 | `/` | `index.astro` | Feed homepage — reverse-chronological activity cards |
+| `/builds` | `builds.astro` | Curated portfolio of personal projects |
 | `/experience` | `experience.astro` | About page — intro + career history |
 | `/book-summaries` | `book-summaries.astro` | List of 13 book summaries |
 | `/archive/[slug]` | `archive/[slug].astro` | Individual article pages |
 
 ### Navigation (`src/components/Navigation.astro`)
 Left: `arthurpfz.com` → `/`
-Right: Feed, About, LinkedIn ↗, GitHub ↗, X ↗
+Right: Feed, Builds, About, LinkedIn ↗, GitHub ↗, X ↗
 
 Links:
 - LinkedIn: https://www.linkedin.com/in/apfalzgraf/
@@ -83,8 +72,6 @@ Links:
 cd /Users/arthurpfalzgraf/Desktop/Projects/PortfolioWebsite
 npm run dev  # runs on localhost:4321
 ```
-
-Note: `preview_start` MCP tool fails with EPERM in macOS sandbox. Use `npm run dev` via Bash background task + Chrome MCP for screenshots instead.
 
 ## Deploy
 ```bash

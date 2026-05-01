@@ -1,7 +1,7 @@
 ---
-title: "Stop typing into your second brain"
+title: "A vault that ingests itself"
 date: 2026-04-27
-description: "Every Obsidian + AI tutorial tells you to type captures into a folder. Mine captures itself — voice notes, bookmarks, tweets, YouTube — while I sleep. Architecture, schema, and what's actually novel about it."
+description: "Voice notes, bookmarks, tweets, YouTube — captured automatically, filed in markdown, queryable from anywhere. The architecture, the schema, and the three patterns that hold it together."
 link: "/archive/stop-typing-second-brain"
 icon: "◈"
 ---

@@ -1,17 +1,15 @@
 ---
-title: "Stop typing into your second brain"
+title: "A vault that ingests itself"
 date: 2026-04-27
-description: "Every Obsidian + AI tutorial tells you to type captures into a folder. Mine captures itself — voice notes, bookmarks, tweets, YouTube — while I sleep. The architecture, the schema, and what's actually novel about it."
+description: "Voice notes, bookmarks, tweets, YouTube — captured automatically, filed in markdown, queryable from anywhere. The architecture, the schema, and the three patterns that hold it together."
 categories: ["Essay"]
 tags: ["Obsidian", "Knowledge Management", "Agents", "n8n"]
 draft: false
 ---
 
-Every "Obsidian + AI" guide tells you to type captures into a folder.
+Voice notes. Bookmarks. Tweets. YouTube transcripts. All captured automatically, filed as plain markdown, queryable from anywhere.
 
-Mine captures itself. Voice notes. Bookmarks. Tweets. YouTube. While I sleep.
-
-This is the architecture, the schema, and what's actually novel about it.
+This is how the pieces fit together.
 
 ## The architecture
 
@@ -48,14 +46,13 @@ This is the architecture, the schema, and what's actually novel about it.
                           └─────────────────────┘
 ```
 
-## Why this beats the local-vault pattern
+## What it does
 
-- **No manual capture.** Bots write directly into the vault. The "INBOX" folder doesn't exist.
-- **Runs 24/7 on a VPS.** Laptop closed = system still working. Voice note from a run goes straight in.
-- **Read everywhere, edit anywhere.** Syncthing keeps Mac and VPS in sync within ten seconds. No git push.
-- **The agent has its own bot.** Ask the vault a question from your phone. It reads everything.
-
-The popular guides assume one person, one machine, one Claude Code session. The minute you close the laptop, the system stops thinking. Mine doesn't.
+- **Capture is automated.** Three Telegram bots cover all input. Share-sheet a URL, hold-to-record a voice memo, ask the agent a question — the right workflow handles it.
+- **The vault lives on a VPS.** Plain markdown on disk. Source of truth is the server, so write workflows don't depend on the laptop being open.
+- **Sync is real-time.** Syncthing mirrors VPS ↔ Mac in about ten seconds. Open Obsidian on the Mac, see what got captured five minutes ago.
+- **The agent reads the whole thing.** From the same phone that captures notes, you can query them. The agent is read-only by default; drafts go to a separate inbox folder for manual review.
+- **The wiki grows itself.** A Sunday cron job reads the week's captures, extracts entities and concepts and learnings, and writes new wiki pages with `[[wikilinks]]` back to sources.
 
 ## The vault schema
 
@@ -91,9 +88,9 @@ One home per fact. No duplicates.
 | Agent | NousResearch Hermes | read-only vault, drafts via inbox |
 | Promotion | weekly cron | bookmarks → entities/concepts |
 
-Every piece is open source. The recipe is what's rare.
+Every piece is open source.
 
-## Three patterns worth stealing
+## Three patterns
 
 **One home per fact.**
 
@@ -101,31 +98,29 @@ WHY (decisions, roadmap, learnings) lives in the vault. HOW (operational state) 
 
 **Bots write, humans browse.**
 
-Capture is automated. Reading is human. The minute capture has any friction — even opening a folder — you stop doing it. Telegram is the lowest-friction surface that exists. Use it.
+Capture is automated. Reading is human. Telegram is the lowest-friction surface available — share-sheet on phone, hold-to-record for voice. The bot replies with a confirmation and a delete button so a wrong capture is one tap to remove. Reading still happens in Obsidian, where it should.
 
 **Promote weekly.**
 
-Every Sunday, n8n runs a "promote" job: it reads new bookmarks, asks the model to extract entities and concepts and learnings, and writes them as new wiki pages with `[[wikilinks]]` back to sources. The wiki *grows itself* without you opening it.
+Every Sunday, n8n runs a "promote" job: it reads new bookmarks, asks the model to extract entities and concepts and learnings, and writes them as new wiki pages with `[[wikilinks]]` back to sources. The wiki *grows itself* without anyone opening it.
 
 ## The agent loop
 
 The on-VPS agent has two personalities:
 
 - **vault-aware** — read-only. Queries via grep and semantic search. *"What did I save about Karpathy's LLM wiki idea?"*
-- **vault-writer** — drafts new pages to a `vault-inbox/` folder. The vault itself stays read-only. You promote drafts manually after review.
+- **vault-writer** — drafts new pages to a `vault-inbox/` folder. The vault itself stays read-only. Drafts get promoted manually after review.
 
 The default model is a fast cheap one (Grok 4.1 Fast at the moment, ~15× cheaper than Sonnet for this workload). There's an escape hatch to Sonnet for harder queries.
 
 ## What this isn't
 
-This is not a content production system. If you want hooks, briefs, and ranked closers, the JARVIS-in-Obsidian guides cover that. This is a *thinking* system.
-
-It's not turnkey. You'll need a VPS, an n8n instance (cloud or self-hosted), and patience for Syncthing's first sync.
-
-It's not novel pieces. Every component is open source. The recipe is what's rare.
+- Not a content production system. This is for thinking.
+- Not turnkey. Six pieces have to talk to each other; getting them aligned takes a weekend.
+- Not novel pieces. Every component is open source. The recipe is what's rare.
 
 ## Take it
 
-If this gets traction I'll open up the workflow JSONs and skills directly. For now there's a [template repo with the architecture, schema, and skill examples](https://github.com/Arthurpfz/vault-system-template). Star it if you're building something similar — that's the signal to ship more.
+There's a [template repo with the architecture, schema, and skill examples](https://github.com/Arthurpfz/vault-system-template). Star it if you're building something similar — that's the signal to ship more (workflow JSONs, bot code, deploy templates).
 
 Follow [@arthurpfz](https://x.com/arthurpfz) for build logs.

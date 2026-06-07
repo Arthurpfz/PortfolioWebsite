@@ -124,3 +124,8 @@ The default model is a fast cheap one (Grok 4.1 Fast at the moment, ~15× cheape
 There's a [template repo with the architecture, schema, and skill examples](https://github.com/Arthurpfz/vault-system-template). Star it if you're building something similar — that's the signal to ship more (workflow JSONs, bot code, deploy templates).
 
 Follow [@arthurpfz](https://x.com/arthurpfz) for build logs.
+
+## Update log
+
+- **2026-04-27** — Published this writeup: the architecture, the schema, and the three patterns that hold it together.
+- **2026-04-10** — Vault foundation in place. Obsidian on the read side, Claude on the write side, QMD for full-text search, Syncthing mirroring Mac ↔ VPS with no cloud middleman.

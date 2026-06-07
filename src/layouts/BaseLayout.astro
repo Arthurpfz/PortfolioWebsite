@@ -1,5 +1,6 @@
 ---
 import Navigation from '../components/Navigation.astro';
+import ParticleBackground from '../components/ParticleBackground.astro';
 import '../styles/global.css';
 
 interface Props {
@@ -26,6 +27,7 @@ const {
     <title>{title}</title>
   </head>
   <body>
+    <ParticleBackground />
     <Navigation />
     <main id="main-content" role="main">
       <slot />

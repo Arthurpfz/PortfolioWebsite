@@ -12,20 +12,14 @@ type Build = {
 const builds: Build[] = [
   {
     name: 'tri-coach',
-    tagline: "Personal AI triathlon coach. Pulls every workout from Intervals.icu, grades it against my fitness with Claude, texts feedback on Telegram. Plans the next week every Sunday.",
-    stack: 'n8n · Claude · Intervals.icu API · Telegram · SQLite',
+    tagline: "Personal AI triathlon coach. Pulls every workout from Intervals.icu, grades it against my fitness with Claude, texts feedback on Telegram. Plans the next week every Sunday. Runs on tricoach-db — a ~250-line self-hosted SQLite API I built to replace Airtable, zero recurring cost.",
+    stack: 'n8n · Claude · Intervals.icu API · Telegram · SQLite · Docker',
     status: 'in use',
     links: [
       { label: 'Article', href: '/archive/the-coach-that-watches-the-data' },
       { label: 'GitHub', href: 'https://github.com/Arthurpfz/tri-coach', external: true },
+      { label: 'tricoach-db', href: 'https://github.com/Arthurpfz/tricoach-db', external: true },
     ],
-  },
-  {
-    name: 'tricoach-db',
-    tagline: 'Tiny self-hosted SQLite REST API behind tri-coach. Replaced an Airtable base after the upstream account got blocked. ~250 lines of Express, single Docker container, zero recurring cost.',
-    stack: 'Node · Express · better-sqlite3 · Docker · Traefik',
-    status: 'shipped',
-    links: [{ label: 'GitHub', href: 'https://github.com/Arthurpfz/tricoach-db', external: true }],
   },
   {
     name: 'text-polisher',
@@ -35,14 +29,14 @@ const builds: Build[] = [
     links: [{ label: 'GitHub', href: 'https://github.com/Arthurpfz/text-polisher', external: true }],
   },
   {
-    name: 'telegram-summary-bot',
-    tagline: 'Telegram bot that summarises YouTube links, articles or long text. Personal antidote to the never-watched "watch later" pile.',
-    stack: 'n8n · LLM · Airtable cache · Telegram',
+    name: 'Telegram capture bots',
+    tagline: 'Two Telegram bots for getting things out of my head and inbox: one summarises a YouTube link, article or wall of text on demand; the other turns saved tweets, articles and links into structured markdown notes in my vault. Same surface, two jobs.',
+    stack: 'n8n · LLM · Telegram · Markdown',
     status: 'in use',
     links: [{ label: 'GitHub', href: 'https://github.com/Arthurpfz/telegram-summary-bot', external: true }],
   },
   {
-    name: 'Vault',
+    name: "Vault (Arthur's 2nd Brain)",
     tagline: "My second brain. Personal LLM-friendly knowledge base — Obsidian for reading, Claude for writing, QMD for full-text search, Syncthing keeping my Mac and VPS in lockstep with no cloud middleman. Karpathy-style topic-led wiki, with sources, entities and concepts as separate page types. Hermes, XBookmarks and Voice Notes all feed into it. Architecture, schema and skills are public.",
     stack: 'Obsidian · QMD · Syncthing · Markdown',
     status: 'in use',
@@ -55,12 +49,6 @@ const builds: Build[] = [
     name: 'Hermes',
     tagline: "VPS-side agent with two personalities. 'Vault-aware' answers questions over my knowledge base in read-only mode; 'vault-writer' drafts new pages into a sandboxed inbox. Talks to me on Telegram. Routes most queries to Grok 4.1 Fast — Sonnet only when needed.",
     stack: 'Python · OpenRouter · Telegram · Docker',
-    status: 'in use',
-  },
-  {
-    name: 'XBookmarks',
-    tagline: 'Telegram bot that turns saved tweets, articles and YouTube links into structured markdown notes in my vault. Same pattern as Voice Notes — collect everywhere, store in one place.',
-    stack: 'Python · Telegram · n8n · Markdown',
     status: 'in use',
   },
   {

@@ -1,0 +1,49 @@
+---
+---
+<div id="tsparticles" aria-hidden="true"></div>
+
+<script>
+  import { tsParticles } from '@tsparticles/engine';
+  import { loadSlim } from '@tsparticles/slim';
+
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  await loadSlim(tsParticles);
+  await tsParticles.load({
+    id: 'tsparticles',
+    options: {
+      fullScreen: { enable: false },
+      background: { color: 'transparent' },
+      detectRetina: true,
+      fpsLimit: 60,
+      particles: {
+        color: { value: '#9ca3af' },
+        number: { value: 70, density: { enable: true } },
+        links: {
+          enable: true,
+          color: '#9ca3af',
+          distance: 150,
+          opacity: 0.55,
+          width: 1,
+        },
+        move: { enable: !reduceMotion, speed: 0.4, outModes: { default: 'out' } },
+        opacity: { value: 0.7 },
+        size: { value: { min: 1, max: 2.5 } },
+      },
+      interactivity: {
+        detectsOn: 'window',
+        events: { onHover: { enable: !reduceMotion, mode: 'grab' } },
+        modes: { grab: { distance: 160, links: { opacity: 0.65, color: '#6b7280' } } },
+      },
+    },
+  });
+</script>
+
+<style>
+  #tsparticles {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+  }
+</style>

@@ -12,10 +12,13 @@ type Build = {
 const builds: Build[] = [
   {
     name: 'tri-coach',
-    tagline: "Personal AI triathlon coach. Pulls every workout from Intervals.icu, scores it against the week's plan with Claude, texts feedback on Telegram. Plans the next week every Sunday.",
-    stack: 'n8n · Claude · Intervals.icu API · Strava · Telegram · SQLite',
+    tagline: "Personal AI triathlon coach. Pulls every workout from Intervals.icu, grades it against my fitness with Claude, texts feedback on Telegram. Plans the next week every Sunday.",
+    stack: 'n8n · Claude · Intervals.icu API · Telegram · SQLite',
     status: 'in use',
-    links: [{ label: 'GitHub', href: 'https://github.com/Arthurpfz/tri-coach', external: true }],
+    links: [
+      { label: 'Article', href: '/archive/the-coach-that-watches-the-data' },
+      { label: 'GitHub', href: 'https://github.com/Arthurpfz/tri-coach', external: true },
+    ],
   },
   {
     name: 'tricoach-db',

@@ -82,4 +82,27 @@ const readingTime = Math.max(1, Math.ceil(wordCount / 200));
     background: transparent;
     padding: 0;
   }
+
+  .article-body :global(table) {
+    width: 100%;
+    border-collapse: collapse;
+    margin: var(--space-lg) 0;
+  }
+
+  .article-body :global(th),
+  .article-body :global(td) {
+    text-align: left;
+    vertical-align: top;
+    padding: var(--space-sm) var(--space-lg) var(--space-sm) 0;
+    border-bottom: var(--border);
+  }
+
+  .article-body :global(th):last-child,
+  .article-body :global(td):last-child {
+    padding-right: 0;
+  }
+
+  .article-body :global(th) {
+    font-weight: 600;
+  }
 </style>

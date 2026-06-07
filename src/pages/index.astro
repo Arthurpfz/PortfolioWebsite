@@ -3,7 +3,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
 
 const feedItems = await getCollection('feed');
-const sortedFeed = feedItems.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+const effectiveDate = (item: (typeof feedItems)[number]) => item.data.updated ?? item.data.date;
+const sortedFeed = feedItems.sort((a, b) => effectiveDate(b).getTime() - effectiveDate(a).getTime());
 
 function formatDate(date: Date) {
   return date.toISOString().split('T')[0];
@@ -22,7 +23,7 @@ function formatDate(date: Date) {
     {sortedFeed.map(item => {
       const inner = (
         <div class="feed-card">
-          <div class="feed-date">{formatDate(item.data.date)}</div>
+          <div class="feed-date">{formatDate(effectiveDate(item))}</div>
           <div class="feed-body">
             {item.data.icon && <span class="feed-icon">{item.data.icon}</span>}
             <h2 class="feed-title">{item.data.title}</h2>

@@ -107,3 +107,9 @@ Six lines. No markdown. It fits on one phone screen — readable on a watch, eve
 The code is open source: [Arthurpfz/tri-coach](https://github.com/Arthurpfz/tri-coach) for the workflows, and [tricoach-db](https://github.com/Arthurpfz/tricoach-db) for the standalone SQLite API if you just want the storage layer.
 
 Follow [@arthurpfz](https://x.com/arthurpfz) for build logs.
+
+## Update log
+
+- **2026-06-07** — Published this writeup. Auto-periodized planning and flex-pool weeks; retired the Strava path — Intervals.icu only.
+- **2026-04-25** — Sessions table: every workout now persists ~45 columns of FIT metrics plus Claude's analysis. Backfilled two months. Added the daily Weekly-Stats Telegram with a 🔥 per training hour.
+- **2026-04-22** — Replaced Airtable with [tricoach-db](https://github.com/Arthurpfz/tricoach-db), a ~250-line self-hosted SQLite API. Zero recurring cost.

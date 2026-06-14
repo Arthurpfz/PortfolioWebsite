@@ -21,8 +21,8 @@
   --color-white:          #ffffff;
 
   /* Typography */
-  --font-serif:  'Helvetica Neue', Helvetica, Arial, sans-serif;
-  --font-sans:   'Helvetica Neue', Helvetica, Arial, sans-serif;
+  --font-serif:  'Inter', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  --font-sans:   'Inter', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   --font-mono:   'Courier New', Courier, monospace;
 
   /* Font sizes */

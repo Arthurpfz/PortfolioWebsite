@@ -1,9 +1,9 @@
 @layer primitives {
   :root {
     /* Typography primitives */
-    --font-family-base: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    --font-family-base: 'Inter', 'Helvetica Neue', Helvetica, Arial, sans-serif;
     --font-family-mono: 'Courier New', monospace;
-    --font-family-nav: 'Helvetica Neue', Arial, sans-serif;
+    --font-family-nav: 'Inter', 'Helvetica Neue', Arial, sans-serif;
 
     --font-size-xs: 0.75rem;
     --font-size-sm: 0.875rem;

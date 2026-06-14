@@ -1,6 +1,6 @@
 ---
 import Navigation from '../components/Navigation.astro';
-import ParticleBackground from '../components/ParticleBackground.astro';
+import DuneBackground from '../components/DuneBackground.astro';
 import '../styles/global.css';
 
 interface Props {
@@ -27,25 +27,10 @@ const {
     <title>{title}</title>
   </head>
   <body>
-    <div class="dune-bg" aria-hidden="true"></div>
-    <ParticleBackground />
+    <DuneBackground />
     <Navigation />
     <main id="main-content" role="main">
       <slot />
     </main>
   </body>
 </html>
-
-<style is:global>
-  .dune-bg {
-    position: fixed;
-    inset: 0;
-    z-index: -2;
-    pointer-events: none;
-    background: url('/images/dune-bg.png') center / cover no-repeat;
-    opacity: 0.15;
-    transform: translateZ(0);
-    backface-visibility: hidden;
-    will-change: transform;
-  }
-</style>

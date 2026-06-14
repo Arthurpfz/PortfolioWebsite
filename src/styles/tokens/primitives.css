@@ -1,7 +1,7 @@
 @layer primitives {
   :root {
     /* Typography primitives */
-    --font-family-base: 'IM Fell English', serif;
+    --font-family-base: 'Helvetica Neue', Helvetica, Arial, sans-serif;
     --font-family-mono: 'Courier New', monospace;
     --font-family-nav: 'Helvetica Neue', Arial, sans-serif;
 

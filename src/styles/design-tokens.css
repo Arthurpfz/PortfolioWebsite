@@ -21,7 +21,7 @@
   --color-white:          #ffffff;
 
   /* Typography */
-  --font-serif:  'IM Fell English', 'Times New Roman', Georgia, serif;
+  --font-serif:  'Helvetica Neue', Helvetica, Arial, sans-serif;
   --font-sans:   'Helvetica Neue', Helvetica, Arial, sans-serif;
   --font-mono:   'Courier New', Courier, monospace;
 
@@ -86,7 +86,7 @@ html {
 
 body {
   font-family: var(--font-serif);
-  font-style: italic;
+  font-style: normal;
   font-size: var(--text-body);
   line-height: var(--leading-body);
   color: var(--color-primary);
@@ -112,7 +112,7 @@ img {
    ------------------------------------------------------------ */
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-serif);
-  font-style: italic;
+  font-style: normal;
   font-weight: 400;
   color: var(--color-primary);
   line-height: var(--leading-tight);
@@ -184,7 +184,7 @@ a:hover { text-decoration: underline; }
    ------------------------------------------------------------ */
 .hero {
   font-family: var(--font-serif);
-  font-style: italic;
+  font-style: normal;
   font-size: var(--text-hero);
   line-height: var(--leading-tight);
   text-align: center;
@@ -226,7 +226,7 @@ a:hover { text-decoration: underline; }
 
 .article-row__excerpt {
   font-family: var(--font-serif);
-  font-style: italic;
+  font-style: normal;
   font-size: var(--text-body);
   line-height: var(--leading-body);
   text-align: justify;
@@ -303,7 +303,7 @@ a:hover { text-decoration: underline; }
 
 .article-body {
   font-family: var(--font-serif);
-  font-style: italic;
+  font-style: normal;
   font-size: var(--text-body);
   line-height: var(--leading-body);
   max-width: 680px;

@@ -4,6 +4,6 @@
 @theme {
   --color-nous:      #1B3A5C;
   --color-nous-deep: #0F2640;
-  --font-serif:      'Helvetica Neue', Helvetica, Arial, sans-serif;
+  --font-serif:      'Inter', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   --font-mono:       'Courier New', monospace;
 }

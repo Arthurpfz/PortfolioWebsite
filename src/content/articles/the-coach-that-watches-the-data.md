@@ -21,6 +21,7 @@ Nobody touches it. This is how the pieces fit together.
                     │  /refresh  → backfill       │
                     │  /strikes  → week stats     │
                     │  /training → this week      │
+                    │  /progress → 4wk trend      │
                     └──────────────┬──────────────┘
                                    ↓
               ┌──────── Intervals.icu ───────┐
@@ -52,7 +53,8 @@ Nobody touches it. This is how the pieces fit together.
 - **It grades every session.** Each weeknight it pulls the day's workout from Intervals.icu, runs the full FIT file through Claude, and replies with a letter grade and three data-backed observations. The grade measures *execution against your fitness* — not whether you followed the plan.
 - **It writes the plan.** Sunday night it reads your race date, computes how many weeks out you are, derives the training phase and volume target, and asks Claude for seven sessions labelled KEY or OPTIONAL.
 - **It nudges on volume.** A daily running tally tracks the week against an hours floor, and from midweek on tells you exactly how far you are from it.
-- **It takes commands.** A single Telegram router handles `/program`, `/refresh`, `/strikes`, and `/training` — plan on demand, backfill late uploads, pull stats, see the week.
+- **It takes commands.** A single Telegram router handles `/program`, `/refresh`, `/strikes`, `/training`, and `/progress` — plan on demand, backfill late uploads, pull stats, see the week, check the trend.
+- **It answers "am I improving?"** `/progress` compares the last 4 weeks against the 4 before: per-discipline scoreboard with Z2-only efficiency (so a harder block doesn't read as fitness loss), decoupling on long steady rides, pool vs open-water pace kept separate, swim DPS and SWOLF, longest ride/run vs race demands, sleep/HRV/RHR, and CTL — closed out by a one-line LLM verdict.
 
 ## The components
 
@@ -99,7 +101,7 @@ Six lines. No markdown. It fits on one phone screen — readable on a watch, eve
 ## What this isn't
 
 - Not multi-athlete yet. The daily loop iterates over everyone; the Sunday planner is still wired to one athlete.
-- Not adaptive across weeks. The planner has one week of memory — it doesn't yet factor last week's adherence or fatigue.
+- Not fully adaptive across training blocks. The planner now reads last week's adherence, CTL trend, and morning readiness — but it doesn't yet reason over a whole mesocycle.
 - Not turnkey. Six pieces have to talk to each other. The recipe is the work; getting them aligned takes a weekend.
 
 ## Take it
@@ -110,6 +112,8 @@ Follow [@arthurpfz](https://x.com/arthurpfz) for build logs.
 
 ## Update log
 
+- **2026-07-14** — `/progress` command: 4-week vs prior-4-week improvement scoreboard per discipline. Metrics are intensity-honest — Z2-only efficiency, decoupling from long steady rides only, pool and open-water pace never mixed — plus durability vs race demands, swim technique (DPS/SWOLF), recovery (sleep/HRV/RHR), and a one-line LLM verdict.
+- **2026-07-12** — Wellness-aware coaching: morning readiness (HRV, sleep, RHR) feeds the daily grade and Sunday plan. Auto-detects FTP/threshold test efforts and updates the athlete profile. Run cadence trend, race-week taper module, monthly review, and a nightly reconciliation cron that catches late uploads.
 - **2026-06-07** — Published this writeup. Auto-periodized planning and flex-pool weeks; retired the Strava path — Intervals.icu only.
 - **2026-04-25** — Sessions table: every workout now persists ~45 columns of FIT metrics plus Claude's analysis. Backfilled two months. Added the daily Weekly-Stats Telegram with a 🔥 per training hour.
 - **2026-04-22** — Replaced Airtable with [tricoach-db](https://github.com/Arthurpfz/tricoach-db), a ~250-line self-hosted SQLite API. Zero recurring cost.

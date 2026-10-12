@@ -28,7 +28,7 @@ function isActive(path: string) {
         target={link.external ? '_blank' : undefined}
         rel={link.external ? 'noopener noreferrer' : undefined}
       >
-        {link.label}{link.external && ' ↗'}
+        {link.label}{link.external && ' ↗\uFE0E'}
       </a>
     ))}
   </div>
@@ -54,10 +54,5 @@ function isActive(path: string) {
     width: auto;
     height: auto;
     overflow: visible;
-  }
-
-  @media (max-width: 768px) {
-    .nav-links { gap: var(--space-md); }
-    .nav-link { font-size: 10px; }
   }
 </style>

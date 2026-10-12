@@ -1,5 +1,5 @@
 ---
-title: "The Black box thinking, M. Syed"
+title: "Black Box Thinking, M. Syed"
 date: 2020-11-08T18:22:13+01:00
 draft: false
 description: "Book summary"

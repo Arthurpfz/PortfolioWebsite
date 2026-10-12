@@ -402,8 +402,20 @@ footer p, footer a {
   .hero {
     font-size: 22px;
     padding: var(--space-lg) var(--space-sm);
+    border-top: none;
+    margin-top: 0;
   }
 
-  .nav-links { gap: var(--space-md); }
-  .site-nav a, .nav-link { font-size: 10px; }
+  .site-nav {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-sm);
+  }
+  .nav-links {
+    flex-wrap: wrap;
+    gap: var(--space-xs) 10px;
+  }
+  .site-nav a, .nav-link { font-size: 10px; letter-spacing: 0.12em; white-space: nowrap; }
+
+  p, .article-body p, .article-row__excerpt { text-align: left; }
 }

@@ -13,16 +13,18 @@ function formatDate(date: Date) {
 
 <BaseLayout
   title="Arthur Pfalzgraf"
-  description="Feed for thoughts."
+  description="Arthur Pfalzgraf — Dir of Product at Iron, acquired by MoonPay. A feed of the agents and automations I build on the side."
 >
   <div class="hero">
     Feed for thoughts.
   </div>
 
+  <p class="intro">I'm Arthur — Dir of Product at Iron, acquired by MoonPay. This is the log of what I build on the side: agents, automations, and the data layer underneath them. <a href="/experience">More about me</a>.</p>
+
   <section class="feed" aria-label="Feed">
     {sortedFeed.map(item => {
       const inner = (
-        <div class="feed-card">
+        <div class="feed-card" id={item.id}>
           <div class="feed-date">{formatDate(effectiveDate(item))}</div>
           <div class="feed-body">
             {item.data.icon && <span class="feed-icon">{item.data.icon}</span>}
@@ -42,6 +44,16 @@ function formatDate(date: Date) {
 </BaseLayout>
 
 <style>
+  .intro {
+    max-width: 680px;
+    line-height: 1.6;
+    margin: 0 0 var(--space-lg) 0;
+  }
+
+  .intro a {
+    text-decoration: underline;
+  }
+
   .feed {
     border-top: var(--border);
   }

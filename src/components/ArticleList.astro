@@ -1,0 +1,82 @@
+---
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+  articles: CollectionEntry<'articles'>[];
+}
+
+const articles = Astro.props.articles
+  .filter(article => !article.data.draft)
+  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+
+function formatDate(date: Date) {
+  return date.toISOString().split('T')[0];
+}
+---
+
+<div class="list">
+  {articles.map(article => (
+    <a href={`/archive/${article.id.replace(/\.md$/, '')}`} class="list-row">
+      <span class="list-category">{article.data.categories?.[0] || 'Essay'}</span>
+      <span class="list-title">{article.data.title}</span>
+      <span class="list-date">{formatDate(article.data.date)}</span>
+    </a>
+  ))}
+</div>
+
+<style>
+  .list {
+    border-top: var(--border);
+  }
+
+  .list-row {
+    display: grid !important;
+    grid-template-columns: 110px 1fr auto;
+    gap: var(--space-lg);
+    align-items: baseline;
+    padding: 20px 0;
+    border-bottom: var(--border);
+    text-decoration: none;
+    color: var(--color-primary);
+    transition: opacity 150ms ease;
+  }
+
+  .list-row:hover {
+    opacity: 0.6;
+    text-decoration: none;
+  }
+
+  .list-category {
+    font-family: var(--font-mono);
+    font-style: normal;
+    font-size: var(--text-tag);
+    letter-spacing: var(--tracking-nav);
+    text-transform: uppercase;
+    opacity: 0.5;
+  }
+
+  .list-title {
+    font-size: var(--text-body);
+  }
+
+  .list-date {
+    font-family: var(--font-mono);
+    font-style: normal;
+    font-size: var(--text-meta);
+    white-space: nowrap;
+    opacity: 0.5;
+    text-align: right;
+  }
+
+  @media (max-width: 768px) {
+    .list-row {
+      grid-template-columns: 1fr auto;
+      gap: var(--space-sm);
+      padding: var(--space-md) 0;
+    }
+
+    .list-category {
+      grid-column: 1 / -1;
+    }
+  }
+</style>

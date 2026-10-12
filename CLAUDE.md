@@ -14,8 +14,8 @@ Single source of truth: `src/styles/design-tokens.css`
 
 - **Primary color:** `#1B3A5C` (deep navy)
 - **Background:** `#F0F2F5`
-- **Body font:** IM Fell English (Google Fonts), serif italic
-- **Nav font:** Helvetica Neue, 11px, uppercase, bold, 0.18em tracking
+- **Body font:** Inter, self-hosted via `@fontsource/inter` (imported in `BaseLayout.astro`)
+- **Nav font:** Inter, 11px, uppercase, bold, 0.18em tracking
 - **Mono font:** Courier New, 10px (metadata, dates)
 - **Borders:** Always `1px dashed` — never solid
 - **No dark mode** — light-only aesthetic
@@ -32,7 +32,12 @@ Use CSS variables (`--border`, `--color-primary`, `--font-mono`, `--space-*`, `-
 | `/builds` | `builds.astro` | Curated portfolio of personal projects |
 | `/experience` | `experience.astro` | About page — intro + career history |
 | `/book-summaries` | `book-summaries.astro` | List of 13 book summaries |
+| `/archive` | `archive/index.astro` | All articles (essays + book summaries) |
 | `/archive/[slug]` | `archive/[slug].astro` | Individual article pages |
+| `/rss.xml` | `rss.xml.ts` | RSS of the feed collection |
+| 404 | `404.astro` | Not-found page |
+
+`ArticleList.astro` renders the list on `/book-summaries` and `/archive`. Sitemap comes from `@astrojs/sitemap`; `robots.txt` and the share image `og.png` live in `public/`.
 
 ### Navigation (`src/components/Navigation.astro`)
 Left: `arthurpfz.com` → `/`
@@ -53,7 +58,7 @@ Links:
 - To add a feed item: create a new `.md` file in `src/content/feed/`
 
 ### Layout
-- `BaseLayout.astro` — wraps all pages, imports global.css, loads IM Fell English font, renders Navigation + main slot
+- `BaseLayout.astro` — wraps all pages, imports global.css + Inter, sets canonical / Open Graph / Twitter tags (one shared `og.png`), renders Navigation + main slot
 
 ## Key Patterns
 
@@ -84,3 +89,4 @@ git push origin master
 - Netlify defaults to Node 18 which breaks Astro 6
 - Branch: `master` (not main)
 - Old `/post/*` URLs redirect to `/archive/*` via netlify.toml
+- Security headers are set in `netlify.toml`. No CSP: the dune background is an inline script

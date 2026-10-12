@@ -22,6 +22,12 @@ const builds: Build[] = [
     ],
   },
   {
+    name: 'Daily Podcast',
+    tagline: "A two-host, ~15-minute podcast generated every morning from what my agents sent me in the last 24 hours: training tip, yesterday's bookmarks, and a macro / crypto / AI briefing. Lands on Telegram as an MP3 at 07:30, in time for my ride to work. Gemini writes the script, an OpenAI audio model voices it line by line. About $0.10 an episode.",
+    stack: 'Python · Gemini · gpt-audio-mini · OpenRouter · ffmpeg · n8n · Telegram',
+    status: 'in use',
+  },
+  {
     name: 'text-polisher',
     tagline: 'System-wide hotkey: select text in any app, hit a key, get a polished rewrite pasted in place. Tray-icon controls for language and tone. V3 added push-to-talk dictation via local Whisper.',
     stack: 'Python · Anthropic API · Whisper · macOS / X11',
@@ -45,8 +51,14 @@ const builds: Build[] = [
     ],
   },
   {
+    name: 'Brain Digest',
+    tagline: "Every Monday at 08:00, picks one recently updated page from my vault and sends me a ~150-word Telegram dispatch on it: one tension, gap or surprising fact, not a summary. The rule in the prompt: a digest fails if it could have been written a month ago. One n8n workflow, no script.",
+    stack: 'n8n · Claude Haiku · OpenRouter · Telegram',
+    status: 'in use',
+  },
+  {
     name: 'Hermes',
-    tagline: "VPS-side agent with two personalities. 'Vault-aware' answers questions over my knowledge base in read-only mode; 'vault-writer' drafts new pages into a sandboxed inbox. Talks to me on Telegram. Routes most queries to Grok 4.1 Fast — Sonnet only when needed.",
+    tagline: "VPS-side agent with two personalities. 'Vault-aware' answers questions over my knowledge base in read-only mode; 'vault-writer' drafts new pages into a sandboxed inbox. Talks to me on Telegram. Runs on Grok via OpenRouter.",
     stack: 'Python · OpenRouter · Telegram · Docker',
     status: 'in use',
   },
@@ -97,7 +109,7 @@ const statusLabel: Record<Build['status'], string> = {
                 target={link.external ? '_blank' : undefined}
                 rel={link.external ? 'noopener noreferrer' : undefined}
               >
-                {link.label}{link.external && ' ↗'}
+                {link.label}{link.external && ' ↗\uFE0E'}
               </a>
             ))}
           </div>

@@ -109,7 +109,7 @@ const statusLabel: Record<Build['status'], string> = {
                 target={link.external ? '_blank' : undefined}
                 rel={link.external ? 'noopener noreferrer' : undefined}
               >
-                {link.label}{link.external && ' ↗'}
+                {link.label}{link.external && ' ↗\uFE0E'}
               </a>
             ))}
           </div>

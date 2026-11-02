@@ -11,6 +11,17 @@ type Build = {
 
 const builds: Build[] = [
   {
+    name: 'Croissant Ride',
+    tagline: 'Indoor smart-trainer app that runs in the browser. Pair a trainer and HR strap over Bluetooth, ride structured workouts in ERG mode (or import Zwift .zwo files) through switchable 3D worlds, then post the .FIT to Intervals.icu, Strava, Garmin or TrainingPeaks. No account, no backend, no subscription.',
+    stack: 'TypeScript · Three.js · Web Bluetooth · FTMS · Garmin FIT SDK',
+    status: 'in use',
+    links: [
+      { label: 'Article', href: '/archive/croissant-ride' },
+      { label: 'Live', href: 'https://ride.arthurpfz.com', external: true },
+      { label: 'GitHub', href: 'https://github.com/Arthurpfz/croissant-ride', external: true },
+    ],
+  },
+  {
     name: 'tri-coach',
     tagline: "Personal AI triathlon coach. Pulls every workout from Intervals.icu, grades it against my fitness with Claude, texts feedback on Telegram. Plans the next week every Sunday. Runs on tricoach-db — a ~250-line self-hosted SQLite API I built to replace Airtable, zero recurring cost.",
     stack: 'n8n · Claude · Intervals.icu API · Telegram · SQLite · Docker',

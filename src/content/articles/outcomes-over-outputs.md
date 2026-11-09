@@ -35,4 +35,4 @@ categories: [
 3. Outcomes for organization
     * Organizational change requires to take colleagues as customers, what are their goals?
 4. Impact mapping for identifying features
-    * ![Example imagee](/images/outcomes-over-outputs/OutcomesOverOutputs1.jpg)
+    * ![Impact map: the goal "grow mobile advertising" branches to actors (super-fans, concert organisers, artist agents), their impacts and the deliverables that drive them](/images/outcomes-over-outputs/OutcomesOverOutputs1.jpg)

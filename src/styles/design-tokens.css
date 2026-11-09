@@ -19,6 +19,7 @@
   --color-bg:             #F0F2F5;
   --color-bg-alt:         #F5F7F9;
   --color-white:          #ffffff;
+  --color-muted:          #49617D;  /* small meta text: 6:1 on white (WCAG AA) */
 
   /* Typography */
   --font-serif:  'Inter', 'Helvetica Neue', Helvetica, Arial, sans-serif;
@@ -134,6 +135,12 @@ a {
 
 a:hover { text-decoration: underline; }
 
+/* Keyboard focus — one ring for every link, button and field */
+:focus-visible {
+  outline: 2px dashed var(--color-primary);
+  outline-offset: 3px;
+}
+
 /* Category label above excerpts */
 .label {
   font-family: var(--font-mono);
@@ -172,6 +179,11 @@ a:hover { text-decoration: underline; }
 .site-nav a:hover, .nav-link:hover {
   opacity: 0.65;
   text-decoration: none;
+}
+
+.nav-link.active, .nav-link.active:hover {
+  text-decoration: underline;
+  text-underline-offset: 5px;
 }
 
 .nav-links {
@@ -238,7 +250,7 @@ a:hover { text-decoration: underline; }
   font-size: var(--text-meta);
   line-height: var(--leading-loose);
   text-align: right;
-  opacity: 0.65;
+  color: var(--color-muted);
 }
 
 .article-row__icon {
@@ -292,7 +304,7 @@ a:hover { text-decoration: underline; }
   font-size: var(--text-meta);
   letter-spacing: var(--tracking-meta);
   text-transform: uppercase;
-  opacity: 0.6;
+  color: var(--color-muted);
   margin-bottom: var(--space-md);
 }
 
@@ -354,7 +366,7 @@ a:hover { text-decoration: underline; }
   font-size: var(--text-meta);
   line-height: var(--leading-loose);
   text-align: right;
-  opacity: 0.5;
+  color: var(--color-muted);
 }
 
 /* ------------------------------------------------------------
@@ -373,14 +385,18 @@ footer {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
 }
 
 footer p, footer a {
   font-family: var(--font-mono);
   font-style: normal;
   font-size: var(--text-meta);
-  opacity: 0.45;
+  color: var(--color-muted);
 }
+
+footer p { margin: 0; }
 
 /* ------------------------------------------------------------
    RESPONSIVE

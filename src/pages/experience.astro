@@ -42,15 +42,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     </article>
   </section>
 
-  <hr />
-
-  <footer class="page-footer">
-    <p>
-      <a href="https://www.linkedin.com/in/apfalzgraf/" target="_blank" rel="noopener noreferrer">LinkedIn ↗&#xFE0E;</a>
-      · <a href="https://github.com/Arthurpfz" target="_blank" rel="noopener noreferrer">GitHub ↗&#xFE0E;</a>
-      · <a href="https://x.com/arthurpfz" target="_blank" rel="noopener noreferrer">X ↗&#xFE0E;</a>
-    </p>
-  </footer>
 </BaseLayout>
 
 <style>
@@ -98,7 +89,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     font-size: var(--text-meta);
     letter-spacing: var(--tracking-meta);
     text-transform: uppercase;
-    opacity: 0.5;
+    color: var(--color-muted);
   }
 
   .role-meta {
@@ -107,7 +98,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     font-size: var(--text-meta);
     letter-spacing: var(--tracking-meta);
     text-transform: uppercase;
-    opacity: 0.6;
+    color: var(--color-muted);
     margin-bottom: var(--space-md);
   }
 
@@ -119,14 +110,4 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     margin: var(--space-md) 0;
   }
 
-  .page-footer {
-    padding: var(--space-lg) 0;
-  }
-
-  .page-footer p {
-    font-family: var(--font-mono);
-    font-style: normal;
-    font-size: var(--text-meta);
-    opacity: 0.45;
-  }
 </style>

@@ -1,0 +1,27 @@
+---
+// Legal links appear once the pages exist (they live on the legal-pages branch until filled in).
+const pages = Object.keys(import.meta.glob('../pages/{impressum,privacy}.astro'));
+const legal = [
+  { href: '/impressum', label: 'Impressum' },
+  { href: '/privacy', label: 'Privacy' },
+].filter(l => pages.some(p => p.endsWith(l.href + '.astro')));
+
+const social = [
+  { href: 'https://www.linkedin.com/in/apfalzgraf/', label: 'LinkedIn' },
+  { href: 'https://github.com/Arthurpfz', label: 'GitHub' },
+  { href: 'https://x.com/arthurpfz', label: 'X' },
+];
+---
+
+<footer class="site-footer">
+  <p>
+    {social.map((l, i) => (
+      <>{i > 0 && ' · '}<a href={l.href} target="_blank" rel="noopener noreferrer">{l.label} ↗&#xFE0E;</a></>
+    ))}
+  </p>
+  {legal.length > 0 && (
+    <p>
+      {legal.map((l, i) => (<>{i > 0 && ' · '}<a href={l.href}>{l.label}</a></>))}
+    </p>
+  )}
+</footer>

@@ -17,6 +17,8 @@ Single source of truth: `src/styles/design-tokens.css`
 - **Body font:** Inter, self-hosted via `@fontsource/inter` (imported in `BaseLayout.astro`)
 - **Nav font:** Inter, 11px, uppercase, bold, 0.18em tracking
 - **Mono font:** Courier New, 10px (metadata, dates)
+- **Muted text:** `--color-muted` for small meta text, never opacity below ~0.75 on text (WCAG AA contrast)
+- **Focus:** one sitewide `:focus-visible` dashed ring in `design-tokens.css`
 - **Borders:** Always `1px dashed` — never solid
 - **No dark mode** — light-only aesthetic
 - **No shadows** — flat design
@@ -58,7 +60,7 @@ Links:
 - To add a feed item: create a new `.md` file in `src/content/feed/`
 
 ### Layout
-- `BaseLayout.astro` — wraps all pages, imports global.css + Inter, sets canonical / Open Graph / Twitter tags (one shared `og.png`), renders Navigation + main slot
+- `BaseLayout.astro` — wraps all pages, imports global.css + Inter, sets canonical / Open Graph / Twitter tags (one shared `og.png`), renders Navigation + main slot + `Footer.astro` (LinkedIn/GitHub/X; Impressum/Privacy links appear once those pages exist)
 
 ## Key Patterns
 
@@ -70,7 +72,6 @@ Links:
 ## About Page Content
 - Arthur Pfalzgraf — "Ironing things out at MoonPay."
 - Roles: Iron by MoonPay (Head of Product, present), Ultimate (Product, acquired by Jupiter Exchange), Trade Republic (Crypto Custodian Builder), HelloFresh (Product Data Scientist → Product Manager)
-- Footer: LinkedIn, GitHub, X links
 
 ## Dev Server
 ```bash

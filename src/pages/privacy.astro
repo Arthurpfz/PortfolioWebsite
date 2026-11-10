@@ -1,0 +1,103 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Privacy - Arthur Pfalzgraf" description="Privacy notice for arthurpfz.com and croissantride.com">
+  <article class="legal">
+    <h1>Privacy</h1>
+    <p class="meta">Applies to arthurpfz.com and croissantride.com · Last updated 2026-11-10</p>
+
+    <h2>Who is responsible</h2>
+    <p>
+      Arthur Pfalzgraf, Germany. Questions about your data: <a href="mailto:ar.pfalzgraf@gmail.com">ar.pfalzgraf@gmail.com</a>.
+    </p>
+
+    <h2>Short version</h2>
+    <p>
+      No accounts, no cookies, no ads, no tracking. arthurpfz.com counts page views with cookieless analytics that I host
+      myself; Croissant Ride has no analytics. The only personal data that reaches a server is what every website request
+      carries (your IP address and browser details), handled by the host and the analytics tool below.
+    </p>
+
+    <h2>Hosting</h2>
+    <p>
+      Both sites are hosted by Netlify, Inc., 101 2nd Street, San Francisco, CA 94105, USA. To deliver the pages and keep
+      them secure, Netlify processes the data each request carries: IP address, date and time, page requested, referring
+      page, browser and operating system. I don't use these logs for statistics or to identify anyone. Netlify acts as my
+      processor under its Data Processing Agreement. Data may be processed in the USA; Netlify is certified under the
+      EU-U.S. Data Privacy Framework (Art. 45 GDPR). Legal basis: Art. 6(1)(f) GDPR, my legitimate interest in running
+      the sites reliably and securely.
+    </p>
+
+    <h2>Analytics (arthurpfz.com only)</h2>
+    <p>
+      arthurpfz.com uses Umami, an open-source analytics tool that I host myself on a server in Frankfurt, Germany. It
+      sets no cookies and stores nothing on your device. It records page views, the referring site, and the browser,
+      operating system, device type and country, and it does not store your IP address. Visitors cannot be identified or
+      followed across sites, and the data is not shared with anyone. Browsers that send "Do Not Track" are not counted.
+      Legal basis: my legitimate interest in knowing how the site is used (Art. 6(1)(f) GDPR).
+    </p>
+
+    <h2>Croissant Ride</h2>
+    <p>
+      Croissant Ride (croissantride.com) runs entirely in your browser. Your settings (FTP, weight, units, sound, chosen
+      world), imported sessions and a crash-safe copy of the ride in progress are kept in your browser's local storage on
+      your device. They never reach me or any server, and you can delete them by clearing the site's data in your browser.
+      This storage is needed for the service you asked for (§ 25(2) no. 2 TDDDG), so no consent banner is shown.
+    </p>
+    <p>
+      Bluetooth sensors (trainer, heart-rate strap, cadence sensor, remote) connect directly to your browser. Their
+      readings, including heart rate, stay on your device until you download a ride file.
+    </p>
+    <p>
+      A ride leaves your device only when you choose to: "Download .FIT" saves it to your computer, and the "Post to"
+      buttons open the upload page of the service you pick (Intervals.icu, Strava, Garmin Connect, TrainingPeaks), where
+      you upload the file yourself. What happens there is covered by that service's own privacy policy.
+    </p>
+    <p>
+      Spoken cues use your browser's built-in voices. Some browsers (e.g. Chrome's Google voices, Edge's online voices)
+      send the text of the cue, such as "240 watts, 10 minutes", to their maker's servers to speak it. Mute the cues to
+      avoid this.
+    </p>
+
+    <h2>Fonts and other content</h2>
+    <p>
+      All fonts and scripts are served from the sites themselves, except the analytics script on arthurpfz.com, which
+      comes from my own server (stats.arthurpfz.com, see Analytics). No content is loaded from anyone else's servers.
+    </p>
+
+    <h2>Your rights</h2>
+    <p>
+      Under the GDPR you can ask for access to your data (Art. 15), correction (Art. 16), deletion (Art. 17), restriction
+      (Art. 18) and portability (Art. 20), and you can object to processing based on legitimate interest (Art. 21). Write
+      to the email above. You can also complain to a data protection authority, e.g. the one in the EU country where you
+      live.
+    </p>
+  </article>
+</BaseLayout>
+
+<style>
+  .legal {
+    max-width: 42rem;
+    margin: 0 auto;
+    padding: var(--space-lg) 0;
+  }
+
+  .legal h2 {
+    margin-top: var(--space-lg);
+  }
+
+  .legal p {
+    margin-top: var(--space-sm);
+  }
+
+  .legal a {
+    text-decoration: underline;
+  }
+
+  .meta {
+    font-family: var(--font-mono);
+    font-size: var(--text-meta);
+    color: var(--color-muted);
+  }
+</style>

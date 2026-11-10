@@ -1,6 +1,7 @@
 ---
 title: "A vault that ingests itself"
 date: 2026-04-27
+updated: 2026-11-08
 description: "Voice notes, bookmarks, tweets, YouTube — captured automatically, filed in markdown, queryable from anywhere. The architecture, the schema, and the three patterns that hold it together."
 categories: ["Essay"]
 tags: ["Obsidian", "Knowledge Management", "Agents", "n8n"]

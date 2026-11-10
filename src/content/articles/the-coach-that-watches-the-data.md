@@ -1,6 +1,7 @@
 ---
 title: "A tri-coach on Telegram"
 date: 2026-06-07
+updated: 2026-07-14
 description: "An AI triathlon coach that grades every workout against your fitness, writes next week's plan on its own, and lives entirely on infrastructure I control. The architecture, the components, and the three patterns that hold it together."
 categories: ["Essay"]
 tags: ["Triathlon", "n8n", "Agents", "Self-hosting"]

@@ -36,7 +36,8 @@ Use CSS variables (`--border`, `--color-primary`, `--font-mono`, `--space-*`, `-
 | `/book-summaries` | `book-summaries.astro` | List of 13 book summaries |
 | `/archive` | `archive/index.astro` | All articles (essays + book summaries) |
 | `/archive/[slug]` | `archive/[slug].astro` | Individual article pages |
-| `/rss.xml` | `rss.xml.ts` | RSS of the feed collection |
+| `/rss.xml` | `rss.xml.ts` | RSS of feed cards + all articles |
+| `/llms.txt`, `/llms-full.txt` | `llms.txt.ts`, `llms-full.txt.ts` | Site index and full build write-ups as markdown, for AI assistants |
 | 404 | `404.astro` | Not-found page |
 
 `ArticleList.astro` renders the list on `/book-summaries` and `/archive`. Sitemap comes from `@astrojs/sitemap`; `robots.txt` and the share image `og.png` live in `public/`.
@@ -53,7 +54,7 @@ Links:
 ### Content Collections (`src/content.config.ts`)
 
 **articles** — `src/content/articles/*.md`
-- Schema: title, date, description, categories, tags, draft, image (optional share image; default `og.png`)
+- Schema: title, date, updated (optional; set it when you add an update-log entry — drives the UPDATED label, `dateModified` and sitemap `lastmod`), description, categories, tags, draft, image (optional share image; default `og.png`)
 
 **feed** — `src/content/feed/*.md`
 - Schema: title, date, description, link (optional), icon (optional)
@@ -68,6 +69,8 @@ Links:
 - **Tailwind v4 specificity:** Scoped Astro `<style>` may need `!important` on `display: grid` to override Tailwind resets
 - **Reading time:** Calculated from `entry.body` word count / 200 (not Content.toString())
 - **Article metadata:** `PUBLISHED YYYY-MM-DD · CATEGORY · N MIN READ` in Courier New mono
+- **Related:** each article ends with up to 3 others of the same kind (book summaries vs build write-ups), most shared tags first
+- **Titles:** book summaries get `: book summary and notes` appended to the page title (not the h1)
 - **Feed cards:** Date (mono) | icon + title + description, clickable if `link` is set
 
 ## About Page Content

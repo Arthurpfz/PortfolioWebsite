@@ -2,9 +2,9 @@
 // Legal links appear once the pages exist (they live on the legal-pages branch until filled in).
 const pages = Object.keys(import.meta.glob('../pages/{impressum,privacy}.astro'));
 const legal = [
-  { href: '/impressum', label: 'Impressum' },
-  { href: '/privacy', label: 'Privacy' },
-].filter(l => pages.some(p => p.endsWith(l.href + '.astro')));
+  { href: '/impressum/', label: 'Impressum' },
+  { href: '/privacy/', label: 'Privacy' },
+].filter(l => pages.some(p => p.endsWith(l.href.replace(/\/$/, '') + '.astro')));
 
 const social = [
   { href: 'https://www.linkedin.com/in/apfalzgraf/', label: 'LinkedIn' },

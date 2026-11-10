@@ -2,8 +2,7 @@
 title: "User Stories Mapping, J.Patton"
 date: 2020-02-02T10:58:42+01:00
 draft: false
-description: "Book Summary"
-
+description: "Notes on Jeff Patton's User Story Mapping: stories as shared understanding rather than requirements, mapping the big picture, and planning to build less."
 tags: [
     "User Stories",
     "Product Discovery"

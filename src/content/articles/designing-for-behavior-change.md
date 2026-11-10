@@ -2,7 +2,7 @@
 title: "Designing for behavior change, S. Wendel"
 date: 2020-11-08T18:39:59+01:00
 draft: false
-description: "Book summary"
+description: "Notes on Stephen Wendel's Designing for Behavior Change: how the mind decides, picking the right target behavior, and designing and refining a product that helps people act."
 tags: [ 
     "Behavioral Science & Design"
 ]

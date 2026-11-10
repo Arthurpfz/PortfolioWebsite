@@ -16,7 +16,7 @@ function formatDate(date: Date) {
 
 <div class="list">
   {articles.map(article => (
-    <a href={`/archive/${article.id.replace(/\.md$/, '')}`} class="list-row">
+    <a href={`/archive/${article.id.replace(/\.md$/, '')}/`} class="list-row">
       <span class="list-category">{article.data.categories?.[0] || 'Essay'}</span>
       <span class="list-title">{article.data.title}</span>
       <span class="list-date">{formatDate(article.data.date)}</span>

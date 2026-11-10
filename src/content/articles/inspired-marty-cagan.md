@@ -2,8 +2,7 @@
 title: "Inspired, M.Cagan"
 date: 2020-03-22T16:09:05+01:00
 draft: false
-description: "Book Summary"
-
+description: "Notes on Marty Cagan's Inspired: what separates good product teams from the rest. Outcomes over output, continuous discovery, and engineers involved from the first prototype."
 tags: [ 
     "Product Discovery","Product Team"
 ]

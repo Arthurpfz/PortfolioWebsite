@@ -111,8 +111,9 @@
       gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL, false);
       gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, img);
       imgW = img.naturalWidth; imgH = img.naturalHeight; ready = true;
+      if (reduceMotion) requestAnimationFrame(frame);
     };
-    img.src = '/images/dune-bg.png';
+    img.src = '/images/dune-bg.webp';
 
     var dpr = Math.min(window.devicePixelRatio || 1, 2);
     function resize() {
@@ -120,6 +121,7 @@
       canvas.width = w * dpr; canvas.height = h * dpr;
       canvas.style.width = w + 'px'; canvas.style.height = h + 'px';
       gl.viewport(0, 0, canvas.width, canvas.height);
+      if (reduceMotion && ready) requestAnimationFrame(frame);
     }
     window.addEventListener('resize', resize);
     resize();
@@ -145,9 +147,12 @@
       gl.uniform1f(U.time, (now - start) / 1000);
       gl.uniform1i(U.tex, 0);
       gl.drawArrays(gl.TRIANGLES, 0, 3);
-      requestAnimationFrame(frame);
+      raf = reduceMotion || document.hidden ? 0 : requestAnimationFrame(frame);
     }
-    requestAnimationFrame(frame);
+    var raf = requestAnimationFrame(frame);
+    document.addEventListener('visibilitychange', function () {
+      if (!document.hidden && !raf) raf = requestAnimationFrame(frame);
+    });
   })();
 </script>
 

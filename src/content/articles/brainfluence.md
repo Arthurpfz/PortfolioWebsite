@@ -2,8 +2,7 @@
 title: "Brainfluence, R.Dooley"
 date: 2020-04-10T16:51:19+02:00
 draft: false
-description: "Book Summary"
-
+description: "Notes on Roger Dooley's Brainfluence: neuromarketing in practice. The pain of paying, anchors and decoys, precise pricing, and how the unconscious brain drives buying decisions."
 tags: [ 
     "Behavioral Science & Design"
 ]

@@ -127,5 +127,6 @@ Follow [@arthurpfz](https://x.com/arthurpfz) for build logs.
 
 ## Update log
 
+- **2026-11-08** — Retired the on-VPS agent (Hermes) and QMD. It had ended up only running fixed scripts on a schedule, which n8n does better. Questions over the vault now go to Claude Code running on the VPS, with plain grep over the markdown.
 - **2026-04-27** — Published this writeup: the architecture, the schema, and the three patterns that hold it together.
 - **2026-04-10** — Vault foundation in place. Obsidian on the read side, Claude on the write side, QMD for full-text search, Syncthing mirroring Mac ↔ VPS with no cloud middleman.

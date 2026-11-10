@@ -2,7 +2,7 @@
 title: "Predictably Irrational, D.Ariely"
 date: 2020-04-11T15:25:19+02:00
 draft: false
-description: "Book summary"
+description: "Notes on Dan Ariely's Predictably Irrational: the decoy effect, anchor prices, the pull of free, and the other systematic ways we fail to decide rationally."
 tags: [ 
     "Behavioral Science & Design"
 ]

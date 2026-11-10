@@ -2,7 +2,7 @@
 title: "Good Strategy Bad Strategy, R.Rumelt"
 date: 2020-05-17T09:55:10+02:00
 draft: false
-description: "Book summary"
+description: "Notes on Richard Rumelt's Good Strategy Bad Strategy: the kernel of a good strategy (diagnosis, guiding policy, coherent action) and the hallmarks of a bad one: fluff, goals and wish lists."
 tags: [ 
     "Business Strategy"
 ]

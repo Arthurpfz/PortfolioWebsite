@@ -32,6 +32,8 @@ const readingTime = Math.max(1, Math.ceil(wordCount / 200));
 <BaseLayout
   title={`${entry.data.title} - Arthur Pfalzgraf`}
   description={entry.data.description}
+  image={entry.data.image}
+  article={{ published: entry.data.date }}
 >
   <article>
     <header class="article-header">

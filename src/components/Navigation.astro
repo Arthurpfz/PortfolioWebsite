@@ -3,15 +3,15 @@ const currentPath = Astro.url.pathname;
 
 const navLinks = [
   { href: '/', label: 'Feed' },
-  { href: '/builds', label: 'Builds' },
-  { href: '/experience', label: 'About' },
+  { href: '/builds/', label: 'Builds' },
+  { href: '/experience/', label: 'About' },
   { href: 'https://www.linkedin.com/in/apfalzgraf/', label: 'LinkedIn', external: true },
   { href: 'https://github.com/Arthurpfz', label: 'GitHub', external: true },
   { href: 'https://x.com/arthurpfz', label: 'X', external: true },
 ];
 
 function isActive(path: string) {
-  return currentPath === path || currentPath.startsWith(path + '/');
+  return currentPath.replace(/\/$/, '') === path.replace(/\/$/, '');
 }
 ---
 

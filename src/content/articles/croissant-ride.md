@@ -7,7 +7,7 @@ tags: ["Cycling", "Web Bluetooth", "Three.js", "Open source"]
 draft: false
 ---
 
-<video src="/croissant-ride/night-draft.mp4" poster="/croissant-ride/night-draft.jpg" autoplay muted loop playsinline controls></video>
+<video src="/croissant-ride/night-draft.mp4" poster="/croissant-ride/night-draft.jpg" preload="none" muted loop playsinline controls></video>
 
 I was unsatisfied with my indoor training app. I don't need all the paid features, the social side, the avatars. I just want to ride my session.
 
@@ -15,7 +15,7 @@ So I built my own and cut it to the essentials, with a slicker design, so I can 
 
 Open [croissantride.com](https://croissantride.com) in Chrome, pair, ride. Yes, there is a cosmic map.
 
-<video src="/croissant-ride/cosmic-circuit.mp4" poster="/croissant-ride/cosmic-circuit.jpg" autoplay muted loop playsinline controls></video>
+<video src="/croissant-ride/cosmic-circuit.mp4" poster="/croissant-ride/cosmic-circuit.jpg" preload="none" muted loop playsinline controls></video>
 
 ## What it does
 

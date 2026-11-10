@@ -7,13 +7,27 @@ export const getStaticPaths = (async () => {
   const articles = await getCollection('articles');
   const publishedArticles = articles.filter(article => !article.data.draft);
 
+  type Article = Awaited<ReturnType<typeof getCollection<'articles'>>>[number];
+
+  // Up to 3 other articles of the same category, most shared tags first, then newest
+  function related(entry: Article, all: Article[]) {
+    const tags = new Set(entry.data.tags ?? []);
+    const shared = (a: Article) => (a.data.tags ?? []).filter(t => tags.has(t)).length;
+    const isBook = (a: Article) => a.data.categories?.[0] === 'Book Summary';
+    return all
+      .filter(a => a.id !== entry.id && isBook(a) === isBook(entry))
+      .sort((a, b) => shared(b) - shared(a) || b.data.date.getTime() - a.data.date.getTime())
+      .slice(0, 3)
+      .map(a => ({ href: `/archive/${a.id.replace(/\.md$/, '')}/`, title: a.data.title }));
+  }
+
   return publishedArticles.map(entry => ({
     params: { slug: entry.id.replace(/\.md$/, '') },
-    props: { entry },
+    props: { entry, related: related(entry, publishedArticles) },
   }));
 }) satisfies GetStaticPaths;
 
-const { entry } = Astro.props;
+const { entry, related: relatedArticles } = Astro.props;
 const rendered = await render(entry);
 const { Content } = rendered;
 
@@ -22,6 +36,7 @@ function formatDate(date: Date) {
 }
 
 const category = entry.data.categories?.[0] || 'Essay';
+const pageTitle = category === 'Book Summary' ? `${entry.data.title}: book summary and notes` : entry.data.title;
 
 // Estimate reading time from raw markdown body
 const rawBody = (entry as any).body || '';
@@ -30,15 +45,15 @@ const readingTime = Math.max(1, Math.ceil(wordCount / 200));
 ---
 
 <BaseLayout
-  title={`${entry.data.title} - Arthur Pfalzgraf`}
+  title={`${pageTitle} - Arthur Pfalzgraf`}
   description={entry.data.description}
   image={entry.data.image}
-  article={{ published: entry.data.date }}
+  article={{ published: entry.data.date, modified: entry.data.updated }}
 >
   <article>
     <header class="article-header">
       <div class="article-header__meta">
-        PUBLISHED {formatDate(entry.data.date)} · {category.toUpperCase()} · {readingTime} MIN READ
+        PUBLISHED {formatDate(entry.data.date)}{entry.data.updated && ` · UPDATED ${formatDate(entry.data.updated)}`} · {category.toUpperCase()} · {readingTime} MIN READ
       </div>
       <h1 class="article-header__title">{entry.data.title}</h1>
       {entry.data.tags && entry.data.tags.length > 0 && (
@@ -52,10 +67,48 @@ const readingTime = Math.max(1, Math.ceil(wordCount / 200));
     <div class="article-body">
       <Content />
     </div>
+    {relatedArticles.length > 0 && (
+      <nav class="related" aria-label="Related">
+        <div class="related__label">Related</div>
+        <ul>
+          {relatedArticles.map(r => <li><a href={r.href}>{r.title}</a></li>)}
+        </ul>
+      </nav>
+    )}
   </article>
 </BaseLayout>
 
 <style>
+  .related {
+    margin-top: var(--space-xl);
+    padding-top: var(--space-lg);
+    border-top: var(--border);
+  }
+
+  .related__label {
+    font-family: var(--font-mono);
+    font-size: var(--text-meta);
+    letter-spacing: var(--tracking-meta);
+    text-transform: uppercase;
+    color: var(--color-muted);
+    margin-bottom: var(--space-sm);
+  }
+
+  .related ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .related li {
+    margin-bottom: var(--space-sm);
+  }
+
+  .related a {
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
   .article-body :global(ul),
   .article-body :global(ol) {
     margin-bottom: 1.25em;

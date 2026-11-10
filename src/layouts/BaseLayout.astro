@@ -11,7 +11,7 @@ interface Props {
   title: string;
   description?: string;
   image?: string;
-  article?: { published: Date };
+  article?: { published: Date; modified?: Date };
 }
 
 const {
@@ -28,6 +28,10 @@ const author = {
   '@type': 'Person',
   name: 'Arthur Pfalzgraf',
   url: 'https://arthurpfz.com/',
+  jobTitle: 'Director of Product',
+  worksFor: { '@type': 'Organization', name: 'Iron by MoonPay', url: 'https://iron.xyz' },
+  alumniOf: ['Ultimate', 'Trade Republic', 'HelloFresh'].map(name => ({ '@type': 'Organization', name })),
+  knowsAbout: ['Product management', 'Stablecoin payments', 'Crypto', 'AI agents', 'Workflow automation', 'Behavioral design'],
   sameAs: ['https://www.linkedin.com/in/apfalzgraf/', 'https://github.com/Arthurpfz', 'https://x.com/arthurpfz'],
 };
 const jsonLd = article
@@ -37,6 +41,7 @@ const jsonLd = article
       headline: title.replace(/ - Arthur Pfalzgraf$/, ''),
       description,
       datePublished: article.published.toISOString(),
+      dateModified: (article.modified ?? article.published).toISOString(),
       image: ogImage.href,
       mainEntityOfPage: canonical.href,
       author,
@@ -53,6 +58,7 @@ const jsonLd = article
     <link rel="canonical" href={canonical} />
     <meta property="og:type" content={article ? 'article' : 'website'} />
     {article && <meta property="article:published_time" content={article.published.toISOString()} />}
+    {article?.modified && <meta property="article:modified_time" content={article.modified.toISOString()} />}
     <meta property="og:site_name" content="Arthur Pfalzgraf" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
@@ -62,6 +68,7 @@ const jsonLd = article
     <meta name="twitter:site" content="@arthurpfz" />
     <link rel="alternate" type="application/rss+xml" title="Arthur Pfalzgraf" href="/rss.xml" />
     <link rel="sitemap" href="/sitemap-index.xml" />
+    <link rel="alternate" type="text/plain" title="llms.txt" href="/llms.txt" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <title>{title}</title>
     <script is:inline type="application/ld+json" set:html={JSON.stringify(jsonLd)} />

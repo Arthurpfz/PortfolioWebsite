@@ -61,6 +61,7 @@ Links:
 
 ### Layout
 - `BaseLayout.astro` — wraps all pages, imports global.css + Inter, sets canonical / Open Graph / Twitter tags (one shared `og.png`), renders Navigation + main slot + `Footer.astro` (LinkedIn/GitHub/X; Impressum/Privacy links appear once those pages exist)
+- **Analytics:** self-hosted Umami (cookieless, no consent banner) at https://stats.arthurpfz.com; one script tag in `BaseLayout.astro`, counting only on `arthurpfz.com` (not localhost or previews)
 
 ## Key Patterns
 

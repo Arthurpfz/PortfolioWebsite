@@ -13,7 +13,7 @@ I was unsatisfied with my indoor training app. I don't need all the paid feature
 
 So I built my own and cut it to the essentials, with a slicker design, so I can actually enjoy the ride and focus on what matters most.
 
-Open [ride.arthurpfz.com](https://ride.arthurpfz.com) in Chrome, pair, ride. Yes, there is a cosmic map.
+Open [croissantride.com](https://croissantride.com) in Chrome, pair, ride. Yes, there is a cosmic map.
 
 <video src="/croissant-ride/cosmic-circuit.mp4" poster="/croissant-ride/cosmic-circuit.jpg" autoplay muted loop playsinline controls></video>
 

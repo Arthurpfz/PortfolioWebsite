@@ -17,7 +17,7 @@ const builds: Build[] = [
     status: 'in use',
     links: [
       { label: 'Article', href: '/archive/croissant-ride' },
-      { label: 'Live', href: 'https://ride.arthurpfz.com', external: true },
+      { label: 'Live', href: 'https://croissantride.com', external: true },
       { label: 'GitHub', href: 'https://github.com/Arthurpfz/croissant-ride', external: true },
     ],
   },
@@ -34,8 +34,8 @@ const builds: Build[] = [
   },
   {
     name: 'Daily Podcast',
-    tagline: "A two-host, ~15-minute podcast generated every morning from what my agents sent me in the last 24 hours: training tip, yesterday's bookmarks, and a macro / crypto / AI briefing. Lands on Telegram as an MP3 at 07:30, in time for my ride to work. Gemini writes the script, an OpenAI audio model voices it line by line. About $0.10 an episode.",
-    stack: 'Python · Gemini · gpt-audio-mini · OpenRouter · ffmpeg · n8n · Telegram',
+    tagline: "A two-host, ~15-minute podcast generated every morning: overnight macro / crypto / AI news, prediction markets, Hacker News, yesterday's bookmarks, and one training tip from my vault. Lands on Telegram as an MP3 around 06:00. A GPT model writes the script, an OpenAI audio model voices it line by line. About $0.10 an episode.",
+    stack: 'Python · GPT · gpt-audio-mini · OpenRouter · ffmpeg · n8n · Telegram',
     status: 'in use',
   },
   {
@@ -53,8 +53,8 @@ const builds: Build[] = [
   },
   {
     name: "Vault (Arthur's 2nd Brain)",
-    tagline: "My second brain. Personal LLM-friendly knowledge base — Obsidian for reading, Claude for writing, QMD for full-text search, Syncthing keeping my Mac and VPS in lockstep with no cloud middleman. Karpathy-style topic-led wiki, with sources, entities and concepts as separate page types. Hermes, XBookmarks and Voice Notes all feed into it. Architecture, schema and skills are public.",
-    stack: 'Obsidian · QMD · Syncthing · Markdown',
+    tagline: "My second brain. Personal LLM-friendly knowledge base — Obsidian for reading, Claude for writing and answering, Syncthing keeping my Mac and VPS in lockstep with no cloud middleman. Karpathy-style topic-led wiki, with sources, entities and concepts as separate page types. The capture bots and Voice Notes feed into it. Architecture, schema and skills are public.",
+    stack: 'Obsidian · Claude · Syncthing · Markdown',
     status: 'in use',
     links: [
       { label: 'Article', href: '/archive/stop-typing-second-brain' },
@@ -65,12 +65,6 @@ const builds: Build[] = [
     name: 'Brain Digest',
     tagline: "Every Monday at 08:00, picks one recently updated page from my vault and sends me a ~150-word Telegram dispatch on it: one tension, gap or surprising fact, not a summary. The rule in the prompt: a digest fails if it could have been written a month ago. One n8n workflow, no script.",
     stack: 'n8n · Claude Haiku · OpenRouter · Telegram',
-    status: 'in use',
-  },
-  {
-    name: 'CroissantHermes',
-    tagline: "VPS-side agent with two personalities. 'Vault-aware' answers questions over my knowledge base in read-only mode; 'vault-writer' drafts new pages into a sandboxed inbox. Talks to me on Telegram. Runs on Grok via OpenRouter.",
-    stack: 'Python · OpenRouter · Telegram · Docker',
     status: 'in use',
   },
   {

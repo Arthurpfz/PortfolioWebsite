@@ -2,7 +2,7 @@
 title: "Hooked, N.Eyal"
 date: 2020-04-13T11:15:59+02:00
 draft: false
-description: "Book summary"
+description: "Notes on Nir Eyal's Hooked: the Hook Model for habit-forming products. Trigger, action, variable reward, investment, with examples from Amazon, Facebook and Evernote."
 tags: [ 
     "Behavioral Science & Design", "Product Discovery"
 ]

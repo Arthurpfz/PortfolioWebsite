@@ -2,7 +2,7 @@
 title: "Don't Make Me Think, S.Krug"
 date: 2020-04-11T11:14:37+02:00
 draft: false
-description: "Book summary"
+description: "Notes on Steve Krug's Don't Make Me Think: users scan, satisfice and muddle through, so make every page self-evident. The core rules of web usability."
 tags: [ 
     "UX Design"
 ]

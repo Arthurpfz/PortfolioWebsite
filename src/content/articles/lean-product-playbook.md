@@ -2,8 +2,7 @@
 title: "The Lean Product Playbook, D.Olsen"
 date: 2020-02-02T16:04:56+01:00
 draft: false
-description: "Book summary"
-
+description: "Notes on Dan Olsen's The Lean Product Playbook: the product-market fit pyramid, problem space vs solution space, the Kano model, and scoping an MVP."
 tags: [ 
     "Product Discovery"
 ]

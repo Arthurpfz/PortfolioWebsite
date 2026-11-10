@@ -4,6 +4,7 @@ date: 2026-11-02
 description: "My own indoor training app, cut to the essentials. Runs in the browser, open source."
 categories: ["Build"]
 tags: ["Cycling", "Web Bluetooth", "Three.js", "Open source"]
+image: "/croissant-ride/cosmic-circuit.jpg"
 draft: false
 ---
 

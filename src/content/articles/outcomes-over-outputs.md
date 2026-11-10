@@ -2,8 +2,7 @@
 title: "Outcomes Over Outputs, J.Seiden"
 date: 2020-03-21T10:39:33+01:00
 draft: false
-description: "Book Summary"
-
+description: "Notes on Josh Seiden's Outcomes Over Outputs: an outcome is a change in customer behavior that drives business results. How to find, plan around and measure outcomes."
 tags: [ 
     "Product Discovery"
 ]

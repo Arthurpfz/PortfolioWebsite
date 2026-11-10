@@ -2,7 +2,7 @@
 title: "Black Box Thinking, M. Syed"
 date: 2020-11-08T18:22:13+01:00
 draft: false
-description: "Book summary"
+description: "Notes on Matthew Syed's Black Box Thinking: why aviation learns from failure and medicine hides it, how cognitive dissonance blocks learning, and what a culture of testing looks like."
 tags: [ 
     "Behavioral Science & Design"
 ]

@@ -2,8 +2,7 @@
 title: "Speaking Up Without Freaking Out, M.Abrahams"
 date: 2020-04-10T16:51:04+02:00
 draft: false
-description: "Book summary"
-
+description: "Notes on Matt Abrahams' Speaking Up Without Freaking Out: where speaking anxiety comes from and practical techniques to manage it before and during a talk."
 tags: [ 
     "Public Speaking"
 ]

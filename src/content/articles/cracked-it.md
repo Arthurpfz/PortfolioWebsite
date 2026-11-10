@@ -2,7 +2,7 @@
 title: "Cracked It!, O.Sibony"
 date: 2020-04-19T13:27:58+02:00
 draft: false
-description: "Book summary"
+description: "Notes on Cracked It! by Garrette, Phelps and Sibony: solving big problems like a strategy consultant, the five pitfalls of problem-solving, and how to sell the solution."
 tags: [ 
     "Business Strategy"
 ]

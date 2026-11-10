@@ -53,14 +53,14 @@ Links:
 ### Content Collections (`src/content.config.ts`)
 
 **articles** — `src/content/articles/*.md`
-- Schema: title, date, description, categories, tags, draft, images
+- Schema: title, date, description, categories, tags, draft, image (optional share image; default `og.png`)
 
 **feed** — `src/content/feed/*.md`
 - Schema: title, date, description, link (optional), icon (optional)
 - To add a feed item: create a new `.md` file in `src/content/feed/`
 
 ### Layout
-- `BaseLayout.astro` — wraps all pages, imports global.css + Inter, sets canonical / Open Graph / Twitter tags (one shared `og.png`), renders Navigation + main slot + `Footer.astro` (LinkedIn/GitHub/X; Impressum/Privacy links appear once those pages exist)
+- `BaseLayout.astro` — wraps all pages, imports global.css + Inter, sets canonical / Open Graph / Twitter tags and JSON-LD (Person, or BlogPosting on articles; `og.png` unless the article sets `image`), renders Navigation + main slot + `Footer.astro` (LinkedIn/GitHub/X; Impressum/Privacy links appear once those pages exist)
 - **Analytics:** self-hosted Umami (cookieless, no consent banner) at https://stats.arthurpfz.com; one script tag in `BaseLayout.astro`, counting only on `arthurpfz.com` (not localhost or previews)
 
 ## Key Patterns
@@ -72,7 +72,7 @@ Links:
 
 ## About Page Content
 - Arthur Pfalzgraf — "Ironing things out at MoonPay."
-- Roles: Iron by MoonPay (Head of Product, present), Ultimate (Product, acquired by Jupiter Exchange), Trade Republic (Crypto Custodian Builder), HelloFresh (Product Data Scientist → Product Manager)
+- Roles: Iron by MoonPay (Founding PM → Dir of Product, present), Ultimate (Product, acquired by Jupiter Exchange), Trade Republic (Crypto Custodian Builder), HelloFresh (Product Data Scientist → Product Manager)
 
 ## Dev Server
 ```bash
@@ -90,5 +90,7 @@ git push origin master
 - **Node 22 required** — set via `NODE_VERSION = "22"` in `netlify.toml` and `.node-version`
 - Netlify defaults to Node 18 which breaks Astro 6
 - Branch: `master` (not main)
+- Internal links end with a trailing slash (Netlify 301s the bare form)
+- Cache: `/_astro/*` immutable for a year, `/images/*` and `/croissant-ride/*` for a week — rename a file there when you change it
 - Old `/post/*` URLs redirect to `/archive/*` via netlify.toml
 - Security headers are set in `netlify.toml`. No CSP: the dune background is an inline script

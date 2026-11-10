@@ -10,15 +10,38 @@ import '../styles/global.css';
 interface Props {
   title: string;
   description?: string;
+  image?: string;
+  article?: { published: Date };
 }
 
 const {
   title,
-  description = 'Portfolio of Arthur Pfalzgraf'
+  description = 'Portfolio of Arthur Pfalzgraf',
+  image = '/og.png',
+  article,
 } = Astro.props;
 
 const canonical = new URL(Astro.url.pathname, Astro.site);
-const ogImage = new URL('/og.png', Astro.site);
+const ogImage = new URL(image, Astro.site);
+
+const author = {
+  '@type': 'Person',
+  name: 'Arthur Pfalzgraf',
+  url: 'https://arthurpfz.com/',
+  sameAs: ['https://www.linkedin.com/in/apfalzgraf/', 'https://github.com/Arthurpfz', 'https://x.com/arthurpfz'],
+};
+const jsonLd = article
+  ? {
+      '@context': 'https://schema.org',
+      '@type': 'BlogPosting',
+      headline: title.replace(/ - Arthur Pfalzgraf$/, ''),
+      description,
+      datePublished: article.published.toISOString(),
+      image: ogImage.href,
+      mainEntityOfPage: canonical.href,
+      author,
+    }
+  : { '@context': 'https://schema.org', ...author };
 ---
 
 <!DOCTYPE html>
@@ -28,7 +51,8 @@ const ogImage = new URL('/og.png', Astro.site);
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
-    <meta property="og:type" content="website" />
+    <meta property="og:type" content={article ? 'article' : 'website'} />
+    {article && <meta property="article:published_time" content={article.published.toISOString()} />}
     <meta property="og:site_name" content="Arthur Pfalzgraf" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
@@ -40,6 +64,7 @@ const ogImage = new URL('/og.png', Astro.site);
     <link rel="sitemap" href="/sitemap-index.xml" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <title>{title}</title>
+    <script is:inline type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
     <script is:inline defer src="https://stats.arthurpfz.com/script.js" data-website-id="8878e50b-8e74-4c3e-9988-30a82e4c39e0" data-domains="arthurpfz.com" data-do-not-track="true"></script>
   </head>
   <body>

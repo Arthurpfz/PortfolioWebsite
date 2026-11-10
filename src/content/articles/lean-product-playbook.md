@@ -20,7 +20,7 @@ categories: [
 "The main reason products fail is because they don't meet customer needs in a way that is better than other alternatives. This is the essence of product-market fit." Marc Andreessen
 
 ##### The Lean Product Process:
-![Product-market fit pyramid: target customer and underserved needs (market) under value proposition, feature set and UX (product)](/images/lean-product-playbook/LeanProduct1.png)
+<img src="/images/lean-product-playbook/LeanProduct1.png" alt="Product-market fit pyramid: target customer and underserved needs (market) under value proposition, feature set and UX (product)" width="986" height="596" loading="lazy">
 
 ## Part I: Core Concept
 1. Product-market fit
@@ -51,13 +51,13 @@ categories: [
 	* Write user stories
 	* List each benefit and begin with a verb: help, check, reduce, maximize. A benefit conveys value, which means it's doing something for the customer.
 	* Run discovery interview and ask: "what does this statement mean to you?" (understanding), "how might this help you ?", "how valuable would it be to you if the product delivered this benefit ?", ask why!? (several times)
-    ![Olsen's hierarchy of web user needs: uptime, page load time, absence of bugs, feature set, UX design](/images/lean-product-playbook/LeanProduct2.png)
+    <img src="/images/lean-product-playbook/LeanProduct2.png" alt="Olsen's hierarchy of web user needs: uptime, page load time, absence of bugs, feature set, UX design" width="902" height="654" loading="lazy">
 	* Always score the importance of the solution but also the user satisfaction of the current solution. Something that has high importance and high satisfaction do not worth spending time. Focus on the ones with the higher score: Opportunity to add value = importance*(1-satisfaction), upper left quadrant : (like uber) AND  Customer value = Importance * Satisfaction
     * Like uber, look for the 10x improvement, high important low satisfaction. Look for the underserved need
 	* How to measure this? Not at all important Slightly important Moderately important Very important Extremely important. Completely dissatisfied Mostly dissatisfied Somewhat dissatisfied Neither satisfied nor dissatisfied Somewhat satisfied Mostly satisfied Completely satisfied
 	* Jobs to be done: 1) customers buy products and services to help them get a task or job done. Customers decide which product to buy based on how well it delivers their “desired outcomes” for the “job to be done.” 2) Customers are ambiguous and imprecise, don't be too much "customer-driven", outcomes are superior than customers needs or benefits. 3) Customer outcomes = well-defined customer benefit, good product team looks for deeper insights and look for the most elegant and simple solution
 	* The KANO MODEL: most important is to break features into 3 categories: delighters, performance, must have (cost of entry). Delighters becomes must have through times (for instance GPS in car). Needs migrate over time. A good tool to use to map the problem space of users
-    ![Kano model: must-have, performance and delighter features plotted by how well the need is met against user satisfaction](/images/lean-product-playbook/LeanProduct3.png)
+    <img src="/images/lean-product-playbook/LeanProduct3.png" alt="Kano model: must-have, performance and delighter features plotted by how well the need is met against user satisfaction" width="530" height="346" loading="lazy">
 3. Define your value proposition
     * You want to make sure your product delivers enough customer value and is better than other alternatives, which is the essence of product strategy. But strategy means "deciding what you are not going to do" (s. jobs). You should not risk wasting resources with an initial scope that is too large, A good exercise is too do a tableau with the three categories and market competitors
     * Best way to analyze your product strategy: Create a table with all the must-haves, performance benefits, and delighters that are relevant to you and your competitors. Nobody is doing this today. “If you know the enemy and know yourself, you need not fear the result of a hundred battles. If you know yourself but not the enemy, for every victory gained you will also suffer a defeat. If you know neither the enemy nor yourself, you will succumb in every battle.” SUN TZU
@@ -67,10 +67,10 @@ categories: [
 	* Breaking features: Once you have your high-level user stories. “chunking.” - "feature chunk" -  The goal is to find ways to reduce scope and build only the most valuable pieces of each feature. Small is beautiful - lean manufacturing
 	* Benefit of working in small batch size is to get also rapid feedback from users and polish along the way
 	* How to prioritize? ROI = return / investment = (final value - investment) / investment
-    ![Feature chunks listed per benefit by priority, then the chunks picked for the MVP and later versions v1.1 and v1.2](/images/lean-product-playbook/LeanProduct4.png)
+    <img src="/images/lean-product-playbook/LeanProduct4.png" alt="Feature chunks listed per benefit by priority, then the chunks picked for the MVP and later versions v1.1 and v1.2" width="1232" height="500" loading="lazy">
 	* Summary of the last steps - NB: Lean Product Process, you have done a fair bit of work: You have: Formed hypotheses about your target customers Formed hypotheses about their underserved needs Articulated the value proposition you plan to pursue so that your product is better and different Identified the top feature ideas you believe will address those needs and breaking them down into smaller chunks Prioritized those feature chunks based on ROI Selected a set of those feature chunks for your MVP candidate, which you hypothesize customers will find valuable
 5. Create your MVP
-    ![Building an MVP: not just the functional base layer of the pyramid, but a thin slice through functional, reliable, usable and delightful](/images/lean-product-playbook/LeanProduct5.png)
+    <img src="/images/lean-product-playbook/LeanProduct5.png" alt="Building an MVP: not just the functional base layer of the pyramid, but a thin slice through functional, reliable, usable and delightful" width="848" height="422" loading="lazy">
     * marketing materials
     * landing pages, smoke tests, explainer video, ad campaign, crowdfunding
     * wireframes, mockups, wizard of oz, concierge, prototype

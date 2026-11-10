@@ -201,7 +201,6 @@ a:hover { text-decoration: underline; }
   line-height: var(--leading-tight);
   text-align: center;
   padding: var(--space-xl) var(--space-md);
-  border-top: var(--border);
   border-bottom: var(--border);
   margin: var(--space-lg) 0;
 }

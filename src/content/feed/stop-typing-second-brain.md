@@ -3,6 +3,6 @@ title: "Vault (Arthur's 2nd Brain)"
 date: 2026-04-10
 updated: 2026-04-27
 description: "A personal LLM-friendly wiki: Obsidian on the read side, Claude on the write side, Syncthing mirroring Mac ↔ VPS with no cloud middleman. The capture bots and Voice Notes all write into it. The architecture, the schema, and the three patterns that hold it together."
-link: "/archive/stop-typing-second-brain"
+link: "/archive/stop-typing-second-brain/"
 icon: "◈"
 ---

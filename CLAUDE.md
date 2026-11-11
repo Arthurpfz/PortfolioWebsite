@@ -61,7 +61,7 @@ Links:
 - To add a feed item: create a new `.md` file in `src/content/feed/`
 
 ### Layout
-- `BaseLayout.astro` — wraps all pages, imports global.css + Inter, sets canonical / Open Graph / Twitter tags and JSON-LD (Person, or BlogPosting on articles; `og.png` unless the article sets `image`), renders Navigation + main slot + `Footer.astro` (LinkedIn/GitHub/X; Impressum/Privacy links appear once those pages exist; `/privacy` covers arthurpfz.com + croissantride.com, live 2026-11-10; no Impressum by choice, see vault `decisions`)
+- `BaseLayout.astro` — wraps all pages, imports global.css + Inter, sets canonical / Open Graph / Twitter tags and JSON-LD (Person, or BlogPosting on articles; `og.png` unless the article sets `image`), renders Navigation + main slot + `Footer.astro` (LinkedIn/GitHub/X; Impressum/Privacy links appear once those pages exist; `/privacy` covers arthurpfz.com + croissantride.com, live 2026-11-10; `/impressum` added for tips on croissantride.com 2026-11-11: its build stops while the c/o address lines at the top are empty, see vault `decisions`)
 - **Analytics:** self-hosted Umami (cookieless, no consent banner) at https://stats.arthurpfz.com; one script tag in `BaseLayout.astro`, counting only on `arthurpfz.com` (not localhost or previews)
 
 ## Key Patterns

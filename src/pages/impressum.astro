@@ -1,0 +1,55 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+// Arthur fills these in. The build stops while any is empty, so a half-done Impressum can't go live.
+// Address: must accept post (ladungsfähig). No phone needed.
+const address = ['Finowstr. 19', '10247 Berlin'];
+const email = 'ar.pfalzgraf@gmail.com';
+if (!address.length || address.some((l) => !l.trim())) throw new Error('impressum.astro: fill in the address before building');
+---
+
+<BaseLayout title="Impressum - Arthur Pfalzgraf" description="Legal notice for arthurpfz.com and croissantride.com">
+  <article class="legal">
+    <h1>Impressum</h1>
+    <p class="meta">Legal notice under § 5 DDG and § 18(2) MStV · Applies to arthurpfz.com and croissantride.com</p>
+
+    <h2>Provider and responsible for content</h2>
+    <p>
+      Arthur Pfalzgraf<br />
+      {address.map((l) => (<>{l}<br /></>))}
+      Germany
+    </p>
+
+    <h2>Contact</h2>
+    <p>Email: <a href={`mailto:${email}`}>{email}</a></p>
+
+    <h2>Disputes</h2>
+    <p>I am not willing or obliged to take part in dispute resolution proceedings before a consumer arbitration board.</p>
+  </article>
+</BaseLayout>
+
+<style>
+  .legal {
+    max-width: 42rem;
+    margin: 0 auto;
+    padding: var(--space-lg) 0;
+  }
+
+  .legal h2 {
+    margin-top: var(--space-lg);
+  }
+
+  .legal p {
+    margin-top: var(--space-sm);
+  }
+
+  .legal a {
+    text-decoration: underline;
+  }
+
+  .meta {
+    font-family: var(--font-mono);
+    font-size: var(--text-meta);
+    color: var(--color-muted);
+  }
+</style>

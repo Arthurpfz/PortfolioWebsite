@@ -2,10 +2,10 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 
 // Arthur fills these in. The build stops while any is empty, so a half-done Impressum can't go live.
-// Address: a c/o address service that accepts post, never the home address. No phone needed.
-const address = ['', '', '']; // e.g. ['c/o <service name>', '<street and number>', '<postcode> <city>']
+// Address: must accept post (ladungsfähig). No phone needed.
+const address = ['Finowstr. 19', '10247 Berlin'];
 const email = 'ar.pfalzgraf@gmail.com';
-if (address.some((l) => !l.trim())) throw new Error('impressum.astro: fill in the c/o address before building');
+if (!address.length || address.some((l) => !l.trim())) throw new Error('impressum.astro: fill in the address before building');
 ---
 
 <BaseLayout title="Impressum - Arthur Pfalzgraf" description="Legal notice for arthurpfz.com and croissantride.com">

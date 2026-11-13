@@ -206,6 +206,7 @@
 
     // easing is per 60fps frame; scale by real elapsed time so 120Hz screens match
     var start = performance.now(), last = start, raf = 0, idleTimer = 0;
+    var figs = null, figScroll = -1;
     function frame(now) {
       var k = Math.min(now - last, 100) / (1000 / 60);
       last = now;
@@ -224,6 +225,9 @@
       gl.uniform1f(U.time, (now - start) / 1000);
       gl.uniform1i(U.tex, 0);
       gl.drawArrays(gl.TRIANGLES, 0, 3);
+      // constellation figures (Constellations.astro) drift with the same smoothed scroll
+      figs = figs || document.getElementById('night-figures');
+      if (figs && Math.abs(scroll - figScroll) > 0.001) { figScroll = scroll; figs.style.setProperty('--s', scroll.toFixed(3)); }
       raf = idleTimer = 0;
       if (reduceMotion || document.hidden) return;
       // idle: only the grain moves, and it changes 14x/s, so don't redraw faster

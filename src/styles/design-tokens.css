@@ -87,6 +87,7 @@ html[data-theme="archer"] {
   --color-bg-alt:      #0B0E1C;
   --color-page:        #05060D;
   --color-accent:      #E0B95B;
+  --color-glow:        #6090FF;
   --color-muted:       #9AA8D8;  /* 8:1 on the page colour */
   --border:            1px dashed rgba(96, 144, 255, 0.8);
   --border-faint:      1px dashed rgba(96, 144, 255, 0.35);

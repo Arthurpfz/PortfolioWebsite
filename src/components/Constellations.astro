@@ -1,0 +1,150 @@
+---
+// Constellation figures shown in the Night Archer theme. Each figure is drawn in its own viewBox:
+// paths = dashed lines, rings = dashed circles [cx, cy, r, gold?], stars = [x, y, size, gold?].
+const figures = [
+  {
+    id: 'archer',
+    label: 'The Archer',
+    box: '0 0 210 222',
+    depth: 70,
+    paths: [
+      'M119 58 L120 68 L124 128',
+      'M96 208 L104 166 L124 128 L140 168 L152 208',
+      'M120 68 L62 56',
+      'M120 68 L148 54 L129.5 74.6',
+      'M90 14 Q46.6 51.7 64.6 106.6',
+      'M90 14 L129.5 74.6 L64.6 106.6',
+      'M129.5 74.6 L37 49 M43.9 54.8 L37 49 L45.9 47.5',
+      'M124 90 L166 58 L194 26 L192 70 L176 104 Z M166 58 L192 70',
+    ],
+    rings: [[119, 50, 8, true]],
+    stars: [
+      [37, 49, 3.2, true], [62, 56, 2], [90, 14, 2], [64.6, 106.6, 2], [120, 68, 2], [148, 54, 1.5],
+      [129.5, 74.6, 1.5], [124, 128, 2], [104, 166, 1.5], [96, 208, 1.5], [140, 168, 1.5], [152, 208, 1.5],
+      [166, 58, 1.5], [194, 26, 2], [192, 70, 1.5], [176, 104, 1.5],
+    ],
+  },
+  {
+    id: 'rider',
+    label: 'The Rider',
+    box: '0 0 240 176',
+    depth: 110,
+    paths: [
+      'M56 132 L108 132 L96 80 Z',
+      'M96 80 L162 80 L108 132 M162 80 L180 132',
+      'M162 80 L160 68 L174 64 M96 80 L96 73 M87 73 L105 73',
+      'M96 70 L142 40 L151 30',
+      'M142 40 L154 58 L174 64',
+      'M96 70 L128 96 L112 136 M96 70 L112 104 L104 126',
+    ],
+    rings: [[56, 132, 34], [180, 132, 34], [158, 24, 8, true]],
+    stars: [
+      [56, 132, 2], [180, 132, 2], [108, 132, 1.5], [96, 80, 1.5], [162, 80, 1.5], [96, 70, 2],
+      [142, 40, 2], [174, 64, 1.5], [128, 96, 1.5], [112, 136, 1.5], [154, 58, 1.2],
+    ],
+  },
+  {
+    id: 'builder',
+    label: 'The Builder',
+    box: '0 0 200 210',
+    depth: 40,
+    paths: [
+      'M92 38 L92 48 L96 108',
+      'M76 198 L82 152 L96 108 L114 152 L124 198',
+      'M92 48 L118 42 L130 24 L148 12 M142.9 4.6 L153.1 19.4',
+      'M92 48 L116 76 L140 96',
+      'M110 104 L134 100 L186 100 L182 112 L166 118 L168 138 L180 150 L134 150 L146 138 L148 118 L132 114 Z',
+    ],
+    rings: [[92, 30, 8, true]],
+    stars: [
+      [160, 78, 3, true], [172, 64, 1.2, true], [146, 66, 1.2, true],
+      [92, 48, 2], [96, 108, 2], [82, 152, 1.5], [114, 152, 1.5], [76, 198, 1.5], [124, 198, 1.5],
+      [118, 42, 1.5], [130, 24, 1.5], [148, 12, 2], [116, 76, 1.5], [140, 96, 1.5],
+      [110, 104, 1.5], [134, 100, 1.5], [186, 100, 1.5],
+    ],
+  },
+];
+---
+
+<div id="night-figures" class="night-figures" aria-hidden="true">
+  {figures.map(f => (
+    <div class:list={['fig', `fig-${f.id}`]} style={`--depth:${f.depth}`}>
+      <svg viewBox={f.box}>
+        {f.paths.map(d => <path d={d} />)}
+        {f.rings.map(([cx, cy, r, gold]) => <circle class:list={['ring', { gold }]} cx={cx} cy={cy} r={r} />)}
+        {f.stars.map(([x, y, s, gold]) => (
+          <g class:list={['star', { gold }]}>
+            <circle class="halo" cx={x} cy={y} r={Number(s) * 3} />
+            <circle cx={x} cy={y} r={s} />
+          </g>
+        ))}
+      </svg>
+      <span class="fig-label">{f.label}</span>
+    </div>
+  ))}
+</div>
+
+<style>
+  .night-figures {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 800ms ease, visibility 800ms;
+  }
+  :global(html[data-theme="archer"]) .night-figures {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  /* --s (0 to 1) is the smoothed scroll position, set by DuneBackground; deeper figures drift further */
+  .fig {
+    position: absolute;
+    transform: translateY(calc(var(--s, 0) * var(--depth) * -1px));
+  }
+  .fig svg {
+    display: block;
+    width: 100%;
+    height: auto;
+    overflow: visible;
+  }
+  .fig-archer { right: 3vw; top: 13vh; width: clamp(170px, 19vw, 300px); }
+  .fig-rider { left: 3vw; bottom: 6vh; width: clamp(170px, 19vw, 300px); }
+  .fig-builder { left: 5vw; top: 15vh; width: clamp(130px, 13vw, 210px); }
+
+  path, .ring {
+    fill: none;
+    stroke: var(--color-glow);
+    stroke-width: 1;
+    stroke-dasharray: 3 3;
+    vector-effect: non-scaling-stroke;
+    opacity: 0.7;
+  }
+  .ring.gold { stroke: var(--color-accent); }
+  .star { fill: var(--color-primary); }
+  .star.gold { fill: var(--color-accent); }
+  .halo { fill: var(--color-glow); opacity: 0.22; }
+  .star.gold .halo { fill: var(--color-accent); }
+
+  .fig-label {
+    display: block;
+    margin-top: var(--space-sm);
+    font-family: var(--font-mono);
+    font-size: var(--text-tag);
+    letter-spacing: var(--tracking-nav);
+    text-transform: uppercase;
+    text-align: center;
+    color: var(--color-muted);
+    opacity: 0.75;
+  }
+
+  @media (max-width: 768px) {
+    .night-figures { opacity: 0; }
+    :global(html[data-theme="archer"]) .night-figures { opacity: 0.45; }
+    .fig-archer { right: 2vw; top: 16vh; width: 150px; }
+    .fig-rider { left: 2vw; bottom: 5vh; width: 150px; }
+    .fig-builder { display: none; }
+  }
+</style>

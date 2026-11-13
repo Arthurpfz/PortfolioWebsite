@@ -31,10 +31,32 @@ function isActive(path: string) {
         {link.label}{link.external && ' ↗\uFE0E'}
       </a>
     ))}
+    <button type="button" id="theme-click" class="nav-link theme-click" aria-label="Click to change theme">Click</button>
   </div>
 </nav>
 
+<script is:inline>
+  // "Click" cycles the themes; '' is the default. Add a theme: name it here + a block in design-tokens.css.
+  (function () {
+    var THEMES = ['', 'archer'];
+    document.getElementById('theme-click').addEventListener('click', function () {
+      var root = document.documentElement;
+      var next = THEMES[(THEMES.indexOf(root.dataset.theme || '') + 1) % THEMES.length];
+      if (next) root.dataset.theme = next; else delete root.dataset.theme;
+      try { next ? localStorage.setItem('theme', next) : localStorage.removeItem('theme'); } catch (e) {}
+    });
+  })();
+</script>
+
 <style>
+  .theme-click {
+    background: none;
+    border: 0;
+    padding: 0;
+    cursor: pointer;
+    color: var(--color-accent);
+  }
+
   .skip-link {
     position: absolute;
     left: -9999px;

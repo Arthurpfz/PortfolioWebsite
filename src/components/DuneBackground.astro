@@ -25,7 +25,26 @@
       'uniform float uTime;',
       'uniform float uBase;',
       'uniform float uScroll;',
+      'uniform float uTheme;',
       'float hash(vec2 p){return fract(sin(dot(p,vec2(127.1,311.7)))*43758.5453);}',
+      // one star per grid cell, randomly placed, sized and twinkling
+      'float stars(vec2 p,float t){',
+      '  vec2 g=floor(p);',
+      '  float h=hash(g);',
+      '  vec2 o=vec2(hash(g+17.3),hash(g+41.7))*0.6+0.2;',
+      '  float size=0.05+0.10*hash(g+7.7)*hash(g+3.1);',
+      '  float tw=0.65+0.35*sin(t*(0.6+h*1.8)+h*60.0);',
+      '  return step(0.72,h)*smoothstep(size,0.0,length(fract(p)-o))*tw;',
+      '}',
+      // sparse bright stars with a 4-point sparkle
+      'float glint(vec2 p,float t){',
+      '  vec2 g=floor(p);',
+      '  float h=hash(g);',
+      '  vec2 d=abs(fract(p)-(vec2(hash(g+17.3),hash(g+41.7))*0.5+0.25));',
+      '  float tw=0.55+0.45*sin(t*(0.6+h*1.8)+h*60.0);',
+      '  float rays=smoothstep(0.24,0.0,d.x)*smoothstep(0.02,0.0,d.y)+smoothstep(0.24,0.0,d.y)*smoothstep(0.02,0.0,d.x);',
+      '  return step(0.93,h)*(smoothstep(0.07,0.0,length(d))+rays*0.6)*tw;',
+      '}',
       'void main(){',
       '  float ca_aspect=uRes.x/uRes.y;',
       '  float im_aspect=uImg.x/uImg.y;',
@@ -65,7 +84,27 @@
       '  col+=grain*(0.04+infl*0.12);',
       // darker areas (dunes) carry more opacity than the sky, so the desert reads while staying subtle',
       '  float alpha=uBase*(0.4+(1.0-lum)*1.6)+infl*0.32;',
-      '  gl_FragColor=vec4(col,alpha);',
+      // night theme (uTheme=1): starfield in three parallax layers, built as additive light L
+      '  vec2 sp=vec2(vUv.x*ca_aspect,vUv.y);',
+      '  vec3 blue=vec3(0.30,0.52,1.0);',
+      '  vec2 p2=sp*40.0-vec2(-5.0,uScroll*4.0)+3.7;',
+      '  vec2 p3=sp*14.0-vec2(2.0,uScroll*2.6);',
+      '  float tint=hash(floor(p2)+9.0);',
+      '  vec3 L=vec3(0.85,0.9,1.0)*stars(sp*85.0-vec2(0.0,uScroll*3.0),uTime)*0.8;',
+      '  L+=(tint<0.3?vec3(0.88,0.73,0.36):mix(vec3(1.0),blue,tint))*stars(p2,uTime*0.7);',
+      '  L+=mix(vec3(1.0),blue,0.35)*glint(p3,uTime*0.5);',
+      // blue haze top-right, violet haze bottom-left, and two arcs: a nod to the bow
+      '  L+=blue*smoothstep(1.0,0.0,length(sp-vec2(ca_aspect*0.8,0.7)))*0.24;',
+      '  L+=vec3(0.5,0.42,1.0)*smoothstep(0.8,0.0,length(sp-vec2(ca_aspect*0.1,0.1)))*0.12;',
+      '  vec2 av=sp-vec2(ca_aspect+0.25,0.4);',
+      '  float ar=length(av);',
+      '  L+=blue*smoothstep(0.002,0.0,abs(ar-0.75))*step(0.4,fract(atan(av.y,av.x)*60.0))*0.5;',
+      '  L+=blue*smoothstep(0.0015,0.0,abs(ar-0.8))*0.2;',
+      // pointer: electric-blue glow with the ripple, and nearby stars flare
+      '  L*=1.0+infl*1.5;',
+      '  L+=blue*infl*(0.22+0.10*ripple);',
+      '  float sA=clamp(max(L.r,max(L.g,L.b)),0.0,1.0);',
+      '  gl_FragColor=vec4(mix(col,L/max(sA,0.0001),uTheme),mix(alpha,sA,uTheme));',
       '}'
     ].join('\n');
 
@@ -99,7 +138,8 @@
       strength: gl.getUniformLocation(prog, 'uStrength'),
       time: gl.getUniformLocation(prog, 'uTime'),
       base: gl.getUniformLocation(prog, 'uBase'),
-      scroll: gl.getUniformLocation(prog, 'uScroll')
+      scroll: gl.getUniformLocation(prog, 'uScroll'),
+      theme: gl.getUniformLocation(prog, 'uTheme')
     };
     gl.uniform1f(U.base, 0.15);
 
@@ -139,6 +179,13 @@
     function readScroll() {
       scrollTarget = Math.min(1, window.scrollY / (window.innerHeight * 3));
     }
+    // background mode follows the theme set by the Click tab (0 = dunes, 1 = stars), cross-faded
+    function themeMode() { return document.documentElement.dataset.theme === 'archer' ? 1 : 0; }
+    var theme = themeMode(), themeTarget = theme;
+    new MutationObserver(function () {
+      themeTarget = themeMode();
+      if (reduceMotion) { theme = themeTarget; requestAnimationFrame(frame); } else wake();
+    }).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
     function wake() {
       lastActive = performance.now();
       if (idleTimer) { clearTimeout(idleTimer); idleTimer = 0; raf = requestAnimationFrame(frame); }
@@ -167,18 +214,20 @@
       mouse.y += (target.y - mouse.y) * ease;
       scroll += (scrollTarget - scroll) * ease;
       strength *= Math.pow(0.95, k);
+      theme += (themeTarget - theme) * (1 - Math.pow(0.93, k));
       gl.uniform2f(U.res, canvas.width, canvas.height);
       gl.uniform2f(U.img, imgW, imgH);
       gl.uniform2f(U.mouse, mouse.x, mouse.y);
       gl.uniform1f(U.strength, strength);
       gl.uniform1f(U.scroll, scroll);
+      gl.uniform1f(U.theme, theme);
       gl.uniform1f(U.time, (now - start) / 1000);
       gl.uniform1i(U.tex, 0);
       gl.drawArrays(gl.TRIANGLES, 0, 3);
       raf = idleTimer = 0;
       if (reduceMotion || document.hidden) return;
       // idle: only the grain moves, and it changes 14x/s, so don't redraw faster
-      if (strength < 0.005 && now - lastActive > 600) {
+      if (strength < 0.005 && Math.abs(themeTarget - theme) < 0.002 && now - lastActive > 600) {
         idleTimer = setTimeout(function () { idleTimer = 0; raf = requestAnimationFrame(frame); }, 1000 / 14);
       } else {
         raf = requestAnimationFrame(frame);

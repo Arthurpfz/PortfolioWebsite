@@ -20,10 +20,16 @@ Single source of truth: `src/styles/design-tokens.css`
 - **Muted text:** `--color-muted` for small meta text, never opacity below ~0.75 on text (WCAG AA contrast)
 - **Focus:** one sitewide `:focus-visible` dashed ring in `design-tokens.css`
 - **Borders:** Always `1px dashed` — never solid
-- **No dark mode** — light-only aesthetic
+- **No automatic dark mode** — light by default; other looks are opt-in themes (below)
 - **No shadows** — flat design
 
-Use CSS variables (`--border`, `--color-primary`, `--font-mono`, `--space-*`, `--text-meta`) everywhere — never hardcode values in page styles.
+Use CSS variables (`--border`, `--color-primary`, `--color-accent`, `--font-mono`, `--space-*`, `--text-meta`) everywhere — never hardcode values in page styles.
+
+### Themes
+The "Click" button in the nav cycles themes by setting `data-theme` on `<html>`; the choice is saved in `localStorage` (`theme`) and applied before paint by a one-line script in `BaseLayout.astro` (disclosed on `/privacy`).
+
+- **Night Archer** (`archer`): starry black `#05060D`, star-white text, electric-blue dashed lines, gold accent. The background canvas cross-fades from dunes to a procedural starfield (`uTheme` in `DuneBackground.astro`).
+- **Add a theme:** one `html[data-theme="name"]` block of token overrides in `design-tokens.css`, the name in `THEMES` in `Navigation.astro`, and (optional) a background mode in `themeMode()` in `DuneBackground.astro`.
 
 ## Site Structure
 
@@ -44,7 +50,7 @@ Use CSS variables (`--border`, `--color-primary`, `--font-mono`, `--space-*`, `-
 
 ### Navigation (`src/components/Navigation.astro`)
 Left: `arthurpfz.com` → `/`
-Right: Feed, Builds, About, LinkedIn ↗, GitHub ↗, X ↗
+Right: Feed, Builds, About, LinkedIn ↗, GitHub ↗, X ↗, Click (theme button)
 
 Links:
 - LinkedIn: https://www.linkedin.com/in/apfalzgraf/

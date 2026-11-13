@@ -19,6 +19,8 @@
   --color-bg:             #F0F2F5;
   --color-bg-alt:         #F5F7F9;
   --color-white:          #ffffff;
+  --color-page:           #ffffff;  /* behind the background canvas */
+  --color-accent:         var(--color-primary);
   --color-muted:          #49617D;  /* small meta text: 6:1 on white (WCAG AA) */
 
   /* Typography */
@@ -71,6 +73,27 @@
 }
 
 /* ------------------------------------------------------------
+   THEMES — cycled by the "Click" tab (Navigation.astro).
+   One block of token overrides per theme.
+   ------------------------------------------------------------ */
+
+/* Night Archer: starry black, electric blue, gold */
+html[data-theme="archer"] {
+  --color-primary:     #E8ECFF;
+  --color-deep:        #FFFFFF;
+  --color-tint:        rgba(110, 150, 255, 0.10);
+  --color-tint-strong: rgba(110, 150, 255, 0.20);
+  --color-bg:          #05060D;
+  --color-bg-alt:      #0B0E1C;
+  --color-page:        #05060D;
+  --color-accent:      #E0B95B;
+  --color-muted:       #9AA8D8;  /* 8:1 on the page colour */
+  --border:            1px dashed rgba(96, 144, 255, 0.8);
+  --border-faint:      1px dashed rgba(96, 144, 255, 0.35);
+  --image-filter:      sepia(0.6) hue-rotate(190deg) saturate(1.5) brightness(0.9);
+}
+
+/* ------------------------------------------------------------
    RESET & BASE
    ------------------------------------------------------------ */
 *, *::before, *::after {
@@ -82,7 +105,8 @@
 html {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: var(--color-white);
+  background-color: var(--color-page);
+  transition: background-color 500ms ease;
 }
 
 body {
@@ -133,7 +157,7 @@ a {
   text-decoration: none;
 }
 
-a:hover { text-decoration: underline; }
+a:hover { text-decoration: underline; text-decoration-color: var(--color-accent); }
 
 /* Keyboard focus — one ring for every link, button and field */
 :focus-visible {
@@ -183,6 +207,7 @@ a:hover { text-decoration: underline; }
 
 .nav-link.active, .nav-link.active:hover {
   text-decoration: underline;
+  text-decoration-color: var(--color-accent);
   text-underline-offset: 5px;
 }
 

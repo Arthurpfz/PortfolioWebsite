@@ -4,17 +4,10 @@
 // the shader below makes hair, cloth and smoke flow and the weapons pulse and sparkle.
 // Nothing here downloads or runs until the theme is switched on.
 // The archer also draws her bow and looses an arrow of light across the page every few seconds.
-// The spear bearer and the knight share the right margin and slowly swap.
-import spear from '../assets/night/spear.webp';
-import spearMask from '../assets/night/spear-mask.webp';
-import knight from '../assets/night/knight.webp';
-import knightMask from '../assets/night/knight-mask.webp';
 import archer from '../assets/night/archer.webp';
 import archerMask from '../assets/night/archer-mask.webp';
 
 const figures = [
-  { id: 'spear', img: spear, mask: spearMask },
-  { id: 'knight', img: knight, mask: knightMask },
   { id: 'archer', img: archer, mask: archerMask },
 ];
 ---
@@ -207,9 +200,6 @@ const figures = [
   }
   /* the archer stands on the left so she aims across the page */
   .fig-archer { --depth: 100; left: calc(25vw - 215px); translate: -50%; }
-  .fig-spear { --depth: 60; right: calc(25vw - 215px); translate: 50%; animation: swap 40s ease-in-out infinite; }
-  .fig-knight { --depth: 60; right: calc(25vw - 215px); translate: 50%; animation: swap 40s ease-in-out -20s infinite; }
-  .fig-knight canvas { animation-duration: 11s; }
   .fig-archer canvas { animation-duration: 8s; animation-delay: -3s; }
 
   .shot {
@@ -235,22 +225,14 @@ const figures = [
     from { transform: translateY(-6px); }
     to { transform: translateY(6px); }
   }
-  @keyframes swap {
-    0%, 42% { opacity: 1; }
-    50%, 92% { opacity: 0; }
-    100% { opacity: 1; }
-  }
-
   /* no margins to stand in: the figures sit faintly behind the text */
   @media (max-width: 1240px) {
     :global(html[data-theme="archer"]) .night-figures { opacity: 0.3; }
     .fig { width: min(42vw, 86vh * var(--ratio), 250px); }
     .fig-archer { left: 23vw; }
-    .fig-spear, .fig-knight { right: 23vw; }
   }
 
   @media (prefers-reduced-motion: reduce) {
     .fig, .fig canvas { animation: none; }
-    .fig-knight { display: none; }
   }
 </style>

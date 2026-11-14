@@ -1,13 +1,137 @@
 ---
-// Arthur's own artwork, shown in the margins of the Night Archer theme.
-// The files are CSS backgrounds under the theme selector, so they only download once the theme is on.
+// Arthur's own artwork, brought to life in the margins of the Night Archer theme.
+// Each figure is a still image plus a motion map (R = free to move, G = glowing weapon, B = rising smoke);
+// the shader below makes hair, cloth and smoke flow and the weapons pulse and sparkle.
+// Nothing here downloads or runs until the theme is switched on.
 // The spear bearer and the knight share the left margin and slowly swap.
-const figures = ['spear', 'knight', 'archer'];
+import spear from '../assets/night/spear.webp';
+import spearMask from '../assets/night/spear-mask.webp';
+import knight from '../assets/night/knight.webp';
+import knightMask from '../assets/night/knight-mask.webp';
+import archer from '../assets/night/archer.webp';
+import archerMask from '../assets/night/archer-mask.webp';
+
+const figures = [
+  { id: 'spear', img: spear, mask: spearMask },
+  { id: 'knight', img: knight, mask: knightMask },
+  { id: 'archer', img: archer, mask: archerMask },
+];
 ---
 
 <div id="night-figures" class="night-figures" aria-hidden="true">
-  {figures.map(id => <div class:list={['fig', `fig-${id}`]}><i></i></div>)}
+  {figures.map(f => (
+    <div class:list={['fig', `fig-${f.id}`]} style={`--ratio:${(f.img.width / f.img.height).toFixed(3)}`}>
+      <canvas data-src={f.img.src} data-mask={f.mask.src}></canvas>
+    </div>
+  ))}
 </div>
+
+<script>
+  const VERT = 'attribute vec2 p;varying vec2 v;void main(){v=vec2(p.x*.5+.5,.5-p.y*.5);gl_Position=vec4(p,0.,1.);}';
+  const FRAG = `
+    precision mediump float;
+    varying vec2 v;
+    uniform sampler2D uTex, uMask;
+    uniform vec2 uSize;
+    uniform float uTime;
+    float hash(vec2 p){ return fract(sin(dot(p, vec2(127.1, 311.7))) * 43758.5453); }
+    float noise(vec2 p){
+      vec2 i = floor(p), f = fract(p); f = f * f * (3. - 2. * f);
+      return mix(mix(hash(i), hash(i + vec2(1., 0.)), f.x), mix(hash(i + vec2(0., 1.)), hash(i + vec2(1., 1.)), f.x), f.y);
+    }
+    vec2 flow(vec2 p, float t){
+      return vec2(noise(p * .02 + vec2(0., t)), noise(p * .02 + vec2(31.7, t))) - .5;
+    }
+    void main(){
+      vec2 px = v * uSize;
+      vec3 m = texture2D(uMask, v).rgb;
+      // hair, cloth and wings ripple
+      vec2 d = (flow(px, uTime * .4) * 16. + vec2(sin(px.y * .03 + px.x * .02 - uTime * 1.5) * 4., 0.)) * m.r;
+      // smoke rises: two looping passes hide the jump back
+      vec2 rise = (vec2(0., 30.) + flow(px * .6, uTime * .15) * 36.) * m.b;
+      float p1 = fract(uTime * .11), p2 = fract(uTime * .11 + .5);
+      vec4 c = mix(texture2D(uTex, (px + d + rise * (p2 - .5)) / uSize),
+                   texture2D(uTex, (px + d + rise * (p1 - .5)) / uSize), 1. - abs(2. * p1 - 1.));
+      // weapons pulse, with a bright band running along them
+      float lum = max(c.r, max(c.g, c.b));
+      float pulse = .5 + .5 * sin(uTime * 1.5 + px.y * .02);
+      float band = smoothstep(.8, 1., .5 + .5 * sin(px.y * .045 + px.x * .02 - uTime * 2.2));
+      c.rgb += c.rgb * m.g * (.25 + .8 * pulse * pulse) + vec3(.55, 1., .85) * lum * m.g * band * .9;
+      // sparks drift up through the smoke and off the weapons
+      vec2 g = vec2(px.x, px.y + uTime * 13.) / 9.;
+      vec2 id = floor(g);
+      float h = hash(id);
+      float spark = step(.93, h) * smoothstep(.17, 0., length(fract(g) - .5 - (vec2(hash(id + 3.1), hash(id + 7.7)) - .5) * .6))
+                  * (.5 + .5 * sin(uTime * (2. + h * 4.) + h * 40.)) * max(m.b, m.g);
+      c += vec4(vec3(.75, 1., .9), .8) * spark;
+      gl_FragColor = min(c, 1.);
+    }`;
+
+  const root = document.documentElement;
+  const still = matchMedia('(prefers-reduced-motion: reduce)');
+  let draws: ((t: number) => void)[] | null = null;
+  let raf = 0, last = 0;
+
+  const image = (src: string) => new Promise<HTMLImageElement>((res, rej) => {
+    const i = new Image(); i.onload = () => res(i); i.onerror = rej; i.src = src;
+  });
+
+  async function setup(c: HTMLCanvasElement) {
+    const src = c.dataset.src!;
+    const gl = c.getContext('webgl');
+    if (!gl) { c.parentElement!.style.background = `url(${src}) center / contain no-repeat`; return null; }
+    const [img, mask] = await Promise.all([image(src), image(c.dataset.mask!)]);
+    const prog = gl.createProgram()!;
+    for (const [type, code] of [[gl.VERTEX_SHADER, VERT], [gl.FRAGMENT_SHADER, FRAG]] as const) {
+      const s = gl.createShader(type)!; gl.shaderSource(s, code); gl.compileShader(s); gl.attachShader(prog, s);
+    }
+    gl.bindAttribLocation(prog, 0, 'p'); gl.linkProgram(prog); gl.useProgram(prog);
+    gl.bindBuffer(gl.ARRAY_BUFFER, gl.createBuffer());
+    gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1, -1, 1, -1, -1, 1, 1, 1]), gl.STATIC_DRAW);
+    gl.enableVertexAttribArray(0); gl.vertexAttribPointer(0, 2, gl.FLOAT, false, 0, 0);
+    gl.pixelStorei(gl.UNPACK_PREMULTIPLY_ALPHA_WEBGL, true);
+    [img, mask].forEach((tex, n) => {
+      gl.activeTexture(gl.TEXTURE0 + n); gl.bindTexture(gl.TEXTURE_2D, gl.createTexture());
+      gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, tex);
+      gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
+      gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
+      gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
+    });
+    gl.uniform1i(gl.getUniformLocation(prog, 'uTex'), 0);
+    gl.uniform1i(gl.getUniformLocation(prog, 'uMask'), 1);
+    gl.uniform2f(gl.getUniformLocation(prog, 'uSize'), img.width, img.height);
+    const uTime = gl.getUniformLocation(prog, 'uTime');
+    return (t: number) => {
+      const dpr = Math.min(devicePixelRatio || 1, 2);
+      const w = Math.round(c.clientWidth * dpr), h = Math.round(c.clientHeight * dpr);
+      if (c.width !== w || c.height !== h) { c.width = w; c.height = h; gl.viewport(0, 0, w, h); }
+      gl.uniform1f(uTime, t);
+      gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+    };
+  }
+
+  function frame(now: number) {
+    raf = 0;
+    if (root.dataset.theme !== 'archer' || document.hidden) return;
+    if (now - last > 30) { last = now; draws!.forEach(d => d(now / 1000)); }   // ~30 frames a second is plenty
+    if (!still.matches) raf = requestAnimationFrame(frame);
+  }
+
+  async function wake() {
+    if (root.dataset.theme !== 'archer') return;
+    if (!draws) {
+      draws = [];
+      const made = await Promise.all([...document.querySelectorAll<HTMLCanvasElement>('#night-figures canvas')].map(setup));
+      draws = made.filter(d => d !== null);
+    }
+    if (!raf) raf = requestAnimationFrame(frame);
+  }
+
+  new MutationObserver(wake).observe(root, { attributes: true, attributeFilter: ['data-theme'] });
+  document.addEventListener('visibilitychange', wake);
+  addEventListener('resize', wake);
+  wake();
+</script>
 
 <style>
   .night-figures {
@@ -34,25 +158,21 @@ const figures = ['spear', 'knight', 'archer'];
     aspect-ratio: var(--ratio);
     transform: translateY(calc(-50% - var(--s, 0) * var(--depth) * 1px));
   }
-  .fig i {
+  .fig canvas {
     display: block;
+    width: 100%;
     height: 100%;
-    background: center / contain no-repeat;
     animation: drift 9s ease-in-out infinite alternate;
   }
-  .fig-spear { --ratio: 0.298; --depth: 60; left: calc(25vw - 215px); translate: -50%; animation: swap 40s ease-in-out infinite; }
-  .fig-knight { --ratio: 0.36; --depth: 60; left: calc(25vw - 215px); translate: -50%; animation: swap 40s ease-in-out -20s infinite; }
-  .fig-archer { --ratio: 0.281; --depth: 100; right: calc(25vw - 215px); translate: 50%; }
-  .fig-knight i { animation-duration: 11s; }
-  .fig-archer i { animation-duration: 8s; animation-delay: -3s; }
-
-  :global(html[data-theme="archer"]) .fig-spear i { background-image: url('../assets/night/spear.webp'); }
-  :global(html[data-theme="archer"]) .fig-knight i { background-image: url('../assets/night/knight.webp'); }
-  :global(html[data-theme="archer"]) .fig-archer i { background-image: url('../assets/night/archer.webp'); }
+  .fig-spear { --depth: 60; left: calc(25vw - 215px); translate: -50%; animation: swap 40s ease-in-out infinite; }
+  .fig-knight { --depth: 60; left: calc(25vw - 215px); translate: -50%; animation: swap 40s ease-in-out -20s infinite; }
+  .fig-archer { --depth: 100; right: calc(25vw - 215px); translate: 50%; }
+  .fig-knight canvas { animation-duration: 11s; }
+  .fig-archer canvas { animation-duration: 8s; animation-delay: -3s; }
 
   @keyframes drift {
-    from { transform: translateY(-8px); opacity: 0.82; }
-    to { transform: translateY(8px); opacity: 1; }
+    from { transform: translateY(-6px); }
+    to { transform: translateY(6px); }
   }
   @keyframes swap {
     0%, 42% { opacity: 1; }
@@ -69,7 +189,7 @@ const figures = ['spear', 'knight', 'archer'];
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .fig, .fig i { animation: none; }
+    .fig, .fig canvas { animation: none; }
     .fig-knight { display: none; }
   }
 </style>

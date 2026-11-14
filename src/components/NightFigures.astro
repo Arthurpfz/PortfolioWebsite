@@ -3,7 +3,8 @@
 // Each figure is a still image plus a motion map (R = free to move, G = glowing weapon, B = rising smoke);
 // the shader below makes hair, cloth and smoke flow and the weapons pulse and sparkle.
 // Nothing here downloads or runs until the theme is switched on.
-// The spear bearer and the knight share the left margin and slowly swap.
+// The archer also draws her bow and looses an arrow of light across the page every few seconds.
+// The spear bearer and the knight share the right margin and slowly swap.
 import spear from '../assets/night/spear.webp';
 import spearMask from '../assets/night/spear-mask.webp';
 import knight from '../assets/night/knight.webp';
@@ -24,6 +25,7 @@ const figures = [
       <canvas data-src={f.img.src} data-mask={f.mask.src}></canvas>
     </div>
   ))}
+  <i class="shot"></i>
 </div>
 
 <script>
@@ -34,6 +36,11 @@ const figures = [
     uniform sampler2D uTex, uMask;
     uniform vec2 uSize;
     uniform float uTime;
+    uniform vec3 uShot;   // archer only: x = arm eased forward (0 = full draw, as painted), y = charge, z = release flash
+    float seg(vec2 p, vec2 a, vec2 b, out float s){
+      vec2 ab = b - a; s = clamp(dot(p - a, ab) / dot(ab, ab), 0., 1.);
+      return length(p - a - ab * s);
+    }
     float hash(vec2 p){ return fract(sin(dot(p, vec2(127.1, 311.7))) * 43758.5453); }
     float noise(vec2 p){
       vec2 i = floor(p), f = fract(p); f = f * f * (3. - 2. * f);
@@ -49,6 +56,15 @@ const figures = [
       vec2 d = (flow(px, uTime * .4) * 16. + vec2(sin(px.y * .03 + px.x * .02 - uTime * 1.5) * 4., 0.)) * m.r;
       // smoke rises: two looping passes hide the jump back
       vec2 rise = (vec2(0., 30.) + flow(px * .6, uTime * .15) * 36.) * m.b;
+      // the archer's drawing arm eases forward and pulls back; the string and the bow tips follow, her face stays put
+      float pull = uShot.x * 12., s1, s2, sa;
+      vec2 hand = vec2(86. + pull, 306.), tip = hand + vec2(149.6, -11.5);
+      float arm = 1. - smoothstep(.5, 1., length((px - vec2(55. + pull * .5, 310.)) / vec2(55., 24.)));
+      float d1 = seg(px, hand, vec2(150., 152.), s1), d2 = seg(px, hand, vec2(172., 455.), s2);
+      float str = max((1. - s1) * (1. - smoothstep(4., 16., d1)), (1. - s2) * (1. - smoothstep(4., 16., d2)));
+      float limb = smoothstep(.5, .85, m.g) * pow(min(abs(px.y - 300.) / 150., 1.), 2.);
+      d.x -= pull * max(arm, str) * smoothstep(10., 18., length(px - vec2(114., 286.)))
+           + uShot.x * 5. * limb + uShot.y * arm * sin(uTime * 38.) * .5;
       float p1 = fract(uTime * .11), p2 = fract(uTime * .11 + .5);
       vec4 c = mix(texture2D(uTex, (px + d + rise * (p2 - .5)) / uSize),
                    texture2D(uTex, (px + d + rise * (p1 - .5)) / uSize), 1. - abs(2. * p1 - 1.));
@@ -56,7 +72,12 @@ const figures = [
       float lum = max(c.r, max(c.g, c.b));
       float pulse = .5 + .5 * sin(uTime * 1.5 + px.y * .02);
       float band = smoothstep(.8, 1., .5 + .5 * sin(px.y * .045 + px.x * .02 - uTime * 2.2));
-      c.rgb += c.rgb * m.g * (.25 + .8 * pulse * pulse) + vec3(.55, 1., .85) * lum * m.g * band * .9;
+      c.rgb += (c.rgb * m.g * (.25 + .8 * pulse * pulse) + vec3(.55, 1., .85) * lum * m.g * band * .9) * (1. + 1.2 * uShot.y + 1.2 * uShot.z);
+      // an arrow of light forms on the string as she draws, then a flash at the bow when it flies
+      float da = seg(px, hand, tip, sa);
+      vec2 toTip = px - tip, toGrip = px - vec2(214., 300.);
+      c += vec4(vec3(.75, 1., .92), .9) * (uShot.y * ((1. - smoothstep(.5, 2.2, da)) * .8 + (1. - smoothstep(1., 9., da)) * sa * .3 + exp(-dot(toTip, toTip) / 40.))
+                                          + uShot.z * exp(-dot(toGrip, toGrip) / 900.));
       // sparks drift up through the smoke and off the weapons
       vec2 g = vec2(px.x, px.y + uTime * 13.) / 9.;
       vec2 id = floor(g);
@@ -100,14 +121,34 @@ const figures = [
     gl.uniform1i(gl.getUniformLocation(prog, 'uTex'), 0);
     gl.uniform1i(gl.getUniformLocation(prog, 'uMask'), 1);
     gl.uniform2f(gl.getUniformLocation(prog, 'uSize'), img.width, img.height);
-    const uTime = gl.getUniformLocation(prog, 'uTime');
+    const uTime = gl.getUniformLocation(prog, 'uTime'), uShot = gl.getUniformLocation(prog, 'uShot');
+    const aims = c.parentElement!.classList.contains('fig-archer');
+    let lastU = 0;
     return (t: number) => {
       const dpr = Math.min(devicePixelRatio || 1, 2);
       const w = Math.round(c.clientWidth * dpr), h = Math.round(c.clientHeight * dpr);
       if (c.width !== w || c.height !== h) { c.width = w; c.height = h; gl.viewport(0, 0, w, h); }
       gl.uniform1f(uTime, t);
+      if (aims && !still.matches) {
+        // one shot every 9s: ease the arm forward, hold, draw back, charge, loose
+        const u = (t / 9 + .3) % 1, ease = (x: number) => x * x * (3 - 2 * x);
+        const relaxed = u < .08 ? ease(u / .08) : u < .25 ? 1 : u < .6 ? 1 - ease((u - .25) / .35) : 0;
+        const charge = u < .25 ? 0 : u < .6 ? .3 * ease((u - .25) / .35) : .3 + .7 * (u - .6) / .4;
+        gl.uniform3f(uShot, relaxed, charge, Math.exp(-u * 45));
+        if (u < lastU) loose(c);
+        lastU = u;
+      }
       gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
     };
+  }
+
+  // the arrow leaves the bow and crosses the page behind the text
+  function loose(c: HTMLCanvasElement) {
+    const r = c.getBoundingClientRect(), x = r.left + r.width * .93;
+    const shot = document.querySelector<HTMLElement>('#night-figures .shot')!;
+    shot.style.left = x + 'px'; shot.style.top = r.top + r.height * .326 + 'px';
+    shot.animate([{ transform: 'rotate(-4.4deg) translateX(0)', opacity: 1 }, { transform: `rotate(-4.4deg) translateX(${innerWidth - x + 200}px)`, opacity: .7 }],
+      { duration: 650, easing: 'cubic-bezier(.15, .6, .4, 1)' });
   }
 
   function frame(now: number) {
@@ -164,11 +205,31 @@ const figures = [
     height: 100%;
     animation: drift 9s ease-in-out infinite alternate;
   }
-  .fig-spear { --depth: 60; left: calc(25vw - 215px); translate: -50%; animation: swap 40s ease-in-out infinite; }
-  .fig-knight { --depth: 60; left: calc(25vw - 215px); translate: -50%; animation: swap 40s ease-in-out -20s infinite; }
-  .fig-archer { --depth: 100; right: calc(25vw - 215px); translate: 50%; }
+  /* the archer stands on the left so she aims across the page */
+  .fig-archer { --depth: 100; left: calc(25vw - 215px); translate: -50%; }
+  .fig-spear { --depth: 60; right: calc(25vw - 215px); translate: 50%; animation: swap 40s ease-in-out infinite; }
+  .fig-knight { --depth: 60; right: calc(25vw - 215px); translate: 50%; animation: swap 40s ease-in-out -20s infinite; }
   .fig-knight canvas { animation-duration: 11s; }
   .fig-archer canvas { animation-duration: 8s; animation-delay: -3s; }
+
+  .shot {
+    position: absolute;
+    width: 170px;
+    height: 2px;
+    margin-left: -170px;
+    transform-origin: right center;
+    opacity: 0;
+    background: linear-gradient(90deg, transparent, var(--color-primary));
+  }
+  .shot::after {
+    content: '';
+    position: absolute;
+    right: -6px;
+    top: -5px;
+    width: 40px;
+    height: 12px;
+    background: radial-gradient(closest-side, var(--color-primary), transparent);
+  }
 
   @keyframes drift {
     from { transform: translateY(-6px); }
@@ -184,8 +245,8 @@ const figures = [
   @media (max-width: 1240px) {
     :global(html[data-theme="archer"]) .night-figures { opacity: 0.3; }
     .fig { width: min(42vw, 86vh * var(--ratio), 250px); }
-    .fig-spear, .fig-knight { left: 23vw; }
-    .fig-archer { right: 23vw; }
+    .fig-archer { left: 23vw; }
+    .fig-spear, .fig-knight { right: 23vw; }
   }
 
   @media (prefers-reduced-motion: reduce) {

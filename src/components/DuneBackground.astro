@@ -225,7 +225,7 @@
       gl.uniform1f(U.time, (now - start) / 1000);
       gl.uniform1i(U.tex, 0);
       gl.drawArrays(gl.TRIANGLES, 0, 3);
-      // constellation figures (Constellations.astro) drift with the same smoothed scroll
+      // night figures (NightFigures.astro) drift with the same smoothed scroll
       figs = figs || document.getElementById('night-figures');
       if (figs && Math.abs(scroll - figScroll) > 0.001) { figScroll = scroll; figs.style.setProperty('--s', scroll.toFixed(3)); }
       raf = idleTimer = 0;

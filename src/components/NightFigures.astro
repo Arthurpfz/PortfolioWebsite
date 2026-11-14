@@ -1,0 +1,75 @@
+---
+// Arthur's own artwork, shown in the margins of the Night Archer theme.
+// The files are CSS backgrounds under the theme selector, so they only download once the theme is on.
+// The spear bearer and the knight share the left margin and slowly swap.
+const figures = ['spear', 'knight', 'archer'];
+---
+
+<div id="night-figures" class="night-figures" aria-hidden="true">
+  {figures.map(id => <div class:list={['fig', `fig-${id}`]}><i></i></div>)}
+</div>
+
+<style>
+  .night-figures {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    overflow: hidden;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 800ms ease, visibility 800ms;
+  }
+  :global(html[data-theme="archer"]) .night-figures {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  /* --s (0 to 1) is the smoothed scroll position, set by DuneBackground; deeper figures drift further */
+  .fig {
+    position: absolute;
+    top: 50%;
+    /* fits the margin beside the 860px column, the viewport height, and the artwork's own size */
+    width: min(50vw - 460px, 86vh * var(--ratio), 250px);
+    aspect-ratio: var(--ratio);
+    transform: translateY(calc(-50% - var(--s, 0) * var(--depth) * 1px));
+  }
+  .fig i {
+    display: block;
+    height: 100%;
+    background: center / contain no-repeat;
+    animation: drift 9s ease-in-out infinite alternate;
+  }
+  .fig-spear { --ratio: 0.298; --depth: 60; left: calc(25vw - 215px); translate: -50%; animation: swap 40s ease-in-out infinite; }
+  .fig-knight { --ratio: 0.36; --depth: 60; left: calc(25vw - 215px); translate: -50%; animation: swap 40s ease-in-out -20s infinite; }
+  .fig-archer { --ratio: 0.281; --depth: 100; right: calc(25vw - 215px); translate: 50%; }
+  .fig-knight i { animation-duration: 11s; }
+  .fig-archer i { animation-duration: 8s; animation-delay: -3s; }
+
+  :global(html[data-theme="archer"]) .fig-spear i { background-image: url('../assets/night/spear.webp'); }
+  :global(html[data-theme="archer"]) .fig-knight i { background-image: url('../assets/night/knight.webp'); }
+  :global(html[data-theme="archer"]) .fig-archer i { background-image: url('../assets/night/archer.webp'); }
+
+  @keyframes drift {
+    from { transform: translateY(-8px); opacity: 0.82; }
+    to { transform: translateY(8px); opacity: 1; }
+  }
+  @keyframes swap {
+    0%, 42% { opacity: 1; }
+    50%, 92% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+
+  /* no margins to stand in: the figures sit faintly behind the text */
+  @media (max-width: 1240px) {
+    :global(html[data-theme="archer"]) .night-figures { opacity: 0.3; }
+    .fig { width: min(42vw, 86vh * var(--ratio), 250px); }
+    .fig-spear, .fig-knight { left: 23vw; }
+    .fig-archer { right: 23vw; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .fig, .fig i { animation: none; }
+    .fig-knight { display: none; }
+  }
+</style>

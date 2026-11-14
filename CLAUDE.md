@@ -28,7 +28,7 @@ Use CSS variables (`--border`, `--color-primary`, `--color-accent`, `--font-mono
 ### Themes
 The "Click" button in the nav cycles themes by setting `data-theme` on `<html>`; the choice is saved in `localStorage` (`theme`) and applied before paint by a one-line script in `BaseLayout.astro` (disclosed on `/privacy`).
 
-- **Night Archer** (`archer`): starry black `#05060D`, star-white text, electric-blue dashed lines, gold accent. The background canvas cross-fades from dunes to a procedural starfield (`uTheme` in `DuneBackground.astro`).
+- **Night Archer** (`archer`): starry black `#05060D`, star-white text, electric-blue dashed lines, gold accent. The background canvas cross-fades from dunes to a procedural starfield (`uTheme` in `DuneBackground.astro`). Arthur's three figures (`src/assets/night/`, cut-outs of his own artwork) float in the page margins via `NightFigures.astro`; they only download once the theme is on.
 - **Add a theme:** one `html[data-theme="name"]` block of token overrides in `design-tokens.css`, the name in `THEMES` in `Navigation.astro`, and (optional) a background mode in `themeMode()` in `DuneBackground.astro`.
 
 ## Site Structure

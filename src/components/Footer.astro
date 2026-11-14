@@ -24,4 +24,12 @@ const social = [
       {legal.map((l, i) => (<>{i > 0 && ' · '}<a href={l.href}>{l.label}</a></>))}
     </p>
   )}
+  <p class="homage">
+    Theme is an homage to <a href="https://recent.design/i/2yip36d-winged-archer-illustration" target="_blank" rel="noopener noreferrer">Winged Archer ↗&#xFE0E;</a>
+  </p>
 </footer>
+
+<style>
+  .homage { display: none; flex-basis: 100%; }
+  :global(html[data-theme="archer"]) .homage { display: block; }
+</style>

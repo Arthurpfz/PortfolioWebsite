@@ -72,6 +72,7 @@ Links:
 
 ## Key Patterns
 
+- **Writing copy:** follow the `portfolio-tone` skill (`.claude/skills/portfolio-tone/SKILL.md`) for any article, feed card or Builds tagline
 - **Tailwind v4 specificity:** Scoped Astro `<style>` may need `!important` on `display: grid` to override Tailwind resets
 - **Reading time:** Calculated from `entry.body` word count / 200 (not Content.toString())
 - **Article metadata:** `PUBLISHED YYYY-MM-DD · CATEGORY · N MIN READ` in Courier New mono

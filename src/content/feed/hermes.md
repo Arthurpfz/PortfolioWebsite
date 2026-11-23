@@ -1,6 +1,6 @@
 ---
 title: "Hermes — an agent that lived in my vault"
 date: 2026-04-19
-description: "VPS-side agent with two personalities: 'vault-aware' answers questions over my knowledge base in read-only mode, 'vault-writer' drafts new pages into a sandboxed inbox folder. Talks to me on Telegram. Ran on Grok via OpenRouter. Retired in November 2026: it had ended up only running fixed scripts on a schedule, and that job belongs in n8n."
+description: "An agent on my VPS that answered questions over my vault and drafted new pages, over Telegram. I retired it in November 2026: by then it only ran fixed scripts on a schedule, which n8n does better."
 icon: "◈"
 ---

@@ -1,6 +1,6 @@
 ---
 title: "Relay — running my VPS from Telegram"
 date: 2026-04-15
-description: "Webhook-based command runner so a phone-side Claude (or just me, on a train) can restart a container, tail logs, redeploy, or run an arbitrary script on the box. Auth + audit trail + a small allow-list of operations. n8n is the dispatcher."
+description: "A small webhook so Claude on my phone (or me, on a train) can restart a container, tail logs or redeploy on my VPS. Only allow-listed commands, and every call is logged."
 icon: "◈"
 ---

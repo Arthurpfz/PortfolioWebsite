@@ -12,7 +12,7 @@ type Build = {
 const builds: Build[] = [
   {
     name: 'Croissant Ride',
-    tagline: 'Indoor smart-trainer app that runs in the browser. Pair a trainer and HR strap over Bluetooth, ride structured workouts in ERG mode (or import Zwift .zwo files) through switchable 3D worlds, then post the .FIT to Intervals.icu, Strava, Garmin or TrainingPeaks. No account, no backend, no subscription.',
+    tagline: "My own indoor training app, in the browser. Pair a smart trainer over Bluetooth, ride ERG workouts (or your coach's Zwift files) through 3D worlds, then post the ride to Strava or Intervals.icu. Free, open source, nothing to sign up for.",
     stack: 'TypeScript · Three.js · Web Bluetooth · FTMS · Garmin FIT SDK',
     status: 'in use',
     links: [
@@ -23,7 +23,7 @@ const builds: Build[] = [
   },
   {
     name: 'Croissant tri-coach',
-    tagline: "Personal AI triathlon coach. Pulls every workout from Intervals.icu, grades it against my fitness with Claude, texts feedback on Telegram. Plans the next week every Sunday. Runs on tricoach-db — a ~250-line self-hosted SQLite API I built to replace Airtable, zero recurring cost.",
+    tagline: "My triathlon coach, on Telegram. It grades every workout against my fitness and plans next week every Sunday. Data lives in tricoach-db, a ~250-line SQLite API I wrote to replace Airtable.",
     stack: 'n8n · Claude · Intervals.icu API · Telegram · SQLite · Docker',
     status: 'in use',
     links: [
@@ -34,26 +34,26 @@ const builds: Build[] = [
   },
   {
     name: 'Daily Podcast',
-    tagline: "A two-host, ~15-minute podcast generated every morning: overnight macro / crypto / AI news, prediction markets, Hacker News, yesterday's bookmarks, and one training tip from my vault. Lands on Telegram as an MP3 around 06:00. A GPT model writes the script, an OpenAI audio model voices it line by line. About $0.10 an episode.",
+    tagline: "Every morning at 6, two AI hosts read me the news, markets, Hacker News and yesterday's bookmarks. A GPT model writes the script, an audio model voices it. About 14 minutes and 10 cents a day.",
     stack: 'Python · GPT · gpt-audio-mini · OpenRouter · ffmpeg · n8n · Telegram',
     status: 'in use',
   },
   {
     name: 'text-polisher',
-    tagline: 'System-wide hotkey: select text in any app, hit a key, get a polished rewrite pasted in place. Tray-icon controls for language and tone. V3 added push-to-talk dictation via local Whisper.',
+    tagline: 'Select text in any app, hit a key, get a polished rewrite pasted back. Tone and language switches in the tray, plus push-to-talk dictation with local Whisper.',
     stack: 'Python · Anthropic API · Whisper · macOS / X11',
     status: 'in use',
     links: [{ label: 'GitHub', href: 'https://github.com/Arthurpfz/text-polisher', external: true }],
   },
   {
     name: 'Croissant Bird (Telegram capture bots)',
-    tagline: 'Two Telegram bots for getting things out of my head and inbox: one turns saved tweets, articles and YouTube links into structured markdown notes in my vault; the other transcribes voice memos and files them. Same surface, two jobs.',
+    tagline: 'Two Telegram bots. One turns links (tweets, articles, YouTube) into markdown notes in my vault, the other transcribes voice memos and files them.',
     stack: 'n8n · LLM · Telegram · Markdown',
     status: 'in use',
   },
   {
     name: "Vault (Arthur's 2nd Brain)",
-    tagline: "My second brain. Personal LLM-friendly knowledge base — Obsidian for reading, Claude for writing and answering, Syncthing keeping my Mac and VPS in lockstep with no cloud middleman. Karpathy-style topic-led wiki, with sources, entities and concepts as separate page types. The capture bots and Voice Notes feed into it. Architecture, schema and skills are public.",
+    tagline: "My second brain. Plain markdown on a VPS, read in Obsidian on my Mac, synced by Syncthing. Bots capture, scheduled jobs keep it tidy, Claude answers questions over it. The architecture and schema are public.",
     stack: 'Obsidian · Claude · Syncthing · Markdown',
     status: 'in use',
     links: [
@@ -63,19 +63,19 @@ const builds: Build[] = [
   },
   {
     name: 'Brain Digest',
-    tagline: "Every Monday at 08:00, picks one recently updated page from my vault and sends me a ~150-word Telegram dispatch on it: one tension, gap or surprising fact, not a summary. The rule in the prompt: a digest fails if it could have been written a month ago. One n8n workflow, no script.",
+    tagline: "Every Monday, one recently updated vault page comes back to me on Telegram as ~150 words on one tension or surprising fact. If it could have been written a month ago, it failed. One n8n workflow.",
     stack: 'n8n · Claude Haiku · OpenRouter · Telegram',
     status: 'in use',
   },
   {
     name: 'Voice Notes',
-    tagline: 'Telegram voice memo → Whisper transcription → Claude categorisation (idea / todo / other) → markdown file in my vault, with an undo button. One n8n workflow.',
+    tagline: 'Send a voice memo on Telegram. It gets transcribed, sorted into idea, todo or other, and saved to my vault, with an undo button. One n8n workflow.',
     stack: 'n8n · Groq Whisper · Claude · Telegram',
     status: 'in use',
   },
   {
     name: 'Relay',
-    tagline: 'Webhook command runner so phone-side Claude (or me, on a train) can restart a container, tail logs, redeploy or run an allow-listed script on my VPS.',
+    tagline: 'A webhook so Claude on my phone (or me, on a train) can restart a container, tail logs or redeploy on my VPS. Only allow-listed commands.',
     stack: 'n8n · webhook · SSH · Telegram',
     status: 'in use',
   },
@@ -90,11 +90,11 @@ const statusLabel: Record<Build['status'], string> = {
 
 <BaseLayout
   title="Builds — Arthur Pfalzgraf"
-  description="A curated list of things I've built. Mostly personal infra — agents, automations, and the data layer underneath them."
+  description="Things I've built on the side, mostly agents and automations for my own use."
 >
   <header class="page-header">
     <h1>Builds</h1>
-    <p class="intro">A curated list of things I've built — mostly personal infra. The feed has the chronological version; this page is the highlight reel. I run a croissant studio!</p>
+    <p class="intro">Things I've built, mostly for my own use. The feed has them in order; this is the highlight reel. I run a croissant studio!</p>
   </header>
 
   <section class="builds" aria-label="Builds">

@@ -2,19 +2,17 @@
 title: "A tri-coach on Telegram"
 date: 2026-06-07
 updated: 2026-07-14
-description: "An AI triathlon coach that grades every workout against your fitness, writes next week's plan on its own, and lives entirely on infrastructure I control. The architecture, the components, and the three patterns that hold it together."
+description: "My triathlon coach is a Telegram bot. It grades every workout against my fitness and writes next week's plan every Sunday, on a server I run."
 categories: ["Essay"]
 tags: ["Triathlon", "n8n", "Agents", "Self-hosting"]
 draft: false
 ---
 
-Every weeknight at 20:10, a Telegram message grades the day's workout — against my fitness, not against a plan.
+Every weeknight at 20:10, I get a Telegram message grading the day's workout against my fitness, not against a plan.
 
-Every Sunday night, the same system writes the week ahead: seven sessions, periodized to my race date.
+Every Sunday night, the same system writes my week ahead: seven sessions, built around my race date. I don't touch it.
 
-Nobody touches it. This is how the pieces fit together.
-
-## The architecture
+## How it fits together
 
 ```
                     ┌── Telegram (CroissantTri) ──┐
@@ -51,11 +49,11 @@ Nobody touches it. This is how the pieces fit together.
 
 ## What it does
 
-- **It grades every session.** Each weeknight it pulls the day's workout from Intervals.icu, runs the full FIT file through Claude, and replies with a letter grade and three data-backed observations. The grade measures *execution against your fitness* — not whether you followed the plan.
-- **It writes the plan.** Sunday night it reads your race date, computes how many weeks out you are, derives the training phase and volume target, and asks Claude for seven sessions labelled KEY or OPTIONAL.
-- **It nudges on volume.** A daily running tally tracks the week against an hours floor, and from midweek on tells you exactly how far you are from it.
-- **It takes commands.** A single Telegram router handles `/program`, `/refresh`, `/strikes`, `/training`, and `/progress` — plan on demand, backfill late uploads, pull stats, see the week, check the trend.
-- **It answers "am I improving?"** `/progress` compares the last 4 weeks against the 4 before: per-discipline scoreboard with Z2-only efficiency (so a harder block doesn't read as fitness loss), decoupling on long steady rides, pool vs open-water pace kept separate, swim DPS and SWOLF, longest ride/run vs race demands, sleep/HRV/RHR, and CTL — closed out by a one-line LLM verdict.
+- **Grades every session.** Each weeknight it pulls the day's workout from Intervals.icu, sends the full FIT data to Claude, and replies with a letter grade and three observations backed by the numbers. The grade is about how well I executed for my current fitness, not whether I followed the plan.
+- **Writes the plan.** On Sunday night it checks how many weeks I am from my race, works out the training phase and volume, and asks Claude for seven sessions marked KEY or OPTIONAL.
+- **Nudges on volume.** It tracks my weekly hours against a minimum, and from midweek on tells me how far off I am.
+- **Takes commands.** `/program` plans now, `/refresh` picks up late uploads, `/strikes` shows week stats, `/training` shows this week, `/progress` shows the trend.
+- **Answers "am I improving?"** `/progress` compares the last four weeks with the four before, per sport. Efficiency only counts easy Z2 work, so a hard block doesn't look like lost fitness. It also covers swim technique, my longest sessions against race distance, and sleep and HRV, then ends with a one-line verdict.
 
 ## The components
 
@@ -67,21 +65,21 @@ Nobody touches it. This is how the pieces fit together.
 | Storage | self-hosted SQLite | athletes · plans · sessions, one API |
 | Comms | Telegram | plans, feedback, stats, commands |
 
-Every recurring cost on this stack is zero. The database runs on a VPS I already pay for.
+Apart from the Claude calls, it costs nothing extra to run: the database sits on a VPS I already pay for.
 
-## Three patterns
+## Three rules
 
 **The plan is a guide, not a contract.**
 
-The daily grade reflects execution against your fitness profile — zones held, pacing, cadence, drift — and nothing else. An off-plan two-hour ride that holds Z2 cleanly is an A. The plan is shown to the model as soft context, with explicit instructions to stay quiet about it unless it adds genuine color. A missed session is just a missed session. No moralizing.
+The daily grade only looks at execution: zones, pacing, cadence, drift. An off-plan two-hour ride that holds Z2 cleanly gets an A. The model sees the plan but is told to mention it only when it matters. A missed session is just a missed session.
 
 **Full FIT data, not Strava's summary.**
 
-This started on Strava and the feedback was thin — average power, heart rate, moving time. Intervals.icu ingests the same FIT files and returns everything: normalized power, variability index, cardiac drift, decoupling, zone distribution, interval structure. Swapping the data source was the single inflection point for feedback quality. The catch: Intervals blocks activities that arrive via Strava, so the upload chain had to flip from device → Strava → Intervals to device → Intervals, direct.
+It started on Strava, and the feedback was thin: average power, heart rate, moving time. Intervals.icu reads the same FIT files and gives back much more: normalized power, variability, cardiac drift, decoupling, zones, intervals. That switch did more for the feedback than anything else. One catch: Intervals blocks activities that arrive via Strava, so my devices now upload to Intervals directly.
 
-**Idempotency over retries.**
+**Never message twice.**
 
-n8n is reliable, not perfect, and a manual re-run shouldn't double-message you. Every workflow writes an "already coached today?" date gate *before* the heavy lifting, so even a downstream failure leaves the gate honest. A separate error-handler workflow catches anything that throws and sends a Telegram alert — because a silent failure means you simply don't hear from your coach that night, and never know why.
+n8n is reliable, not perfect, and re-running a workflow by hand shouldn't send me the same feedback twice. Each workflow checks and sets an "already coached today?" flag before doing anything heavy. A separate workflow catches errors and alerts me on Telegram. Otherwise a failure would just be silence, and I'd never know why.
 
 ## The daily message
 
@@ -97,19 +95,19 @@ Tomorrow: easy spin 45min Z2, or rest
 Watch: late-ride power decay vs fuelling
 ```
 
-Six lines. No markdown. It fits on one phone screen — readable on a watch, even.
+Six lines of plain text. It fits on one phone screen, even on a watch.
 
-## What this isn't
+## Caveats
 
-- Not multi-athlete yet. The daily loop iterates over everyone; the Sunday planner is still wired to one athlete.
-- Not fully adaptive across training blocks. The planner now reads last week's adherence, CTL trend, and morning readiness — but it doesn't yet reason over a whole mesocycle.
-- Not turnkey. Six pieces have to talk to each other. The recipe is the work; getting them aligned takes a weekend.
+- One athlete for now. The daily check-in handles several, but the Sunday planner is wired to me.
+- It doesn't plan across a whole training block yet. It reads last week's adherence, fitness trend and morning readiness, but not a full mesocycle.
+- It's not plug and play. Six pieces need to talk to each other; expect a weekend of setup.
 
 ## Take it
 
-The code is open source: [Arthurpfz/tri-coach](https://github.com/Arthurpfz/tri-coach) for the workflows, and [tricoach-db](https://github.com/Arthurpfz/tricoach-db) for the standalone SQLite API if you just want the storage layer.
+The code is open source: [Arthurpfz/tri-coach](https://github.com/Arthurpfz/tri-coach) for the workflows, and [tricoach-db](https://github.com/Arthurpfz/tricoach-db) if you just want the SQLite API.
 
-Follow [@arthurpfz](https://x.com/arthurpfz) for build logs.
+I post build logs on X: [@arthurpfz](https://x.com/arthurpfz).
 
 ## Update log
 

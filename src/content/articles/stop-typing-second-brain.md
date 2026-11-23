@@ -2,17 +2,15 @@
 title: "A vault that ingests itself"
 date: 2026-04-27
 updated: 2026-11-22
-description: "Voice notes, bookmarks, tweets, YouTube — captured automatically, filed in markdown, maintained by scheduled jobs. The architecture, the schema, and the three patterns that hold it together."
+description: "How my notes file themselves: Telegram bots capture, plain markdown on a VPS stores, Obsidian reads, scheduled jobs tidy up."
 categories: ["Essay"]
 tags: ["Obsidian", "Knowledge Management", "Agents", "n8n"]
 draft: false
 ---
 
-Voice notes. Bookmarks. Tweets. YouTube transcripts. All captured automatically, filed as plain markdown, kept tidy by jobs that run while I sleep.
+I don't want to file notes by hand, so I don't. I send a link or a voice memo to a Telegram bot, and it ends up as a markdown page in my vault. Jobs on my server tidy it up overnight. I just read it in Obsidian.
 
-This is how the pieces fit together.
-
-## The architecture
+## How it fits together
 
 ```
                     ┌── Telegram bots ──────────────┐
@@ -48,11 +46,11 @@ This is how the pieces fit together.
 
 ## What it does
 
-- **Capture is automated.** Two Telegram bots cover all input. Share-sheet a URL, or hold-to-record a voice memo. The right workflow handles it.
-- **The vault lives on a VPS.** Plain markdown on disk. Source of truth is the server, so write workflows don't depend on the laptop being open.
-- **Sync is real-time.** Syncthing mirrors VPS ↔ Mac in about ten seconds. Open Obsidian on the Mac, see what got captured five minutes ago.
-- **Questions go to Claude Code.** It runs on the same VPS, reachable from the phone. It greps the markdown and answers. No embeddings, no index to keep fresh.
-- **The wiki grows and cleans itself.** Scheduled jobs turn captures into wiki pages, fix links every night, and send a weekly digest. Anything that needs a human lands on a review page.
+- **Capture.** Two Telegram bots: share a link from my phone, or hold to record a voice memo.
+- **Storage.** The vault is plain markdown on a VPS, so the bots can write even when my laptop is closed.
+- **Sync.** Syncthing copies it to my Mac in about ten seconds, where I read it in Obsidian.
+- **Questions.** I ask Claude Code, which runs on the same VPS and is reachable from my phone. It searches the markdown with grep, so there is no search index to maintain.
+- **Upkeep.** Scheduled jobs turn captures into wiki pages, fix links every night and send me a weekly digest. Anything that needs my call lands on a review page.
 
 ## The vault schema
 
@@ -75,7 +73,7 @@ vault/
 └── raw/                  ← immutable source dumps
 ```
 
-Pages sit flat. A page's kind is a frontmatter field, not a folder, so reclassifying a page is a one-line edit and no link breaks. One home per fact. No duplicates.
+Pages sit in one flat folder. A page's kind is a frontmatter field, so reclassifying a page is a one-line edit and no link breaks.
 
 ## The components
 
@@ -91,37 +89,37 @@ Pages sit flat. A page's kind is a frontmatter field, not a folder, so reclassif
 | Upkeep | scheduled jobs | promote, nightly cleanup, weekly digest |
 | Models | OpenRouter | one key, swap models per job |
 
-## Three patterns
+## Three rules
 
 **One home per fact.**
 
-WHY (decisions, roadmap, learnings) lives in the vault. HOW (operational state) lives in per-project `CLAUDE.md`. About YOU (preferences, env quirks) lives in agent memory. WHAT (code) lives in git. If a fact appears in two files, one of them links to the other. Never copy.
+Why I decided something goes in the vault. How a project runs goes in its `CLAUDE.md`. What the agent should know about me goes in its memory. Code goes in git. If two files need the same fact, one links to the other.
 
-**Bots write, humans browse.**
+**Bots write, I read.**
 
-Capture is automated. Reading is human. Telegram is the lowest-friction surface available — share-sheet on phone, hold-to-record for voice. The bot replies with a confirmation and a delete button so a wrong capture is one tap to remove. Reading still happens in Obsidian, where it should.
+Telegram is the quickest thing on my phone: share a link, or hold to record. The bot confirms and offers a delete button, so a bad capture takes one tap to undo. Reading happens in Obsidian.
 
-**Jobs maintain, humans review.**
+**Jobs maintain, I review.**
 
-Three jobs keep the wiki alive without anyone opening it:
+Three jobs keep the wiki in shape without me opening it:
 
-- **Promote (weekly).** Reads new bookmarks, extracts entities, concepts and learnings, and writes them as wiki pages with `[[wikilinks]]` back to sources. A subject gets its own page only once a second source mentions it, so one-off names don't pile up as stubs. Anything the model is unsure about waits on a review page instead of going in.
-- **Dream (nightly).** Fixes broken links, keeps the hub index and overview current, finds orphan pages, fills in stubs that several sources mention, and flags contradictions.
-- **Digest (weekly).** Sends a short summary of what changed and what needs a decision.
+- **Promote (weekly).** Reads new bookmarks, pulls out people, ideas and learnings, and writes them as wiki pages linked back to their sources. A subject only gets its own page once a second source mentions it, so one-off names don't pile up as empty stubs. When the model is unsure, the item waits on a review page.
+- **Dream (nightly).** Fixes broken links, keeps the index and overview current, finds orphan pages, fills in stubs that several sources mention, and flags contradictions.
+- **Digest (weekly).** A short summary of what changed and what needs a decision.
 
-The same vault also feeds a daily two-host podcast and a Monday digest that resurfaces one page. Capture once, reuse everywhere.
+The same vault feeds my daily podcast and a Monday digest that resurfaces one page.
 
-## What this isn't
+## Caveats
 
-- Not a content production system. This is for thinking.
-- Not turnkey. Several pieces have to talk to each other; getting them aligned takes a weekend.
-- Not novel pieces. Every component is off the shelf. The recipe is what's rare.
+- It's for thinking, not for producing content.
+- It's not plug and play. Several services need to talk to each other; expect a weekend of wiring.
+- None of the parts are new. Everything is off the shelf. The work is in how they connect.
 
 ## Take it
 
-There's a [template repo with the architecture, schema, and skill examples](https://github.com/Arthurpfz/vault-system-template). Star it if you're building something similar — that's the signal to ship more (workflow JSONs, bot code, deploy templates).
+There's a [template repo with the architecture, schema and skill examples](https://github.com/Arthurpfz/vault-system-template). If you're building something similar, star it and I'll publish more: workflow JSONs, bot code, deploy templates.
 
-Follow [@arthurpfz](https://x.com/arthurpfz) for build logs.
+I post build logs on X: [@arthurpfz](https://x.com/arthurpfz).
 
 ## Update log
 
@@ -129,5 +127,5 @@ Follow [@arthurpfz](https://x.com/arthurpfz) for build logs.
 - **2026-11-10** — Promote now waits for a second mention before creating a page. Vault Writer requires a token.
 - **2026-11-09** — Flattened the wiki: entity and concept folders gone, a page's kind is its `type:` field. Hub-only index. Uncertain extractions go to a review page.
 - **2026-11-08** — Retired the on-VPS agent (Hermes) and QMD. It had ended up only running fixed scripts on a schedule, which n8n does better. Questions over the vault now go to Claude Code running on the VPS, with plain grep over the markdown.
-- **2026-04-27** — Published this writeup: the architecture, the schema, and the three patterns that hold it together.
+- **2026-04-27** — Published this write-up.
 - **2026-04-10** — Vault foundation in place. Obsidian on the read side, Claude on the write side, QMD for full-text search, Syncthing mirroring Mac ↔ VPS with no cloud middleman.

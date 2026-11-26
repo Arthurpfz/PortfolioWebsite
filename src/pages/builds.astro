@@ -34,8 +34,8 @@ const builds: Build[] = [
   },
   {
     name: 'Daily Podcast',
-    tagline: "Every morning at 6, two AI hosts read me the news, markets, Hacker News and yesterday's bookmarks. A GPT model writes the script, an audio model voices it. About 14 minutes and 10 cents a day.",
-    stack: 'Python · GPT · gpt-audio-mini · OpenRouter · ffmpeg · n8n · Telegram',
+    tagline: "Every morning at 6, two AI hosts talk me through the news, markets, Polymarket odds, Hacker News and yesterday's bookmarks. If I send the bot a topic, it's explained in the next episode. About 14 minutes, 10 cents.",
+    stack: 'Python · GPT · gpt-audio-mini · Perplexity · OpenRouter · ffmpeg · n8n · Telegram',
     status: 'in use',
     links: [{ label: 'Article', href: '/archive/my-morning-podcast/' }],
   },
@@ -66,7 +66,7 @@ const builds: Build[] = [
     name: 'Brain Digest',
     tagline: "Every Monday, one recently updated vault page comes back to me on Telegram as ~150 words on one tension or surprising fact. If it could have been written a month ago, it failed. One n8n workflow.",
     stack: 'n8n · Claude Haiku · OpenRouter · Telegram',
-    status: 'in use',
+    status: 'paused',
   },
   {
     name: 'Voice Notes',

@@ -1,0 +1,200 @@
+---
+// Pile theme: builds and book summaries drop in as pills and pile up above the footer (Matter.js physics).
+// Hidden, and nothing downloads, unless the theme is on. Mouse can pick pills up and throw them; a click still follows the link.
+import { getCollection } from 'astro:content';
+import { builds } from '../data/builds';
+
+const books = await getCollection('articles', a => !a.data.draft && a.data.categories?.[0]?.toLowerCase() === 'book summary');
+const pills = [
+  ...builds.map(b => ({
+    kind: 'build',
+    label: b.name.replace(/ \(.*\)$/, ''),
+    href: b.links?.find(l => !l.external)?.href ?? '/builds/',
+  })),
+  ...books.map(a => ({ kind: 'book', label: a.data.title.split(',')[0], href: `/archive/${a.id.replace(/\.md$/, '')}/` })),
+];
+---
+
+<section id="pile" class="pile" aria-label="Builds and books">
+  <p class="pile-title">Built &amp; read</p>
+  {pills.map(p => (
+    <a class="pill" data-kind={p.kind} href={p.href} draggable="false">{p.label}</a>
+  ))}
+</section>
+
+<script>
+  const root = document.documentElement;
+  const box = document.getElementById('pile')!;
+  const els = [...box.querySelectorAll<HTMLElement>('.pill')];
+  const still = matchMedia('(prefers-reduced-motion: reduce)');
+  let M: typeof import('matter-js') | null = null;
+  let engine: import('matter-js').Engine | null = null;
+  let bodies: import('matter-js').Body[] = [];
+  const STEP = 1000 / 60;
+  let raf = 0, last = 0, acc = 0, width = 0, inView = false, dropped = false;
+
+  const on = () => root.dataset.theme === 'pile';
+
+  async function drop() {
+    M ??= await import('matter-js');
+    await document.fonts.ready;
+    const { Engine, Bodies, Composite } = M;
+    width = box.clientWidth;
+    const sizes = els.map(el => [el.offsetWidth, el.offsetHeight]);
+    // tall enough for the pile to settle in, with room for the title above it
+    const area = sizes.reduce((s, [w, h]) => s + w * h, 0);
+    const height = Math.max(300, Math.round(area / width * 1.9) + 110);
+    box.style.height = height + 'px';
+
+    engine = Engine.create({ enableSleeping: true });
+    const wall = { isStatic: true };
+    Composite.add(engine.world, [
+      Bodies.rectangle(width / 2, height + 50, width + 400, 100, wall),
+      Bodies.rectangle(-50, 0, 100, height * 4, wall),
+      Bodies.rectangle(width + 50, 0, 100, height * 4, wall),
+    ]);
+    bodies = sizes.map(([w, h], i) => {
+      // spaced so no two start overlapping (overlaps make the solver fling them apart)
+      const b = Bodies.rectangle(w / 2 + Math.random() * (width - w), -h - i * 70, w, h, {
+        chamfer: { radius: h / 2 - 1 }, angle: (Math.random() - .5) * .3,
+        restitution: .25, friction: .5, frictionAir: .012,
+      });
+      M!.Body.setAngularVelocity(b, (Math.random() - .5) * .08);
+      return b;
+    });
+    Composite.add(engine.world, bodies);
+    dropped = true;
+    if (still.matches) { for (let i = 0; i < 900; i++) Engine.update(engine, STEP); render(); }
+    else wake();
+  }
+
+  function render() {
+    bodies.forEach((b, i) => {
+      const el = els[i];
+      el.style.transform = `translate(${b.position.x - el.offsetWidth / 2}px, ${b.position.y - el.offsetHeight / 2}px) rotate(${b.angle}rad)`;
+    });
+  }
+
+  function frame(now: number) {
+    raf = 0;
+    if (!engine || !on() || !inView || document.hidden) return;
+    // fixed 60Hz steps keep the physics the same on 120Hz screens
+    acc += Math.min(now - last, 100);
+    last = now;
+    for (; acc >= STEP; acc -= STEP) M!.Engine.update(engine, STEP);
+    render();
+    if (grab || bodies.some(b => !b.isSleeping)) raf = requestAnimationFrame(frame);
+  }
+
+  function wake() {
+    if (raf || still.matches || !engine) return;
+    last = performance.now();
+    raf = requestAnimationFrame(frame);
+  }
+
+  function reset() {
+    if (engine) M!.Engine.clear(engine);
+    engine = null; bodies = []; dropped = false;
+    els.forEach(el => (el.style.transform = ''));
+    if (on() && inView) drop();
+  }
+
+  // mouse: pick a pill up and throw it; a drag doesn't count as a click
+  let grab: import('matter-js').Constraint | null = null, moved = 0;
+  const at = (e: PointerEvent) => { const r = box.getBoundingClientRect(); return { x: e.clientX - r.left, y: e.clientY - r.top }; };
+  box.addEventListener('pointerdown', e => {
+    const i = els.indexOf(e.target as HTMLElement);
+    if (e.pointerType !== 'mouse' || e.button || i < 0 || !engine) return;
+    const p = at(e), b = bodies[i];
+    M!.Sleeping.set(b, false);
+    grab = M!.Constraint.create({ pointA: p, bodyB: b, pointB: { x: p.x - b.position.x, y: p.y - b.position.y }, stiffness: .2, damping: .1 });
+    M!.Composite.add(engine.world, grab);
+    moved = 0;
+    wake();
+  });
+  // listened on window, not pointer capture: capture would retarget the click away from the link
+  addEventListener('pointermove', e => {
+    if (!grab) return;
+    const p = at(e);
+    moved += Math.hypot(p.x - grab.pointA.x, p.y - grab.pointA.y);
+    grab.pointA = p;
+  });
+  const release = () => { if (grab && engine) M!.Composite.remove(engine.world, grab); grab = null; };
+  addEventListener('pointerup', release);
+  addEventListener('pointercancel', release);
+  box.addEventListener('click', e => { if (moved > 5) { e.preventDefault(); moved = 0; } });
+
+  new IntersectionObserver(([e]) => {
+    inView = e.isIntersecting;
+    if (inView && on()) dropped ? wake() : drop();
+  }, { threshold: .2 }).observe(box);
+  // every switch to the theme drops the pile again
+  new MutationObserver(() => { if (!on()) reset(); }).observe(root, { attributes: true, attributeFilter: ['data-theme'] });
+  document.addEventListener('visibilitychange', wake);
+  addEventListener('resize', () => { if (dropped && box.clientWidth !== width) reset(); });
+</script>
+
+<style>
+  .pile {
+    display: none;
+    position: relative;
+    overflow: hidden;
+    margin-top: var(--space-2xl);
+    user-select: none;
+  }
+  :global(html[data-theme="pile"]) .pile { display: block; }
+  /* the dunes step aside for plain paper */
+  :global(html[data-theme="pile"] #dune-bg) { opacity: 0; }
+  :global(#dune-bg) { transition: opacity 500ms ease; }
+
+  .pile-title {
+    position: absolute;
+    top: var(--space-xl);
+    width: 100%;
+    text-align: center;
+    font-size: var(--text-hero);
+    font-weight: 500;
+    letter-spacing: -0.01em;
+  }
+
+  .pill {
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translateY(-200px);
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    padding: 5px 14px;
+    border: var(--border);
+    border-radius: 999px;
+    background: var(--color-bg-alt);
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 1.4;
+    white-space: nowrap;
+    cursor: grab;
+    will-change: transform;
+  }
+  .pill:active { cursor: grabbing; }
+  .pill:hover { text-decoration: none; border-color: var(--color-accent); }
+  .pill::before {
+    content: '';
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--color-accent);
+  }
+  .pill[data-kind="book"]::before {
+    background: none;
+    border: 1.5px solid var(--color-primary);
+    border-radius: 1px;
+    width: 6px;
+    height: 8px;
+  }
+
+  @media (max-width: 768px) {
+    .pile-title { font-size: 22px; }
+    .pill { font-size: 11px; padding: 4px 11px; }
+  }
+</style>

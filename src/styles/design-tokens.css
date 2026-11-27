@@ -93,6 +93,22 @@ html[data-theme="archer"] {
   --image-filter:      sepia(0.6) hue-rotate(190deg) saturate(1.5) brightness(0.9);
 }
 
+/* Pile: paper and ink, mint accent; builds and books drop into a pile above the footer */
+html[data-theme="pile"] {
+  --color-primary:     #141414;
+  --color-deep:        #000000;
+  --color-tint:        rgba(20, 20, 20, 0.05);
+  --color-tint-strong: rgba(20, 20, 20, 0.10);
+  --color-bg:          #F6F5F1;
+  --color-bg-alt:      #FFFFFF;
+  --color-page:        #F6F5F1;
+  --color-accent:      #0E8A5F;
+  --color-muted:       #57574F;  /* 6.6:1 on the page colour */
+  --border:            1px dashed rgba(20, 20, 20, 0.55);
+  --border-faint:      1px dashed rgba(20, 20, 20, 0.2);
+  --image-filter:      grayscale(1) contrast(1.05);
+}
+
 /* ------------------------------------------------------------
    RESET & BASE
    ------------------------------------------------------------ */

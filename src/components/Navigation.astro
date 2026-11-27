@@ -38,7 +38,7 @@ function isActive(path: string) {
 <script is:inline>
   // "Click" cycles the themes; '' is the default. Add a theme: name it here + a block in design-tokens.css.
   (function () {
-    var THEMES = ['', 'archer'];
+    var THEMES = ['', 'archer', 'pile'];
     document.getElementById('theme-click').addEventListener('click', function () {
       var root = document.documentElement;
       var next = THEMES[(THEMES.indexOf(root.dataset.theme || '') + 1) % THEMES.length];
